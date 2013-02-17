@@ -1,0 +1,161 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" id="57CEBF85-794A-928F-8DDC-06FA77A7846B" directorySegmentName="seg_0" name="Client">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>8082D181-EF71-B0D9-F4DA-F5CDF9856CDE</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<pkName>client_PK</pkName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Attribute</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<attributes>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="client_id" id="AAEEB32B-A4DA-A74E-1C0D-203F4079CCC8">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>B6B0E2B6-8DD2-7514-4280-C4E293C0EFEC</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="name" id="E3D3F96C-2F0D-A8A6-6752-32BC0C8C7436">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>AC592D0A-19CC-124D-4B83-F5CB737D31FD</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="surname" id="58039951-3DAB-DDA7-449F-EE8E46C49C2A">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>FA615CB6-7632-BE18-9CD9-270E88A0B62B</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="phone_number" id="25883325-1F05-A73A-AA55-723FF31510AF">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>EFE64B54-4140-3CB1-0C29-F79E8FC57FA4</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>11</dataTypeSize>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="age" id="CE665B02-0419-61A6-959A-5E0B9E30C58E">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>0602D723-0224-8546-1F25-5FE40775767C</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="discount" id="31CE804E-1677-DDD9-4AB0-20FCEECE88FE">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>7579873E-6313-17AB-B7B8-22150414E230</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="email" id="412D7EAB-9291-2FE2-E56C-45CDECA89AFD">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>2A6F8CBF-F4A7-66F1-9B13-79C89428B683</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+</Attribute>
+</attributes>
+<identifiers>
+<identifier class="oracle.dbtools.crest.model.design.logical.CandidateKey" id="C24D3793-BF69-A052-4D77-A1FA2ED8A7D2" name="client_PK">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>4FDF24DF-FAD2-82DF-4DBF-FA90A234B9BA</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>AAEEB32B-A4DA-A74E-1C0D-203F4079CCC8</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

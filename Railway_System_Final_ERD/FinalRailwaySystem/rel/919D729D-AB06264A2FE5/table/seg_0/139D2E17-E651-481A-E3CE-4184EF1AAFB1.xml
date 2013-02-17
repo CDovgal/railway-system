@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" id="139D2E17-E651-481A-E3CE-4184EF1AAFB1" directorySegmentName="seg_0" name="FeightOrderItems">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="139D2E17-E651-481A-E3CE-4184EF1AAFB1" directorySegmentName="seg_0" name="Freight_order_item">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -40,7 +40,7 @@
 </FontObject>
 </fonts>
 <columns>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="goi_id" id="3ACE3C7C-45C6-65DB-BF3D-A98A20E78A3C">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="foi_id" id="3ACE3C7C-45C6-65DB-BF3D-A98A20E78A3C">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -56,7 +56,7 @@
 <autoIncrementSequenceName>sequence_goi</autoIncrementSequenceName>
 <autoIncrementTriggerName>goi_insert</autoIncrementTriggerName>
 </Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="order_id" id="A0756027-82FD-17C6-B976-396A1CCF3091">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_order_id" id="A0756027-82FD-17C6-B976-396A1CCF3091">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -69,13 +69,14 @@
 <colAssociation fkAssociation="CC46A2B1-1650-23B2-94A9-6E12CF39A7AE" referredColumn="C42472BB-FD38-8ED1-C18B-2346A585444A"/>
 </associations>
 </Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="goods_name" id="FF12B281-4777-E521-65CC-BD90713A9F69">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_goods_name" id="FF12B281-4777-E521-65CC-BD90713A9F69">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
 <delegate>B7249585-12AE-835A-14A2-743522B093A5</delegate>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -98,6 +99,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column class="oracle.dbtools.crest.model.design.relational.Column" name="delivery" id="3FB67E56-7383-0894-71B8-DBAA00D5EA69">
@@ -107,11 +109,12 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes>
-<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="57CFA5B8-4E06-6382-678B-1435B96D5E52" name="FeightOrderItems_PK">
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="57CFA5B8-4E06-6382-678B-1435B96D5E52" name="Feight_order_items_PK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>

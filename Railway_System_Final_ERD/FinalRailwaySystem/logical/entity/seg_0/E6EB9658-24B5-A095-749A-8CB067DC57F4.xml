@@ -1,0 +1,108 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" id="E6EB9658-24B5-A095-749A-8CB067DC57F4" directorySegmentName="seg_0" name="Order_item">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>7AA7121E-240D-B31E-72B3-67B6C86D4653</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<pkName>order_PK</pkName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Attribute</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<attributes>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="order_id" id="8C52C5A0-6C61-FA9C-43B4-E965DD5E1ED9">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>C42472BB-FD38-8ED1-C18B-2346A585444A</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="fk_client_id" id="458E2B5B-92A8-2733-0D4E-7F54F5330EB5">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>50C84F7F-32F8-DE2A-33D1-5B4B31436E46</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<referedAttribute>AAEEB32B-A4DA-A74E-1C0D-203F4079CCC8</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="date" id="CDE8E801-FEB2-B16C-4CAB-ECC43687E163">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>1EB60D13-B59C-124A-A5B3-095ADFDAE659</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+</Attribute>
+</attributes>
+<identifiers>
+<identifier class="oracle.dbtools.crest.model.design.logical.CandidateKey" id="ADF6D677-545F-F8E1-AEDB-FF53CB09751B" name="order_PK">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>23BD8424-80A9-41BB-CDE8-01EF286A4CB2</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8C52C5A0-6C61-FA9C-43B4-E965DD5E1ED9</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" id="8082D181-EF71-B0D9-F4DA-F5CDF9856CDE" directorySegmentName="seg_0" name="client">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="8082D181-EF71-B0D9-F4DA-F5CDF9856CDE" directorySegmentName="seg_0" name="Client">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -119,7 +119,7 @@
 </Column>
 </columns>
 <indexes>
-<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="4FDF24DF-FAD2-82DF-4DBF-FA90A234B9BA" name="client_PK">
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="4FDF24DF-FAD2-82DF-4DBF-FA90A234B9BA" name="Client_PK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>

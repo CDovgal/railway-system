@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" id="FDAC56AB-BBFE-B6E5-DCBB-178747470AC3" directorySegmentName="seg_0" name="Carriage_type">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>E4AAF926-F01A-2610-CB41-71E925D055E1</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<pkName>CarriageType_PK</pkName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Attribute</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<attributes>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="carriage_type_id" id="D9AD444A-D762-1C4E-1EB4-6D646094E3B6">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>FA6E0261-8B2E-B2D7-66EB-72F189166055</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="carriage_type_name" id="68D8F5C5-2D8E-8BCB-5D18-0EBADA2C97D3">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>2B6D1317-7643-4B55-7EB8-93D32F8FCFE6</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="fk_parrent_type_id" id="660E7FB9-E7E2-4238-B2FA-102F857B54B6">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>37FD668D-C6F4-EA2C-E030-BB90D6025E1D</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>D9AD444A-D762-1C4E-1EB4-6D646094E3B6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Attribute>
+</attributes>
+<identifiers>
+<identifier class="oracle.dbtools.crest.model.design.logical.CandidateKey" id="220980CF-13E0-CB0B-FFCD-9C2A08AFC418" name="CarriageType_PK">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>D0AB2A48-D19F-B430-DC14-28F80161B19A</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D9AD444A-D762-1C4E-1EB4-6D646094E3B6</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

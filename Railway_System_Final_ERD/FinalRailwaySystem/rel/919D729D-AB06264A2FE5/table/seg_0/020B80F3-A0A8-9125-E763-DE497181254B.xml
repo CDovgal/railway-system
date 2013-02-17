@@ -44,9 +44,10 @@
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<domain>635280ED-D023-6D17-2E82-D855F0BBCD97</domain>
+<dataTypeSize>50</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_railroad_source_id" id="BB5C7FD2-4545-AE9C-E054-4BDD44A8BDB1">

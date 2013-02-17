@@ -1,0 +1,145 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" id="4916853A-9FCC-CAFC-5981-6A711BFAB473" directorySegmentName="seg_0" name="Passenger_order_item">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>66399529-F73D-2A03-F559-924E65E027D8</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<pkName>PassengerOrderItems_PK</pkName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Attribute</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<attributes>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="poi_id" id="49BE81BC-5A5D-D80D-335E-182C087EFEED">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>C07C4A08-A6E5-9493-4A90-CDA4AB62B15F</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="fk_order_id" id="9596D25A-15CD-34D9-0219-81E8147B9DB6">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>1A627FDE-B8CB-BD74-3F40-E1B44EB17C25</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<referedAttribute>8C52C5A0-6C61-FA9C-43B4-E965DD5E1ED9</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="fk_train_id" id="E761942E-AD18-353B-B7F6-AF87B2794FB0">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>7299AFA0-BCE6-4AB9-ADC3-A22D45D209A0</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<referedAttribute>D52A0BB6-4BA6-C17E-D992-DC43E61D73AB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="date" id="0031C9F7-B399-F843-D863-78EA2A2DE1F7">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>5B57850A-20E8-6477-B03E-557B04816697</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="vagon_number" id="C74C2254-90B8-CE5D-57D6-D4215A1734FA">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>567459E6-C4C2-550A-E7AF-5E16440F3959</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="place_number" id="D256A764-E4B2-2DF9-B1DD-C2D39922304A">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>A5A5470D-8F51-7D30-0B9F-4FE408484777</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Attribute>
+</attributes>
+<identifiers>
+<identifier class="oracle.dbtools.crest.model.design.logical.CandidateKey" id="551ED847-4A56-CFAC-CFE7-31522BAE369C" name="PassengerOrderItems_PK">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>2BBF8575-8BCE-6FD5-73BA-C58C811C0347</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>49BE81BC-5A5D-D80D-335E-182C087EFEED</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

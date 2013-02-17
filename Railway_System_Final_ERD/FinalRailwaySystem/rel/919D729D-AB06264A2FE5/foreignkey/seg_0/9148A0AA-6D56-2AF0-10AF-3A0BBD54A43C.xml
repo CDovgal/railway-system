@@ -4,7 +4,7 @@
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
 <containerWithKeyObject>139D2E17-E651-481A-E3CE-4184EF1AAFB1</containerWithKeyObject>
-<deleteRule>NO ACTION</deleteRule>
+<deleteRule>CASCADE</deleteRule>
 <localFKIndex>7113F662-BFA2-8E31-E773-35B1E674B158</localFKIndex>
 <keyObject>8C2AE88C-E23A-6E75-D1FD-9214673E5E43</keyObject>
 <mandatory>true</mandatory>

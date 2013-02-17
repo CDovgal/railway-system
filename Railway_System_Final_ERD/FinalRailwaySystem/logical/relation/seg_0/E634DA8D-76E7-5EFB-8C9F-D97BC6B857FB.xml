@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Route_Train_FK" id="E634DA8D-76E7-5EFB-8C9F-D97BC6B857FB" directorySegmentName="seg_0">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:54 UTC</createdTime>
+<generatorID>63AE7C7D-C227-4316-F0B1-884FAF221EC4</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<identifying>true</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>E1035264-3A2C-6E83-FC78-39D81B34F1E8</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>90C9642F-C0AD-216E-F4DC-C90D94C60840</targetEntity>
+<transferable>true</transferable>
+</Relation>

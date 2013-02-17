@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Characteristic_Characteristic_type_FK" id="595BDF86-79B3-7CD8-1032-CB9F88AE0F74" directorySegmentName="seg_0">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>F110D496-D7C3-B7A7-90BF-5BA34845A675</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>A2B7F235-470E-629C-C0C0-3BC47CFDE109</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>BD39444C-A592-38BB-B5AC-E34EBB5873D7</targetEntity>
+<transferable>true</transferable>
+</Relation>

@@ -63,7 +63,7 @@
 <dataTypeSize>50 CHAR</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="rolling_stock_id" id="63634B21-248A-F4BF-1BD7-7F1CBE6F5DD6">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_rolling_stock_id" id="63634B21-248A-F4BF-1BD7-7F1CBE6F5DD6">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -76,7 +76,7 @@
 <colAssociation fkAssociation="5ED44879-CFE1-79B9-943C-EAFF4EA5B406" referredColumn="68771907-4E1A-1768-4DD0-029A355D3AD5"/>
 </associations>
 </Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="carriage_type" id="B2AA50D2-6D0A-24F4-8B96-A32940645244">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_carriage_type_id" id="B2AA50D2-6D0A-24F4-8B96-A32940645244">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>

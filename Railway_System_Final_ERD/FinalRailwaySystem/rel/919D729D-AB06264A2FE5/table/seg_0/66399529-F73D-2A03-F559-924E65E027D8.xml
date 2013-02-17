@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" id="66399529-F73D-2A03-F559-924E65E027D8" directorySegmentName="seg_0" name="PassengerOrderItems">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="66399529-F73D-2A03-F559-924E65E027D8" directorySegmentName="seg_0" name="Passenger_order_item">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -40,7 +40,23 @@
 </FontObject>
 </fonts>
 <columns>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="order_id" id="24EB350C-0412-C361-58BD-D4F880252B92">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="poi_id" id="C07C4A08-A6E5-9493-4A90-CDA4AB62B15F">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementStartWith>0</autoIncrementStartWith>
+<autoIncrementMinValue>0</autoIncrementMinValue>
+<autoIncrementMaxValue>99999</autoIncrementMaxValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementCache>10</autoIncrementCache>
+<autoIncrementSequenceName>sequence_poi</autoIncrementSequenceName>
+<autoIncrementTriggerName>insert_poi</autoIncrementTriggerName>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_order_id" id="24EB350C-0412-C361-58BD-D4F880252B92">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -60,7 +76,7 @@
 <colAssociation fkAssociation="3C20F1FD-5321-CEC2-D127-0C83E398DF9C" referredColumn="C42472BB-FD38-8ED1-C18B-2346A585444A"/>
 </associations>
 </Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="train_id" id="7A3EFFD9-0BB7-5E6F-6FD5-01BE5C6D174C">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_train_id" id="7A3EFFD9-0BB7-5E6F-6FD5-01BE5C6D174C">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -72,22 +88,6 @@
 <associations>
 <colAssociation fkAssociation="E7DACB43-7D6E-7D06-7D1C-D35AEF8F4C19" referredColumn="BEB25DF5-CB08-224C-DBC7-144C2A7D7132"/>
 </associations>
-</Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="poi_id" id="C07C4A08-A6E5-9493-4A90-CDA4AB62B15F">
-<createdBy>Oleksander</createdBy>
-<createdTime>2013-02-17 13:26:35 UTC</createdTime>
-<ownerDesignName>FinalRailwaySystem</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<autoIncrementColumn>true</autoIncrementColumn>
-<autoIncrementStartWith>0</autoIncrementStartWith>
-<autoIncrementMinValue>0</autoIncrementMinValue>
-<autoIncrementMaxValue>99999</autoIncrementMaxValue>
-<autoIncrementCycle>false</autoIncrementCycle>
-<autoIncrementCache>10</autoIncrementCache>
-<autoIncrementSequenceName>sequence_poi</autoIncrementSequenceName>
-<autoIncrementTriggerName>insert_poi</autoIncrementTriggerName>
 </Column>
 <Column class="oracle.dbtools.crest.model.design.relational.Column" name="date" id="5B57850A-20E8-6477-B03E-557B04816697">
 <createdBy>Oleksander</createdBy>
@@ -118,7 +118,7 @@
 </Column>
 </columns>
 <indexes>
-<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="2BBF8575-8BCE-6FD5-73BA-C58C811C0347" name="PassengerOrderItems_PK">
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="2BBF8575-8BCE-6FD5-73BA-C58C811C0347" name="Passenger_order_item_PK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>

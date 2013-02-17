@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" id="E4AAF926-F01A-2610-CB41-71E925D055E1" directorySegmentName="seg_0" name="CarriageType">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="E4AAF926-F01A-2610-CB41-71E925D055E1" directorySegmentName="seg_0" name="Carriage_type">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -63,7 +63,7 @@
 <dataTypeSize>50 CHAR</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="parrent_type_id" id="1408862D-7541-E151-A5CC-AF7CB015B7F3">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_parrent_type_id" id="1408862D-7541-E151-A5CC-AF7CB015B7F3">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -78,7 +78,7 @@
 </Column>
 </columns>
 <indexes>
-<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="D0AB2A48-D19F-B430-DC14-28F80161B19A" name="CarriageType_PK">
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="D0AB2A48-D19F-B430-DC14-28F80161B19A" name="Carriage_type_PK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>

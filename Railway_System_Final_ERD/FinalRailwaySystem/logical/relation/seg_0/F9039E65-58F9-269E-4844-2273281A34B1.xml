@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Carriage_RollingStack_FK" id="F9039E65-58F9-269E-4844-2273281A34B1" directorySegmentName="seg_0">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>5ED44879-CFE1-79B9-943C-EAFF4EA5B406</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>5A5F3A41-D534-8928-0BF7-3DC0C4A9960C</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>2F996825-4C9F-F565-4183-84D1423AAD80</targetEntity>
+<transferable>true</transferable>
+</Relation>

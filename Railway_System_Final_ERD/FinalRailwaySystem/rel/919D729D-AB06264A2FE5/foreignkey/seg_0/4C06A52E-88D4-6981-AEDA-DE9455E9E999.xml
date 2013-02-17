@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" id="4C06A52E-88D4-6981-AEDA-DE9455E9E999" directorySegmentName="seg_0" name="CarriageFreightOrderItems_FeightOrderItems_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" id="4C06A52E-88D4-6981-AEDA-DE9455E9E999" directorySegmentName="seg_0" name="CarriageFOI_FOI_FK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:39:39 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
