@@ -1,0 +1,144 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="C5CF6C2A-48C7-D33D-ED78-2EFC546EE07E" directorySegmentName="seg_0" name="Route">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pkName>Route_PK</pkName>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Column</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<columns>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_train_id" id="740F8DA7-BDE7-9817-DD02-03D52B00CD19">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>BEB25DF5-CB08-224C-DBC7-144C2A7D7132</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="63AE7C7D-C227-4316-F0B1-884FAF221EC4" referredColumn="BEB25DF5-CB08-224C-DBC7-144C2A7D7132"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_arrive_station_id" id="298E7397-8142-020E-4F0E-CBBDDC8E495A">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>F7086A3D-9E70-6C2C-5862-E652AB97A30A</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7ED233E0-1FC7-A0A3-334E-5755EFFCB050" referredColumn="F7086A3D-9E70-6C2C-5862-E652AB97A30A"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_destination_station_id" id="A859BEEA-DFD9-2247-EB11-89F2FED9AD86">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>F7086A3D-9E70-6C2C-5862-E652AB97A30A</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="34DB10D3-5CF6-0F75-1247-D7191CDA3D37" referredColumn="F7086A3D-9E70-6C2C-5862-E652AB97A30A"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="arrive_time" id="168B38FA-DFC9-CD81-579A-8BC1954F7108">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="travel_time" id="BB2FFA82-CEE5-87D0-3A36-A77D1ED11C45">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="F63D0893-E16B-F435-16C4-0AD9A1850544" name="Route_PK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="298E7397-8142-020E-4F0E-CBBDDC8E495A"/>
+<colUsage columnID="740F8DA7-BDE7-9817-DD02-03D52B00CD19"/>
+<colUsage columnID="A859BEEA-DFD9-2247-EB11-89F2FED9AD86"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="F9C46918-DC5E-90D0-28AD-736231F5B3AF" name="Route_Station_FK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:50 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="298E7397-8142-020E-4F0E-CBBDDC8E495A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="310E46AD-53F8-D5BD-491C-399E21D7E299" name="Route_Station_FKv2">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:50 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="A859BEEA-DFD9-2247-EB11-89F2FED9AD86"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="5BD76E21-CD09-A1D9-5CC0-1ACF24AB8E7A" name="Route_Train_FK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:50 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="740F8DA7-BDE7-9817-DD02-03D52B00CD19"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="7B0E36B5-DA4A-810C-AECB-18785DFA6F0E" directorySegmentName="seg_0" name="Country">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pkName>Country_PK</pkName>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Column</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<columns>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="country_id" id="A259322D-D330-852C-AE82-C49F07059C4D">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>seq_country</autoIncrementSequenceName>
+<autoIncrementTriggerName>trg_insert_country</autoIncrementTriggerName>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="country_name" id="A9A2E5E5-CAB4-70F0-0D0F-EA00E8E00D99">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="C0118669-9B73-A485-769F-ED597938B1BE" name="Country_PK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:49 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="A259322D-D330-852C-AE82-C49F07059C4D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

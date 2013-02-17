@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="FinalRailwaySystem" id="BBBBFD0D-7383-7194-03EE-948B6103512B" version="3.5">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:16:21 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>BBBBFD0D-7383-7194-03EE-948B6103512B</designId>
+</OSDM_Design>

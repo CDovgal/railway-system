@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" id="7919CE52-F28D-9104-818C-BE8F044BF1BA" directorySegmentName="seg_0" name="Carriage_CarriageType_FK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<containerWithKeyObject>456FA0F6-89BA-1C2B-4405-18B131E3E176</containerWithKeyObject>
+<deleteRule>CASCADE</deleteRule>
+<localFKIndex>777B830E-C668-5B68-DD08-F8225C17A952</localFKIndex>
+<keyObject>D0AB2A48-D19F-B430-DC14-28F80161B19A</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+</FKIndexAssociation>

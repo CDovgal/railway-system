@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="7AA7121E-240D-B31E-72B3-67B6C86D4653" directorySegmentName="seg_0" name="order">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pkName>order_PK</pkName>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Column</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<columns>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="order_id" id="C42472BB-FD38-8ED1-C18B-2346A585444A">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
+<autoIncrementStartWith>0</autoIncrementStartWith>
+<autoIncrementMinValue>0</autoIncrementMinValue>
+<autoIncrementMaxValue>99999</autoIncrementMaxValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementCache>10</autoIncrementCache>
+<autoIncrementSequenceName>sequence_order</autoIncrementSequenceName>
+<autoIncrementTriggerName>order_insert</autoIncrementTriggerName>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="client_id" id="B5130F44-A63E-2414-69BB-CD80FC8EEE82">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>B6B0E2B6-8DD2-7514-4280-C4E293C0EFEC</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="18E43E51-11A3-B7CF-AAB0-F93A7EFB710B" referredColumn="B6B0E2B6-8DD2-7514-4280-C4E293C0EFEC"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="date" id="1EB60D13-B59C-124A-A5B3-095ADFDAE659">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="23BD8424-80A9-41BB-CDE8-01EF286A4CB2" name="order_PK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="C42472BB-FD38-8ED1-C18B-2346A585444A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="40510F2E-C0EE-61A9-B538-10BB93FFF00E" name="TABLE_2_client_FK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="B5130F44-A63E-2414-69BB-CD80FC8EEE82"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

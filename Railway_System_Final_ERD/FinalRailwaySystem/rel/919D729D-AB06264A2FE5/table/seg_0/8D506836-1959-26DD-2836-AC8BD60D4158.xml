@@ -1,0 +1,91 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="8D506836-1959-26DD-2836-AC8BD60D4158" directorySegmentName="seg_0" name="RollingStack">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pkName>RollingStack_PK</pkName>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Column</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<columns>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="rolling_stock_id" id="68771907-4E1A-1768-4DD0-029A355D3AD5">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>sequence_rolling_stock</autoIncrementSequenceName>
+<autoIncrementTriggerName>trigger_rolling_stock</autoIncrementTriggerName>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="lokomotive_id" id="8C50209D-46F3-6D98-8D17-CC73C32F26B4">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>83A76DE2-74CC-7C85-8239-9EC0E5D5DCDC</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="12503822-1AFC-FFB3-C286-BA2075511026" referredColumn="83A76DE2-74CC-7C85-8239-9EC0E5D5DCDC"/>
+</associations>
+</Column>
+</columns>
+<indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="CD688FF6-C04D-21D6-06F2-075DBD71343A" name="RollingStack_PK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="68771907-4E1A-1768-4DD0-029A355D3AD5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="87A8A18A-AE9A-22D1-605B-5AB78ECC57FA" name="RollingStack_Lokomotive_FK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="8C50209D-46F3-6D98-8D17-CC73C32F26B4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

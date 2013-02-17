@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="020B80F3-A0A8-9125-E763-DE497181254B" directorySegmentName="seg_0" name="Railroad">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pkName>Railroad_PK</pkName>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Column</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<columns>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="railroad_type" id="9D972C42-B1E9-E102-A058-CF913A8F4F5D">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>635280ED-D023-6D17-2E82-D855F0BBCD97</domain>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_railroad_source_id" id="BB5C7FD2-4545-AE9C-E054-4BDD44A8BDB1">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>F7086A3D-9E70-6C2C-5862-E652AB97A30A</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A5031D80-E143-3B30-3543-BE22B265FCED" referredColumn="F7086A3D-9E70-6C2C-5862-E652AB97A30A"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_railroad_destination_id" id="16FF7D23-6255-B1D2-4695-F1C3AAC41E26">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>F7086A3D-9E70-6C2C-5862-E652AB97A30A</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3B74A3D4-4D22-F0DE-DBD6-15740276CD9D" referredColumn="F7086A3D-9E70-6C2C-5862-E652AB97A30A"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="railroad_id" id="FC83E3F6-1BA9-48FB-37E1-F73509C8EFF5">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="39E2E8E6-6330-3584-0F5C-690F8B3FBC35" name="Railroad_PK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:17:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="FC83E3F6-1BA9-48FB-37E1-F73509C8EFF5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="1C86156A-63EA-C17A-296D-79505D1251E2" name="Railroad_Station_FK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:20:42 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="16FF7D23-6255-B1D2-4695-F1C3AAC41E26"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="539C99AB-83A1-0F3D-9C4B-DA45E947B4E0" name="Railroad_Station_FKv1">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:22:57 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="BB5C7FD2-4545-AE9C-E054-4BDD44A8BDB1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

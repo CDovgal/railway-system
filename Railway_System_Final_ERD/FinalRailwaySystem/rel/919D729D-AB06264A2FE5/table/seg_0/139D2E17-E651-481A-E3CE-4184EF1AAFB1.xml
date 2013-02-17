@@ -1,0 +1,143 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="139D2E17-E651-481A-E3CE-4184EF1AAFB1" directorySegmentName="seg_0" name="FeightOrderItems">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pkName>FeightOrderItems_PK</pkName>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Column</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<columns>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="goi_id" id="3ACE3C7C-45C6-65DB-BF3D-A98A20E78A3C">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementStartWith>0</autoIncrementStartWith>
+<autoIncrementMinValue>0</autoIncrementMinValue>
+<autoIncrementMaxValue>99999</autoIncrementMaxValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementCache>10</autoIncrementCache>
+<autoIncrementSequenceName>sequence_goi</autoIncrementSequenceName>
+<autoIncrementTriggerName>goi_insert</autoIncrementTriggerName>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="order_id" id="A0756027-82FD-17C6-B976-396A1CCF3091">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>C42472BB-FD38-8ED1-C18B-2346A585444A</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CC46A2B1-1650-23B2-94A9-6E12CF39A7AE" referredColumn="C42472BB-FD38-8ED1-C18B-2346A585444A"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="goods_name" id="FF12B281-4777-E521-65CC-BD90713A9F69">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<delegate>B7249585-12AE-835A-14A2-743522B093A5</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9148A0AA-6D56-2AF0-10AF-3A0BBD54A43C" referredColumn="B7249585-12AE-835A-14A2-743522B093A5"/>
+</associations>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="mass" id="F85BE5A6-E18B-21F0-BA65-28AC9200D127">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="origin" id="1B1C8F7B-5A1C-1E1E-861B-6247BAD9C9B9">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="delivery" id="3FB67E56-7383-0894-71B8-DBAA00D5EA69">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="57CFA5B8-4E06-6382-678B-1435B96D5E52" name="FeightOrderItems_PK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="3ACE3C7C-45C6-65DB-BF3D-A98A20E78A3C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="7113F662-BFA2-8E31-E773-35B1E674B158" name="FeightOrderItems_Goods_FK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="FF12B281-4777-E521-65CC-BD90713A9F69"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="1539ADE8-C6D2-E794-449A-8DF9D066CC4D" name="FeightOrderItems_order_FK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:26:35 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<indexColumnUsage>
+<colUsage columnID="A0756027-82FD-17C6-B976-396A1CCF3091"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
