@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" id="3C68C07E-47D7-D433-AB0F-CB8D4AEDF96E" directorySegmentName="seg_0" name="CarriageFreightOrderItems">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="3C68C07E-47D7-D433-AB0F-CB8D4AEDF96E" directorySegmentName="seg_0" name="Carriage_freight_order_item">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -39,7 +39,7 @@
 </FontObject>
 </fonts>
 <columns>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="carriage_id" id="1EA8EC48-6593-8FAC-8814-C831E074A0B3">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_carriage_id" id="1EA8EC48-6593-8FAC-8814-C831E074A0B3">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -52,7 +52,7 @@
 <colAssociation fkAssociation="C369F630-919A-CBEA-353A-C7E65D2B8DA4" referredColumn="65294C4A-8190-B4A1-E9B1-B92DD1502F15"/>
 </associations>
 </Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="goi_id" id="D5BED145-B7BC-F886-087D-525DEE0412CA">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_foi_id" id="D5BED145-B7BC-F886-087D-525DEE0412CA">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -67,7 +67,7 @@
 </Column>
 </columns>
 <indexes>
-<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="5F06FCAD-EEC3-9689-89CD-7847EE9A10D7" name="CarriageFreightOrderItems_Carriage_FK">
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="5F06FCAD-EEC3-9689-89CD-7847EE9A10D7" name="CarriageFOI_Carriage_FK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -76,7 +76,7 @@
 <colUsage columnID="1EA8EC48-6593-8FAC-8814-C831E074A0B3"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="B6A9F01F-59D1-2164-674E-B971E3095434" name="CarriageFreightOrderItems_FeightOrderItems_FK">
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="B6A9F01F-59D1-2164-674E-B971E3095434" name="CarriageFOI_FOI_FK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:39:39 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>

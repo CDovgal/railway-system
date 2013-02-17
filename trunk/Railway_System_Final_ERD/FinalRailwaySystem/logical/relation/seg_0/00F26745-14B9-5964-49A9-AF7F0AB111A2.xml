@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FeightOrderItems_Goods_FK" id="00F26745-14B9-5964-49A9-AF7F0AB111A2" directorySegmentName="seg_0">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>9148A0AA-6D56-2AF0-10AF-3A0BBD54A43C</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>2B8F0341-9AED-2116-FB3A-29BDDACE7D2B</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>DD75D884-3A47-33D0-A9C9-71E3F31C7E14</targetEntity>
+<transferable>true</transferable>
+</Relation>

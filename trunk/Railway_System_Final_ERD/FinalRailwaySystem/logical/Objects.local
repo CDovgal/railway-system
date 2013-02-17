@@ -1,2 +1,45 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<oracle.dbtools.crest.model.design.logical.LogicalDesign/>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="2F996825-4C9F-F565-4183-84D1423AAD80" name="Carriage" seqName="seg_0"/>
+   <object objectType="Entity" objectID="091F24AD-E678-71F8-DAA3-0CD28CAF57B7" name="Carriage_freight_order_item" seqName="seg_0"/>
+   <object objectType="Entity" objectID="FDAC56AB-BBFE-B6E5-DCBB-178747470AC3" name="Carriage_type" seqName="seg_0"/>
+   <object objectType="Entity" objectID="BD39444C-A592-38BB-B5AC-E34EBB5873D7" name="Characteristic" seqName="seg_0"/>
+   <object objectType="Entity" objectID="A2B7F235-470E-629C-C0C0-3BC47CFDE109" name="Characteristic_type" seqName="seg_0"/>
+   <object objectType="Entity" objectID="152E73BF-860F-A471-5730-559198F6A014" name="City" seqName="seg_0"/>
+   <object objectType="Entity" objectID="57CEBF85-794A-928F-8DDC-06FA77A7846B" name="Client" seqName="seg_0"/>
+   <object objectType="Entity" objectID="77E455BD-7B7F-8B57-C868-D62AF4919DBD" name="Country" seqName="seg_0"/>
+   <object objectType="Entity" objectID="DD75D884-3A47-33D0-A9C9-71E3F31C7E14" name="Freight_order_item" seqName="seg_0"/>
+   <object objectType="Entity" objectID="2B8F0341-9AED-2116-FB3A-29BDDACE7D2B" name="Goods" seqName="seg_0"/>
+   <object objectType="Entity" objectID="5FCFD5F8-2CE7-9C05-3BD0-A4B4285007D8" name="Lokomotive" seqName="seg_0"/>
+   <object objectType="Entity" objectID="E6EB9658-24B5-A095-749A-8CB067DC57F4" name="Order_item" seqName="seg_0"/>
+   <object objectType="Entity" objectID="4916853A-9FCC-CAFC-5981-6A711BFAB473" name="Passenger_order_item" seqName="seg_0"/>
+   <object objectType="Entity" objectID="6004058F-7E36-3BB0-CC33-AD2A58871A87" name="Railroad" seqName="seg_0"/>
+   <object objectType="Entity" objectID="5A5F3A41-D534-8928-0BF7-3DC0C4A9960C" name="Rolling_stock" seqName="seg_0"/>
+   <object objectType="Entity" objectID="90C9642F-C0AD-216E-F4DC-C90D94C60840" name="Route" seqName="seg_0"/>
+   <object objectType="Entity" objectID="09EC128D-ADFB-ED1F-D8EF-1183BCDCDD4E" name="Station" seqName="seg_0"/>
+   <object objectType="Entity" objectID="E1035264-3A2C-6E83-FC78-39D81B34F1E8" name="Train" seqName="seg_0"/>
+   <object objectType="Entity" objectID="8D420E6D-C02B-04E4-F8B9-D08DA257950F" name="Train_schedule" seqName="seg_0"/>
+   <object objectType="Relation" objectID="75F312CD-D53B-D550-18C7-684302B7744C" name="CarriageFreightOrderItems_Carriage_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="F39EED6F-D421-EA3D-81FD-CD004DB24CA8" name="CarriageFreightOrderItems_FeightOrderItems_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="37FD668D-C6F4-EA2C-E030-BB90D6025E1D" name="CarriageType_CarriageType_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="DDDBE14B-C69D-9D88-83F6-C89343D6CC52" name="Carriage_CarriageType_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="F9039E65-58F9-269E-4844-2273281A34B1" name="Carriage_RollingStack_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="A91B68B0-89F3-F070-4F7F-3DEEA02D56E7" name="Characteristic_CarriageType_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="595BDF86-79B3-7CD8-1032-CB9F88AE0F74" name="Characteristic_Characteristic_type_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="76BD6441-500C-13A2-DABD-AC334099EC32" name="City_Country_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="00F26745-14B9-5964-49A9-AF7F0AB111A2" name="FeightOrderItems_Goods_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="1D2E81D5-347B-D698-B68D-CADBAA587A45" name="FeightOrderItems_order_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="7299AFA0-BCE6-4AB9-ADC3-A22D45D209A0" name="PassengerOrderItems_Train_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="11AA3A00-9DCC-F81D-35B3-D372AA250F84" name="Railroad_Station_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="8B70D9A2-2081-35F3-33BA-4D612F04EA13" name="Railroad_Station_FKv1" seqName="seg_0"/>
+   <object objectType="Relation" objectID="1C95B6C9-C584-761E-598B-2622C7DA95A4" name="RollingStack_Lokomotive_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="5F054E29-A1A6-1EE8-1EB4-F6FD0C93CA6C" name="Route_Station_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="0EE6295E-4DCA-ECC4-EF22-F739E71CC608" name="Route_Station_FKv2" seqName="seg_0"/>
+   <object objectType="Relation" objectID="E634DA8D-76E7-5EFB-8C9F-D97BC6B857FB" name="Route_Train_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="974935B5-252C-0ED3-3B75-CA546A56D2C8" name="Station_City_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="50C84F7F-32F8-DE2A-33D1-5B4B31436E46" name="TABLE_2_client_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="1A627FDE-B8CB-BD74-3F40-E1B44EB17C25" name="TABLE_4_order_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="C53B5585-3620-F52D-A2CB-3B5A6A72A0A4" name="Train-ARRIVE_STATION_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="CA9E0FCA-40F1-D159-8C3C-B2A5AEDD2020" name="Train_RollingStack_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="6CACE80C-E465-8AD4-0754-617440A0590F" name="Train_schedule_Train_FK" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

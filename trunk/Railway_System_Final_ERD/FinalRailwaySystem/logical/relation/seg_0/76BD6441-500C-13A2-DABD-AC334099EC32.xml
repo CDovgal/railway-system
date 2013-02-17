@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="City_Country_FK" id="76BD6441-500C-13A2-DABD-AC334099EC32" directorySegmentName="seg_0">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>D7205647-60FF-B4C9-6348-C7232AC2EE04</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>77E455BD-7B7F-8B57-C868-D62AF4919DBD</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>152E73BF-860F-A471-5730-559198F6A014</targetEntity>
+<transferable>true</transferable>
+</Relation>

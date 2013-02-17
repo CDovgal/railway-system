@@ -39,7 +39,7 @@
 </FontObject>
 </fonts>
 <columns>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="carriage_type_id" id="120DE9D3-2BC0-1687-1E2B-54F5D9618B36">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="fk_carriage_type_id" id="120DE9D3-2BC0-1687-1E2B-54F5D9618B36">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -76,7 +76,7 @@
 </Column>
 </columns>
 <indexes>
-<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="07213CCA-6059-6004-0CA3-47BF6AF884AA" name="Characteristic_CarriageType_FK">
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="07213CCA-6059-6004-0CA3-47BF6AF884AA" name="Char_CarriageType_FK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -85,7 +85,7 @@
 <colUsage columnID="120DE9D3-2BC0-1687-1E2B-54F5D9618B36"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="2D2BF25A-58E2-7912-380A-8D7FA7265A91" name="Characteristic_Characteristic_type_FK">
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="2D2BF25A-58E2-7912-380A-8D7FA7265A91" name="Char_Char_type_FK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>

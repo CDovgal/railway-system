@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CarriageFreightOrderItems_FeightOrderItems_FK" id="F39EED6F-D421-EA3D-81FD-CD004DB24CA8" directorySegmentName="seg_0">
+<createdBy>Urgo</createdBy>
+<createdTime>2013-02-17 22:04:53 UTC</createdTime>
+<generatorID>4C06A52E-88D4-6981-AEDA-DE9455E9E999</generatorID>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<engineerTo>
+<item key="919D729D-59B2-086C-4CBC-AB06264A2FE5" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>DD75D884-3A47-33D0-A9C9-71E3F31C7E14</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>091F24AD-E678-71F8-DAA3-0CD28CAF57B7</targetEntity>
+<transferable>true</transferable>
+</Relation>

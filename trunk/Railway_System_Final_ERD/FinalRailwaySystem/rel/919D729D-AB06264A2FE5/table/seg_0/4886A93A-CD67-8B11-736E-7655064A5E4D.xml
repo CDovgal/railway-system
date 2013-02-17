@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" id="4886A93A-CD67-8B11-736E-7655064A5E4D" directorySegmentName="seg_0" name="Lokomotive">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" id="4886A93A-CD67-8B11-736E-7655064A5E4D" directorySegmentName="seg_0" name="Locomotive">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -40,7 +40,7 @@
 </FontObject>
 </fonts>
 <columns>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="lokomotive_id" id="83A76DE2-74CC-7C85-8239-9EC0E5D5DCDC">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="locomotive_id" id="83A76DE2-74CC-7C85-8239-9EC0E5D5DCDC">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -49,14 +49,15 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="lokomotive_type" id="3F85E44A-C6C8-DF34-3FAD-5285ED0380F7">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="locomotive_type" id="3F85E44A-C6C8-DF34-3FAD-5285ED0380F7">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<domain>D1A1F444-F8F6-C9C3-D9CB-465546E40C26</domain>
+<dataTypeSize>50</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column class="oracle.dbtools.crest.model.design.relational.Column" name="number_carriages" id="694F38C2-2EA6-7B8B-2859-9F63F98D2BFF">
@@ -73,12 +74,12 @@
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
-<use>0</use>
+<use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<domain>635280ED-D023-6D17-2E82-D855F0BBCD97</domain>
+<dataTypeSize>50</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="lokomotive_mark" id="5D66BA32-32CF-DC41-8227-F774123C02BA">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="locomotive_mark" id="5D66BA32-32CF-DC41-8227-F774123C02BA">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -91,7 +92,7 @@
 </Column>
 </columns>
 <indexes>
-<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="A4728073-5A5E-BC20-9DE8-275835C4EE19" name="Lokomotive_PK">
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="A4728073-5A5E-BC20-9DE8-275835C4EE19" name="Locomotive_PK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
@@ -100,11 +101,6 @@
 <indexColumnUsage>
 <colUsage columnID="83A76DE2-74CC-7C85-8239-9EC0E5D5DCDC"/>
 </indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="7FAB4F8A-259C-9C0F-39CD-3D4821247DB1" name="Lokomotive_Railroad_FK">
-<createdBy>Oleksander</createdBy>
-<createdTime>2013-02-17 13:17:38 UTC</createdTime>
-<ownerDesignName>FinalRailwaySystem</ownerDesignName>
 </ind_PK_UK>
 </indexes>
 </Table>
