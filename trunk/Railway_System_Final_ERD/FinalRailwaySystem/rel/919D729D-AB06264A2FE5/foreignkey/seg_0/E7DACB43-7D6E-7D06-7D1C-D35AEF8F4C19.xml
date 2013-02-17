@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" id="E7DACB43-7D6E-7D06-7D1C-D35AEF8F4C19" directorySegmentName="seg_0" name="PassengerOrderItems_Train_FK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-17 13:40:39 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<containerWithKeyObject>66399529-F73D-2A03-F559-924E65E027D8</containerWithKeyObject>
+<deleteRule>CASCADE</deleteRule>
+<localFKIndex>87A93DF1-F63C-4736-56B3-246EF648BCB1</localFKIndex>
+<keyObject>8706E2E3-08AF-3374-BAD0-573680F2F85B</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+</FKIndexAssociation>
