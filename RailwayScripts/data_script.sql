@@ -14,7 +14,7 @@ insert into CITY(FK_COUNTRY_ID, CITY_NAME) values(2,'Moscow');
 insert into CITY(FK_COUNTRY_ID, CITY_NAME) values(3,'Saint-Petersbourg');
 
 insert into CITY(FK_COUNTRY_ID, CITY_NAME) values(3,'Warsaw');
-insert into CITY(FK_COUNTRY_ID, CITY_NAME) values(3,'Lublin);
+insert into CITY(FK_COUNTRY_ID, CITY_NAME) values(3,'Lublin');
 /
 -- Station
 insert into STATION(FK_CITY_ID, STATION_NAME) values(1,'Kyiv Passenger');
