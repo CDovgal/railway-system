@@ -7,97 +7,105 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="483.0" prefWidth="600.0000999999975" xmlns:fx="http://javafx.com/fxml" fx:controller="scheduleformation.ScheduleFormationController">
+<AnchorPane id="AnchorPane" prefHeight="529.0" prefWidth="662.0000999999975" xmlns:fx="http://javafx.com/fxml" fx:controller="scheduleformation.ScheduleFormationController">
   <children>
     <Pane prefHeight="400.0" prefWidth="600.0000999999975" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-        <MenuBar layoutX="0.0" layoutY="0.0" prefWidth="600.0001220703125">
+        <MenuBar prefWidth="662.0001220703125">
           <menus>
             <Menu mnemonicParsing="false" text="File" fx:id="sf_file">
               <items>
-                <MenuItem mnemonicParsing="false" text="Close" />
+                <MenuItem mnemonicParsing="false" text="Log out" />
+                <MenuItem mnemonicParsing="false" text="Exit" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Report">
               <items>
-                <MenuItem mnemonicParsing="false" text="Delete" />
+                <MenuItem mnemonicParsing="false" text="Create" />
+                <MenuItem mnemonicParsing="false" text="Properties" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
               <items>
-                <MenuItem mnemonicParsing="false" text="About" />
+                <MenuItem mnemonicParsing="false" text="Help" />
+                <MenuItem mnemonicParsing="false" text="About program" />
               </items>
             </Menu>
           </menus>
         </MenuBar>
-        <AnchorPane id="AnchorPane" layoutX="0.0" layoutY="24.0">
+        <AnchorPane id="AnchorPane" layoutY="24.0">
           <children>
-            <TabPane layoutX="0.0" layoutY="0.0" prefHeight="459.0" prefWidth="600.0001220703125" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="493.0" prefWidth="662.0001220703125" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="sf_trains_tab" onSelectionChanged="#sf_trains_tab_selection" text="Trains">
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <SplitMenuButton contentDisplay="LEFT" layoutX="14.0" layoutY="53.0" mnemonicParsing="false" prefWidth="171.0" text="..." textAlignment="CENTER">
+                        <SplitMenuButton layoutX="14.0" layoutY="41.0" mnemonicParsing="false" prefWidth="481.0" text="..." textAlignment="CENTER">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Action 1" />
                             <MenuItem mnemonicParsing="false" text="Action 2" />
                           </items>
                         </SplitMenuButton>
-                        <Label layoutX="14.0" layoutY="31.0" text="Train">
+                        <Label layoutX="14.0" layoutY="19.0" text="Train">
                           <font>
                             <Font size="14.0" fx:id="x1" />
                           </font>
                         </Label>
-                        <Label font="$x1" layoutX="14.0" layoutY="82.0" text="Route" />
-                        <TableView layoutX="14.0" layoutY="108.0" prefHeight="200.0" prefWidth="435.0">
+                        <Label font="$x1" layoutX="14.0" layoutY="78.0" text="Route" />
+                        <TableView layoutX="14.0" layoutY="108.0" prefHeight="302.0" prefWidth="541.0">
                           <columns>
-                            <TableColumn editable="true" prefWidth="75.0" text="Column X" />
-                            <TableColumn prefWidth="75.0" text="Column X" />
+                            <TableColumn minWidth="150.0" prefWidth="150.0" text="Departures" />
+                            <TableColumn minWidth="90.0" prefWidth="90.0" text="From" />
+                            <TableColumn minWidth="150.0" prefWidth="150.0" text="Arrival" />
+                            <TableColumn minWidth="90.0" prefWidth="90.0" text="To" />
                           </columns>
                         </TableView>
-                        <Button layoutX="495.0" layoutY="108.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="495.0" layoutY="264.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="495.0" layoutY="229.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="495.0" layoutY="191.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="495.0" layoutY="151.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="495.0" layoutY="292.0" mnemonicParsing="false" text="Button" />
+                        <Button layoutX="555.0" layoutY="41.0" mnemonicParsing="false" text="Change name" />
+                        <Button layoutX="576.0" layoutY="356.0" mnemonicParsing="false" prefWidth="63.0" text="Up" />
+                        <Button layoutX="576.0" layoutY="229.0" mnemonicParsing="false" text="Commit" />
+                        <Button layoutX="576.0" layoutY="191.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
+                        <Button layoutX="576.0" layoutY="154.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
+                        <Button layoutX="576.0" layoutY="389.0" mnemonicParsing="false" prefWidth="63.0" text="Down" />
                       </children>
                     </AnchorPane>
                   </content>
                 </Tab>
                 <Tab fx:id="sf_schedule_tab" onSelectionChanged="#sf_schedule_tab_selection" text="Schedule">
                   <content>
-                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="648.0001220703125">
                       <children>
-                        <SplitMenuButton layoutX="14.0" layoutY="25.0" mnemonicParsing="false" prefWidth="55.0" text="Day">
+                        <SplitMenuButton layoutX="14.0" layoutY="25.0" mnemonicParsing="false" prefWidth="70.00009999999747" text="Day">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Action 1" />
                             <MenuItem mnemonicParsing="false" text="Action 2" />
                           </items>
                         </SplitMenuButton>
-                        <SplitMenuButton layoutX="202.0" layoutY="25.0" mnemonicParsing="false" text="Year">
+                        <SplitMenuButton layoutX="216.0" layoutY="25.0" mnemonicParsing="false" text="Year">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Action 1" />
                             <MenuItem mnemonicParsing="false" text="Action 2" />
                           </items>
                         </SplitMenuButton>
-                        <SplitMenuButton layoutX="104.0" layoutY="25.0" mnemonicParsing="false" text="Month">
+                        <SplitMenuButton layoutX="104.0" layoutY="25.0" mnemonicParsing="false" prefWidth="91.0" text="Month">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Action 1" />
                             <MenuItem mnemonicParsing="false" text="Action 2" />
                           </items>
                         </SplitMenuButton>
-                        <TableView layoutX="4.0" layoutY="93.0" prefHeight="200.0" prefWidth="423.0">
+                        <TableView cache="true" focusTraversable="false" layoutX="14.0" layoutY="93.0" prefHeight="314.0" prefWidth="556.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Column X" />
-                            <TableColumn prefWidth="75.0" text="Column X" />
+                            <TableColumn minWidth="75.0" prefWidth="75.0" text="Train" />
+                            <TableColumn minWidth="150.0" prefWidth="150.0" text="From / To" />
+                            <TableColumn minWidth="100.0" prefWidth="100.0" text="Date" />
+                            <TableColumn minWidth="130.0" prefWidth="130.0" text="Departures / Arrival" />
+                            <TableColumn minWidth="100.0" prefWidth="100.0" text="Duration" />
                           </columns>
                         </TableView>
-                        <Button layoutX="483.0" layoutY="93.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="472.0" layoutY="226.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="483.0" layoutY="152.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="483.0" layoutY="183.0" mnemonicParsing="false" text="Button" />
+                        <Button layoutX="586.0" layoutY="115.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
+                        <Button layoutX="586.0" layoutY="253.0" mnemonicParsing="false" text="Commit" />
+                        <Button layoutX="586.0" layoutY="161.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
+                        <Button layoutX="586.0" layoutY="210.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -106,17 +114,18 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <TableView layoutX="53.0" layoutY="49.0" prefHeight="200.0" prefWidth="200.0">
+                        <TableView layoutX="25.0" layoutY="45.0" prefHeight="200.0" prefWidth="451.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Column X" />
-                            <TableColumn prefWidth="75.0" text="Column X" />
+                            <TableColumn minWidth="150.0" prefWidth="150.0" text="Station" />
+                            <TableColumn minWidth="150.0" prefWidth="150.0" text="City" />
+                            <TableColumn minWidth="150.0" prefWidth="150.0" text="Country" />
                           </columns>
                         </TableView>
-                        <Button layoutX="273.0" layoutY="106.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="273.0" layoutY="139.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="273.0" layoutY="234.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="273.0" layoutY="204.0" mnemonicParsing="false" text="Button" />
-                        <Button layoutX="273.0" layoutY="172.0" mnemonicParsing="false" text="Button" />
+                        <Button layoutX="512.0" layoutY="52.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
+                        <Button layoutX="512.0" layoutY="88.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
+                        <Button layoutX="512.0" layoutY="124.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
+                        <Button layoutX="512.0" layoutY="158.0" mnemonicParsing="false" text="Commit" />
+                        <Button layoutX="511.0" layoutY="224.0" mnemonicParsing="false" prefWidth="62.9998779296875" text="Inactive" />
                       </children>
                     </AnchorPane>
                   </content>
