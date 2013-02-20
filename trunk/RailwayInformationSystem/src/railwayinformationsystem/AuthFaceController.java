@@ -64,7 +64,7 @@ public class AuthFaceController implements Initializable {
             if (status == null) {
                 labelAuthError.setText("Invalid user login or password");
             } else {
-                RailwayInformationSystem.authStage.close();
+                RailwayInformationSystem.authStage.hide();
                 TrainFormationController.trainFormationStage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource(status + ".fxml"));
                 Scene scene = new Scene(root);
