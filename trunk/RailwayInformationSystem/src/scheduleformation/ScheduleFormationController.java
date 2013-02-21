@@ -24,8 +24,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.text.Font;
+import railwayinformationsystem.RailwayInformationSystem;
+import trainformation.TrainFormationController;
 
 /**
  * FXML Controller class
@@ -44,21 +47,15 @@ public class ScheduleFormationController implements Initializable {
     private Tab sf_schedule_tab;
     @FXML
     private Tab sf_stations_tab;
-
-    /**
-     * Initializes the controller class.
-     */
-
     @FXML
-    private Button CloseButton;
+    private MenuItem sf_logout;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
-    @FXML
-    private void CloseButton(ActionEvent event) throws IOException {
+        private void CloseButton(ActionEvent event) throws IOException {
         System.exit(0);
     }
 
@@ -72,5 +69,11 @@ public class ScheduleFormationController implements Initializable {
 
     @FXML
     private void sf_stations_tab_selection(Event event) {
+    }
+
+    @FXML
+    private void sf_logout_click(ActionEvent event) {
+        TrainFormationController.trainFormationStage.hide();
+        RailwayInformationSystem.authStage.show();
     }
 }
