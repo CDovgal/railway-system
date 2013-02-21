@@ -18,19 +18,19 @@
           </font>
         </Label>
         <Label font="$x1" layoutX="14.0" layoutY="98.0" text="Password" />
-        <Button fx:id="okAuthButton" disable="false" focusTraversable="true" layoutX="14.0" layoutY="153.0" mnemonicParsing="false" onAction="#buttonAuthOk" prefHeight="38.0" prefWidth="106.0" text="OK">
-          <font>
-            <Font name="System Bold Italic" size="16.0" fx:id="x2" />
-          </font>
-        </Button>
-        <Button fx:id="closeAuthButton" cancelButton="false" focusTraversable="true" font="$x2" layoutX="153.0" layoutY="153.0" mnemonicParsing="false" onAction="#buttonAuthCancel" prefHeight="38.0" prefWidth="106.0" text="Cancel" />
         <Label contentDisplay="TOP" layoutX="14.0" layoutY="7.0" prefHeight="25.0" text="Please, enter your login and password:">
           <font>
             <Font name="System Bold" size="14.0" />
           </font>
         </Label>
         <Label fx:id="labelAuthError" alignment="CENTER" layoutX="14.0" layoutY="191.0" prefWidth="254.0" text="" />
-        <PasswordField fx:id="passwordField" layoutX="120.0" layoutY="91.0" prefHeight="37.999900000002526" prefWidth="139.0" promptText="password" />
+        <PasswordField fx:id="passwordField" focusTraversable="true" layoutX="120.0" layoutY="91.0" prefHeight="37.999900000002526" prefWidth="139.0" promptText="password" />
+        <Button id="okAuthButton" disable="false" focusTraversable="true" layoutX="21.0" layoutY="153.0" mnemonicParsing="false" onAction="#buttonAuthOk" prefHeight="38.0" prefWidth="106.0" text="OK">
+          <font>
+            <Font name="System Bold Italic" size="16.0" fx:id="x2" />
+          </font>
+        </Button>
+        <Button id="closeAuthButton" cancelButton="false" focusTraversable="true" font="$x2" layoutX="141.0" layoutY="153.0" mnemonicParsing="false" onAction="#buttonAuthCancel" prefHeight="38.0" prefWidth="106.0" text="Cancel" />
       </children>
     </Pane>
   </children>
