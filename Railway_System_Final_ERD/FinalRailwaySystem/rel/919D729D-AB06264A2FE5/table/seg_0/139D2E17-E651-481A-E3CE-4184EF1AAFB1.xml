@@ -48,6 +48,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
 <autoIncrementStartWith>0</autoIncrementStartWith>
 <autoIncrementMinValue>0</autoIncrementMinValue>
 <autoIncrementMaxValue>99999</autoIncrementMaxValue>

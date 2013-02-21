@@ -47,13 +47,16 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
 <autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>locomotive_sequence</autoIncrementSequenceName>
+<autoIncrementTriggerName>locomotive_trigger_insert</autoIncrementTriggerName>
 </Column>
 <Column class="oracle.dbtools.crest.model.design.relational.Column" name="locomotive_type" id="3F85E44A-C6C8-DF34-3FAD-5285ED0380F7">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
