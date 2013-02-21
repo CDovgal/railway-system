@@ -70,7 +70,7 @@
 <colAssociation fkAssociation="18E43E51-11A3-B7CF-AAB0-F93A7EFB710B" referredColumn="B6B0E2B6-8DD2-7514-4280-C4E293C0EFEC"/>
 </associations>
 </Column>
-<Column class="oracle.dbtools.crest.model.design.relational.Column" name="date" id="1EB60D13-B59C-124A-A5B3-095ADFDAE659">
+<Column class="oracle.dbtools.crest.model.design.relational.Column" name="order_date" id="1EB60D13-B59C-124A-A5B3-095ADFDAE659">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:26:35 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
