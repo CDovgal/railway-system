@@ -128,3 +128,10 @@ INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling
 INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(6, 'EVROTRAIN', 6, 3);
 INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(7, 'EVROTRAIN', 7, 4);
 -----------------------------------------
+--CARRIAGE_FREIGHT_ORDER_ITEM
+INSERT INTO carriage_freight_order_item VALUES (5,0);
+INSERT INTO carriage_freight_order_item VALUES (5,1);
+INSERT INTO carriage_freight_order_item VALUES (7,2);
+INSERT INTO carriage_freight_order_item VALUES (7,3);
+INSERT INTO carriage_freight_order_item VALUES (5,4);
+-----------------------------------------------
