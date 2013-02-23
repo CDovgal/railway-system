@@ -65,13 +65,13 @@ public class AuthFaceController implements Initializable {
                 labelAuthError.setText("Invalid user login or password");
             } else {
                 RailwayInformationSystem.authStage.hide();
-                TrainFormationController.trainFormationStage = new Stage();
+                RailwayInformationSystem.formationStage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource(status + ".fxml"));
                 Scene scene = new Scene(root);
-                TrainFormationController.trainFormationStage.setScene(scene);
-                TrainFormationController.trainFormationStage.setResizable(false);
-                TrainFormationController.trainFormationStage.setTitle("DDI " + status);
-                TrainFormationController.trainFormationStage.show();
+                RailwayInformationSystem.formationStage.setScene(scene);
+                RailwayInformationSystem.formationStage.setResizable(false);
+                RailwayInformationSystem.formationStage.setTitle("DDI " + status);
+                RailwayInformationSystem.formationStage.show();
             }
         }
     }

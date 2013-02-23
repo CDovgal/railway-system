@@ -9,7 +9,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseDragEvent;
 import javafx.stage.Stage;
 import railwayinformationsystem.*;
 /**
@@ -18,9 +20,10 @@ import railwayinformationsystem.*;
  * @author Oleksander
  */
 public class TrainFormationController implements Initializable {
-    public static Stage trainFormationStage;  
     @FXML
     private MenuItem tf_logout;
+    @FXML
+    private ChoiceBox<String> cs_carriage;
     /**
      * Initializes the controller class.
      */
@@ -31,7 +34,7 @@ public class TrainFormationController implements Initializable {
 
     @FXML
     private void tf_logout_click(ActionEvent event) {
-        TrainFormationController.trainFormationStage.hide();
+        RailwayInformationSystem.formationStage.hide();
         RailwayInformationSystem.authStage.show();
     }
 }

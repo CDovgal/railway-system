@@ -7,6 +7,6 @@
 <deleteRule>CASCADE</deleteRule>
 <localFKIndex>CFD9C28D-EDE3-979F-6B70-518FBF3E8601</localFKIndex>
 <keyObject>D0AB2A48-D19F-B430-DC14-28F80161B19A</keyObject>
-<mandatory>true</mandatory>
+<mandatory>false</mandatory>
 <transferable>true</transferable>
 </FKIndexAssociation>

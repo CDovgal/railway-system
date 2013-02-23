@@ -3,6 +3,7 @@
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pkName>Characteristic_PK</pkName>
 <fonts>
 <FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
 <foType>Title</foType>
@@ -57,7 +58,6 @@
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
 <ownerDesignName>FinalRailwaySystem</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
@@ -76,6 +76,17 @@
 </Column>
 </columns>
 <indexes>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="97CACAE6-4943-AEB5-F03A-932B4BDBEF95" name="Characteristic_PK">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-23 11:59:54 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="120DE9D3-2BC0-1687-1E2B-54F5D9618B36"/>
+<colUsage columnID="0D1B6846-3447-B17A-81ED-BB2C0057AF77"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="07213CCA-6059-6004-0CA3-47BF6AF884AA" name="Char_CarriageType_FK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>
