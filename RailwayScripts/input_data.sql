@@ -92,3 +92,39 @@ insert into passenger_order_item values(2, 2, 2, to_date('12-11-2012', 'dd-mm-yy
 insert into passenger_order_item values(3, 1, 3, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 10);
 insert into passenger_order_item values(4, 4, 2, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 11);
 insert into passenger_order_item values(5, 3, 4, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 12);
+----------
+--characteristic_type
+INSERT INTO characteristic_type(characteristic_type_id, characteristic_name) VALUES(1, 'Carrying capacity');
+INSERT INTO characteristic_type(characteristic_type_id, characteristic_name) VALUES(2, 'Seating capacity');
+INSERT INTO characteristic_type(characteristic_type_id, characteristic_name) VALUES(3, 'Weight');
+-----------------------------
+--carriages_type
+INSERT INTO carriage_type(carriage_type_id, carriage_type_name, fk_parrent_type_id) VALUES(1,'Passenger', null);
+INSERT INTO carriage_type(carriage_type_id, carriage_type_name, fk_parrent_type_id) VALUES(2,'Freight', null);
+INSERT INTO carriage_type(carriage_type_id, carriage_type_name, fk_parrent_type_id) VALUES(3,'Compartment',1);
+INSERT INTO carriage_type(carriage_type_id, carriage_type_name, fk_parrent_type_id) VALUES(4,'Couchette',1);
+INSERT INTO carriage_type(carriage_type_id, carriage_type_name, fk_parrent_type_id) VALUES(5,'Boxcar',2);
+INSERT INTO carriage_type(carriage_type_id, carriage_type_name, fk_parrent_type_id) VALUES(6,'Tankcar',2);
+INSERT INTO carriage_type(carriage_type_id, carriage_type_name, fk_parrent_type_id) VALUES(7,'Dumpcar',2);
+------------------------------
+--characteristic
+INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALUES(3, 2, 40);
+INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALUES(3, 3, 57000);
+INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALUES(4, 2, 30);
+INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALUES(4, 3, 56000);
+INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALUES(5, 1, 68000);
+INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALUES(5, 3, 23000);
+INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALUES(6, 1, 65000);
+INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALUES(6, 3, 23000);
+INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALUES(7, 1, 70000);
+INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALUES(7, 3, 22000);
+-------------------------------
+--carriages
+INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(1, 'AVRORA', 3, null);
+INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(2, 'HYUNDAI', 4, null);
+INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(3, 'HYUNDAI', 4, 1);
+INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(4, 'HYUNDAI', 4, 1);
+INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(5, 'EVROTRAIN', 5, 2);
+INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(6, 'EVROTRAIN', 6, 3);
+INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(7, 'EVROTRAIN', 7, 4);
+-----------------------------------------

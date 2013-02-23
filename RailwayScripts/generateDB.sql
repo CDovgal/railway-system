@@ -37,7 +37,7 @@ CREATE TABLE Carriage
     ( 
      carriage_id NUMBER  NOT NULL , 
      carriage_mark VARCHAR2 (50 CHAR)  NOT NULL , 
-     fk_rolling_stock_id NUMBER  NOT NULL , 
+     fk_rolling_stock_id NUMBER, 
      fk_carriage_type_id NUMBER  
     ) 
 ;
@@ -398,18 +398,19 @@ ALTER TABLE Characteristic
     ON DELETE CASCADE 
 ;
 
-
 ALTER TABLE Characteristic 
     ADD CONSTRAINT Char_Char_type_FK FOREIGN KEY 
     ( 
-     fk_carriage_type_id
+     characteristic_type
     ) 
     REFERENCES Characteristic_type 
     ( 
      characteristic_type_id
     ) 
     ON DELETE CASCADE 
-;
+;
+
+
 
 
 ALTER TABLE City 
