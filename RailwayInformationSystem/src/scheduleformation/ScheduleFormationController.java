@@ -73,7 +73,7 @@ public class ScheduleFormationController implements Initializable {
 
     @FXML
     private void sf_logout_click(ActionEvent event) {
-        TrainFormationController.trainFormationStage.hide();
+        RailwayInformationSystem.formationStage.hide();
         RailwayInformationSystem.authStage.show();
     }
 }

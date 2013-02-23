@@ -16,6 +16,7 @@ import javafx.stage.Stage;
  */
 public class RailwayInformationSystem extends Application {
     public static Stage authStage;
+    public static Stage formationStage;
     @Override
     public void start(Stage stage) throws Exception {
         RailwayInformationSystem.authStage = stage;
