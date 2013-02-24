@@ -135,3 +135,4 @@ INSERT INTO carriage_freight_order_item VALUES (7,2);
 INSERT INTO carriage_freight_order_item VALUES (7,3);
 INSERT INTO carriage_freight_order_item VALUES (5,4);
 -----------------------------------------------
+COMMIT;

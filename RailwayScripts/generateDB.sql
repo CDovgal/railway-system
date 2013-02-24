@@ -787,3 +787,4 @@ BEGIN
     SELECT seq_train_id.NEXTVAL INTO :NEW.train_id FROM DUAL; 
 END;
 /
+COMMIT;
