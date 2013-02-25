@@ -4,7 +4,7 @@
  */
 package railway.information.system.main;
 
-import railway.information.system.databasequery.DatabaseQuery;
+import railway.information.system.databasequery.DatabaseQueryTF;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -59,7 +59,7 @@ public class AuthFaceController implements Initializable {
         if (conn == null) {
             labelAuthError.setText("DataBase Error Connection");
         } else {
-            status = DatabaseQuery.checkAuth(loginField.getText(), passwordField.getText());
+            status = DatabaseQueryTF.checkAuth(loginField.getText(), passwordField.getText());
             if (status == null) {
                 labelAuthError.setText("Invalid user login or password");
             } else {

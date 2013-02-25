@@ -17,13 +17,13 @@ insert into goods values('Oil','Liquid');
 insert into goods values('Water','Liquid');
 /
 --locomotive
-insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type) values(1, 'D',10, 'All');
-insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type) values(2, 'E',15, 'Electro');
-insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type) values(3, 'T',20, 'All');
+insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type, locomotive_mark) values(1, 'D',10, 'All', 'USSR1');
+insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type, locomotive_mark) values(2, 'E',15, 'Electro', 'USSR1');
+insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type, locomotive_mark) values(3, 'T',20, 'All', 'USSR2');
 /
 --roling_stock
-insert into Rolling_stock values(1, 1);
-insert into Rolling_stock values(1, 1);
+insert into Rolling_stock values(1, 2);
+insert into Rolling_stock values(1, 2);
 insert into Rolling_stock values(1, 2);
 insert into Rolling_stock values(1, 3);
 /
