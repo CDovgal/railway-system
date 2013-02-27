@@ -78,6 +78,15 @@
 <colUsage columnID="68771907-4E1A-1768-4DD0-029A355D3AD5"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="65B83BE1-4DE4-A619-557E-2A90ABF2DAA5" name="Rolling_stock__UN">
+<createdBy>Oleksander</createdBy>
+<createdTime>2013-02-27 21:04:38 UTC</createdTime>
+<ownerDesignName>FinalRailwaySystem</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="8C50209D-46F3-6D98-8D17-CC73C32F26B4"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK class="oracle.dbtools.crest.model.design.relational.Index" id="87A8A18A-AE9A-22D1-605B-5AB78ECC57FA" name="RollingStack_Lokomotive_FK">
 <createdBy>Oleksander</createdBy>
 <createdTime>2013-02-17 13:17:38 UTC</createdTime>

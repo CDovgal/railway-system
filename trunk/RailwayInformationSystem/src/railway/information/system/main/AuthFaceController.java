@@ -42,11 +42,7 @@ public class AuthFaceController implements Initializable {
     @FXML
     private Font x1;
     @FXML
-    private Button okAuthButton;
-    @FXML
     private Font x2;
-    @FXML
-    private Button closeAuthButton;
     @FXML
     private Label labelAuthError;
 
