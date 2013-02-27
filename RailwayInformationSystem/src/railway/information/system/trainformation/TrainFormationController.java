@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -34,6 +35,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import railway.information.system.dao.Carriage;
+import railway.information.system.dao.Locomotive;
 
 /**
  * FXML Controller class
@@ -80,6 +82,24 @@ public class TrainFormationController implements Initializable {
     private ListView<String> tf_carraige_preview;
     @FXML
     private Button tf_remove_button;
+    @FXML
+    private ComboBox<String> tf_loco_railroad;
+    @FXML
+    private Button tf_create_new_stock;
+    @FXML
+    private ListView<String> tf_loco_added;
+    @FXML
+    private Label tf_carr_al_add;
+    @FXML
+    private Button tf_add_loco;
+    @FXML
+    private ListView<String> tf_pack_order_info;
+    @FXML
+    private ListView<String> tf_pack_stock_info;
+    @FXML
+    private ComboBox<String> tf_choose_pack_order;
+    @FXML
+    private ComboBox<String> tf_choose_pack_stock;
 
     /**
      * Initializes the controller class.
@@ -97,8 +117,13 @@ public class TrainFormationController implements Initializable {
             tf_loco_mark.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveMarks()));
             tf_loco_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveStocks()));
             tf_loco_num_carr.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveNumOfCarraiges()));
+            tf_loco_railroad.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillLocomotiveRailroads()));
             tf_carriage.getSelectionModel().selectFirst();
             tf_carriage.setValue(tf_carriage.getSelectionModel().getSelectedItem());
+            tf_loco.getSelectionModel().selectFirst();
+            tf_loco.setValue(tf_loco.getSelectionModel().getSelectedItem());
+            tf_choose_pack_order.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillOrders()));
+            tf_choose_pack_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.getAllStocks()));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,
                     "No connection!", "Error!",
@@ -169,6 +194,19 @@ public class TrainFormationController implements Initializable {
 
     @FXML
     private void tfLocoFree(ActionEvent event) {
+        try {
+            if (tf_loco_free.isSelected()) {
+                tf_loco.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllFreeLocomotives()));
+            } else {
+                tf_loco.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotives()));
+            }
+            tf_loco.getSelectionModel().selectFirst();
+            tf_loco.setValue(tf_loco.getSelectionModel().getSelectedItem());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML
@@ -189,7 +227,12 @@ public class TrainFormationController implements Initializable {
 
     @FXML
     private void tfAddButtonClick(ActionEvent event) {
-        tf_carraige_preview.getItems().add(tf_carriage.getSelectionModel().getSelectedItem());
+        if (tf_carraige_preview.getItems().contains(tf_carriage.getSelectionModel().getSelectedItem())) {
+            tf_carr_al_add.setText("Already added!");
+        } else {
+            tf_carraige_preview.getItems().add(tf_carriage.getSelectionModel().getSelectedItem());
+            tf_carr_al_add.setText("");
+        }
     }
 
     @FXML
@@ -198,5 +241,55 @@ public class TrainFormationController implements Initializable {
                 && !tf_carraige_preview.getItems().isEmpty()) {
             tf_carraige_preview.getItems().remove(tf_carraige_preview.getSelectionModel().getSelectedIndex());
         }
+    }
+
+    @FXML
+    private void tfLocoSelect(ActionEvent event) {
+        try {
+            if (tf_loco.getSelectionModel().getSelectedItem() != null) {
+                Locomotive loco = DatabaseQueryTF.getLocomotiveByID(tf_loco.getValue());
+                ObservableList<String> list = FXCollections.observableArrayList(
+                        "[Number]:  " + loco.getLocoId(),
+                        "[Type]:  " + loco.getLocoType(),
+                        "[Mark]:  " + loco.getLocoMark(),
+                        "[Stock]:  " + loco.getRollingStock(),
+                        "[Carriages]:  " + loco.getNumberOfCarriages(),
+                        "[Railroad]:  " + loco.getRailRoadType());
+                tf_loco_info.setItems(FXCollections.observableArrayList(list));
+            } else {
+                tf_loco_info.setItems(FXCollections.observableArrayList(""));
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    @FXML
+    private void tfLocoRailroadType(ActionEvent event) {
+    }
+
+    @FXML
+    private void tfCreateNewStock(ActionEvent event) {
+    }
+
+    @FXML
+    private void tfAddLocoClick(ActionEvent event) {
+        if (tf_loco_added.getItems().contains(tf_loco.getSelectionModel().getSelectedItem())) {
+            tf_carr_al_add.setText("Already added!");
+        } else {
+            tf_loco_added.setItems(FXCollections.observableArrayList(tf_loco.getSelectionModel().getSelectedItem()));
+            tf_carr_al_add.setText("");
+        }
+    }
+
+    @FXML
+    private void tfChoosePackOrderClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void tfChoosePackStockClick(ActionEvent event) {
     }
 }

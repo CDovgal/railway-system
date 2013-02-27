@@ -250,7 +250,7 @@ ALTER TABLE Railroad
 CREATE TABLE Rolling_stock 
     ( 
      rolling_stock_id NUMBER  NOT NULL , 
-     fk_lokomotive_id NUMBER  NOT NULL 
+     fk_lokomotive_id NUMBER  NOT NULL
     ) 
 ;
 
@@ -258,6 +258,10 @@ CREATE TABLE Rolling_stock
 
 ALTER TABLE Rolling_stock 
     ADD CONSTRAINT RollingStock_PK PRIMARY KEY ( rolling_stock_id ) ;
+
+
+ALTER TABLE Rolling_stock 
+    ADD CONSTRAINT Rolling_stock__UN UNIQUE ( fk_lokomotive_id ) ;
 
 
 
