@@ -12,6 +12,8 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import railway.information.system.dao.Carriage;
 import railway.information.system.dao.Locomotive;
+import railway.information.system.dao.OrderInfo;
+import railway.information.system.dao.StockInfo;
 import railway.information.system.main.AuthFaceController;
 
 /**
@@ -266,5 +268,67 @@ public class DatabaseQueryTF {
         }
         stmt.close();
         return list;
+    }
+
+    public static OrderInfo getOrderInfo(String orderID) throws SQLException {
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT foi_id,delivery,mass,origin, goods_type "
+                + " From FREIGHT_ORDER_ITEM"
+                + " INNER JOIN goods ON goods.goods_name = freight_order_item.fk_goods_name"
+                + " WHERE foi_id ='" + orderID + "'");
+        OrderInfo oi = new OrderInfo();
+        while (rs.next()) {
+            oi.setOrderId(rs.getString("foi_id"));
+            oi.setDelivery(rs.getString("delivery"));
+            oi.setMass(rs.getString("mass"));
+            oi.setOrigin(rs.getString("origin"));
+            oi.setGoodType(rs.getString("goods_type"));
+        }
+        stmt.close();
+        return oi;
+    }
+
+    public static List<StockInfo> getStockInfo(String stockID) throws SQLException {
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT fk_lokomotive_id, carriage_id FROM rolling_stock, "
+                + " carriage WHERE rolling_stock.rolling_stock_id = "
+                + " carriage.fk_rolling_stock_id and "
+                + " rolling_stock.rolling_stock_id = '" + stockID + "'");
+        List<StockInfo> s_i = new ArrayList();
+        while (rs.next()) {
+            StockInfo si = new StockInfo();
+            si.setLocomotiveId(rs.getString("fk_lokomotive_id"));
+            si.setNumberOfCarriage(rs.getString("carriage_id"));
+            s_i.add(si);
+        }
+        stmt.close();
+        return s_i;
+    }
+
+    public static void addStock(String locom, List<String> carriages) throws SQLException {
+        Statement stmt1 = AuthFaceController.conn.createStatement();
+        ResultSet rs1 = stmt1.executeQuery("Insert into Rolling_stock values(1,'" + locom + "' )");
+        Statement stmt2 = AuthFaceController.conn.createStatement();
+        for (String car : carriages) {
+            String s = "UPDATE carriage SET fk_rolling_stock_id  = "
+                    + " (SELECT max(rolling_stock_id) FROM rolling_stock)"
+                    + " WHERE CARRIAGE_ID = '" + car + "'";
+
+            ResultSet rs2 = stmt2.executeQuery("UPDATE carriage SET fk_rolling_stock_id  = "
+                    + " (SELECT max(rolling_stock_id) FROM rolling_stock)"
+                    + " WHERE CARRIAGE_ID = '" + car + "'");
+        }
+        stmt1.close();
+        stmt2.close();
+    }
+
+    public static String lastStock() throws SQLException {
+        String s;
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT max(rolling_stock_id) FROM rolling_stock");
+        while (rs.next()) {
+            s = rs.getString("max(rolling_stock_id)");
+        }
+        return null;
     }
 }

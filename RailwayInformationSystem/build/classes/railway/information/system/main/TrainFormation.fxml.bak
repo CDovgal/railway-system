@@ -26,8 +26,6 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="384.0" prefWidth="756.0">
               <children>
-                <Label layoutX="13.0" layoutY="255.0" text="Stock name :" />
-                <TextField fx:id="tf_stock_name" layoutX="87.0" layoutY="255.0" prefWidth="131.0" />
                 <Label layoutX="11.0" layoutY="17.0" text="Carriage :" />
                 <Label layoutX="217.0" layoutY="51.0" text="Type :" />
                 <ListView fx:id="tf_carriage_info" focusTraversable="true" layoutX="14.0" layoutY="69.0" prefHeight="123.0" prefWidth="188.0" />
@@ -65,12 +63,13 @@
                 <Label layoutX="247.0" layoutY="255.0" prefHeight="21.0" prefWidth="131.0" text="Stock carriges preview :" />
                 <Button fx:id="tf_add_loco" layoutX="378.0" layoutY="229.0" mnemonicParsing="false" onAction="#tfAddLocoClick" prefWidth="92.0" text="Add" />
                 <ListView id="tf_carriage_info" fx:id="tf_carraige_preview" focusTraversable="true" layoutX="382.0" layoutY="255.0" prefHeight="123.0" prefWidth="198.0" />
-                <Label layoutX="596.0" layoutY="250.0" prefHeight="21.0" prefWidth="131.0" text="Locomotive:" />
+                <Label layoutX="596.0" layoutY="250.0" prefHeight="21.0" prefWidth="131.0" text="Locomotive*:" />
                 <ListView id="tf_carriage_info" fx:id="tf_loco_added" layoutX="596.0" layoutY="271.0" prefHeight="32.0" prefWidth="141.0" />
                 <Button fx:id="tf_remove_button" layoutX="266.0" layoutY="285.0" mnemonicParsing="false" onAction="#tfRemoveButtonClick" prefWidth="99.00009999999747" text="Remove" />
                 <ComboBox id="tf_loco_num_car" fx:id="tf_loco_railroad" layoutX="641.0" layoutY="176.0" onAction="#tfLocoRailroadType" prefHeight="21.0" prefWidth="99.0" />
                 <Label layoutX="584.0" layoutY="181.0" text="Railroad :" />
                 <Label fx:id="tf_carr_al_add" layoutX="110.0" layoutY="205.0" prefWidth="111.0" text="" />
+                <Label fx:id="tf_new_stock_created" layoutX="11.0" layoutY="323.0" prefWidth="111.0" text="" />
               </children>
             </AnchorPane>
           </content>
@@ -124,24 +123,14 @@
         <AnchorPane id="AnchorPane" prefHeight="201.0" prefWidth="596.0">
           <children>
             <Label layoutX="27.0" layoutY="16.0" text="Choose order :" />
-            <SplitMenuButton layoutX="115.0" layoutY="14.0" mnemonicParsing="false" prefWidth="147.0" text="Order">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </SplitMenuButton>
             <Label layoutX="27.0" layoutY="42.0" text="Order info :" />
-            <ListView layoutX="115.0" layoutY="44.0" prefHeight="141.0" prefWidth="147.0" />
+            <ListView id="tf_order_info" fx:id="tf_pack_order_info" layoutX="115.0" layoutY="44.0" prefHeight="141.0" prefWidth="147.0" />
             <Label layoutX="285.0" layoutY="17.0" text="Choose stock :" />
-            <SplitMenuButton layoutX="370.0" layoutY="16.0" mnemonicParsing="false" prefWidth="147.0" text="Stock">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </SplitMenuButton>
-            <ListView layoutX="370.0" layoutY="44.0" prefHeight="141.0" prefWidth="147.0" />
+            <ListView id="tf_stock_info" fx:id="tf_pack_stock_info" layoutX="370.0" layoutY="44.0" prefHeight="141.0" prefWidth="147.0" />
             <Label layoutX="285.0" layoutY="42.0" text="Stock info :" />
             <Button layoutX="13.0" layoutY="193.0" mnemonicParsing="false" prefWidth="90.0" text="Pack" />
+            <ComboBox id="tf_carriage" fx:id="tf_choose_pack_order" layoutX="115.0" layoutY="15.0" onAction="#tfChoosePackOrderClick" prefHeight="21.0" prefWidth="147.0" />
+            <ComboBox id="tf_carriage" fx:id="tf_choose_pack_stock" layoutX="370.0" layoutY="17.0" onAction="#tfChoosePackStockClick" prefHeight="21.0" prefWidth="147.0" />
           </children>
         </AnchorPane>
       </content>

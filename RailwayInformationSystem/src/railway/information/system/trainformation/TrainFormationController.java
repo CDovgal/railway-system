@@ -36,6 +36,8 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import railway.information.system.dao.Carriage;
 import railway.information.system.dao.Locomotive;
+import railway.information.system.dao.OrderInfo;
+import railway.information.system.dao.StockInfo;
 
 /**
  * FXML Controller class
@@ -75,8 +77,6 @@ public class TrainFormationController implements Initializable {
     @FXML
     private ComboBox<String> tf_loco_num_carr;
     @FXML
-    private TextField tf_stock_name;
-    @FXML
     private Button tf_add_button;
     @FXML
     private ListView<String> tf_carraige_preview;
@@ -100,6 +100,8 @@ public class TrainFormationController implements Initializable {
     private ComboBox<String> tf_choose_pack_order;
     @FXML
     private ComboBox<String> tf_choose_pack_stock;
+    @FXML
+    private Label tf_new_stock_created;
 
     /**
      * Initializes the controller class.
@@ -273,6 +275,21 @@ public class TrainFormationController implements Initializable {
 
     @FXML
     private void tfCreateNewStock(ActionEvent event) {
+        try {
+            if (!tf_loco_added.getItems().isEmpty()) {
+                DatabaseQueryTF.addStock(tf_loco_added.getItems().get(0), tf_carraige_preview.getItems());
+                tf_new_stock_created.setText("New Rolling Stock Number " +DatabaseQueryTF.lastStock() + " "
+                        + "was added");
+                tf_carraige_preview.setItems(null);
+                tf_loco_added.setItems(null);
+            } else {
+                tf_new_stock_created.setText("Select locomotive!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML
@@ -287,9 +304,45 @@ public class TrainFormationController implements Initializable {
 
     @FXML
     private void tfChoosePackOrderClick(ActionEvent event) {
+        try {
+            if (tf_choose_pack_order.getSelectionModel().getSelectedItem() != null) {
+                OrderInfo oi = DatabaseQueryTF.getOrderInfo(tf_choose_pack_order.getValue());
+                ObservableList<String> list = FXCollections.observableArrayList(
+                        "[Number]:  " + oi.getOrderId(),
+                        "[Type]:  " + oi.getGoodType(),
+                        "[Origin]:  " + oi.getOrigin(),
+                        "[Delivery]:  " + oi.getDelivery(),
+                        "[Mass]:  " + oi.getMass());
+                tf_pack_order_info.setItems(FXCollections.observableArrayList(list));
+            } else {
+                tf_pack_order_info.setItems(FXCollections.observableArrayList(""));
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML
     private void tfChoosePackStockClick(ActionEvent event) {
+        try {
+            if (tf_choose_pack_stock.getSelectionModel().getSelectedItem() != null) {
+                List<StockInfo> si = DatabaseQueryTF.getStockInfo(tf_choose_pack_stock.getValue());
+                ObservableList<String> list = FXCollections.observableArrayList(
+                        "[Locomotive]:  " + si.get(0).getLocomotiveId(),
+                        "[Carriages]:  ");
+                for (StockInfo stock : si) {
+                    list.add(stock.getNumberOfCarriage());
+                }
+                tf_pack_stock_info.setItems(FXCollections.observableArrayList(list));
+            } else {
+                tf_pack_stock_info.setItems(FXCollections.observableArrayList(""));
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
