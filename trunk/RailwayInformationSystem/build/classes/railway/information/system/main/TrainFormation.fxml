@@ -26,8 +26,6 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="384.0" prefWidth="756.0">
               <children>
-                <Label layoutX="13.0" layoutY="255.0" text="Stock name* :" />
-                <TextField fx:id="tf_stock_name" layoutX="87.0" layoutY="255.0" prefWidth="131.0" />
                 <Label layoutX="11.0" layoutY="17.0" text="Carriage :" />
                 <Label layoutX="217.0" layoutY="51.0" text="Type :" />
                 <ListView fx:id="tf_carriage_info" focusTraversable="true" layoutX="14.0" layoutY="69.0" prefHeight="123.0" prefWidth="188.0" />
@@ -71,6 +69,7 @@
                 <ComboBox id="tf_loco_num_car" fx:id="tf_loco_railroad" layoutX="641.0" layoutY="176.0" onAction="#tfLocoRailroadType" prefHeight="21.0" prefWidth="99.0" />
                 <Label layoutX="584.0" layoutY="181.0" text="Railroad :" />
                 <Label fx:id="tf_carr_al_add" layoutX="110.0" layoutY="205.0" prefWidth="111.0" text="" />
+                <Label fx:id="tf_new_stock_created" layoutX="11.0" layoutY="323.0" prefWidth="251.0" text="" />
               </children>
             </AnchorPane>
           </content>
