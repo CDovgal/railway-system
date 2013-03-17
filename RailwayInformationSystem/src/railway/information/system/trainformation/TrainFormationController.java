@@ -27,6 +27,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
@@ -38,6 +39,7 @@ import railway.information.system.dao.Carriage;
 import railway.information.system.dao.Locomotive;
 import railway.information.system.dao.OrderInfo;
 import railway.information.system.dao.StockInfo;
+import railway.information.system.main.AuthFaceController;
 
 /**
  * FXML Controller class
@@ -102,6 +104,18 @@ public class TrainFormationController implements Initializable {
     private ComboBox<String> tf_choose_pack_stock;
     @FXML
     private Label tf_new_stock_created;
+    @FXML
+    private ComboBox<String> tf_es_carriage;
+    @FXML
+    private Button tf_es_carr_drop;
+    @FXML
+    private Button tf_es_loc_drop;
+    @FXML
+    private ListView<String> tf_pack_carriage_info;
+    @FXML
+    private ComboBox<String> tf_choose_pack_carriage;
+    @FXML
+    private ComboBox<String> tf_es_loco;
 
     /**
      * Initializes the controller class.
@@ -109,23 +123,7 @@ public class TrainFormationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            tf_carriage.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriages()));
-            tf_carriage_type.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageTypes()));
-            tf_carriage_subtype.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageSubtypes()));
-            tf_carriage_mark.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageMarks()));
-            tf_carriage_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageStocks()));
-            tf_loco.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotives()));
-            tf_loco_type.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveTypes()));
-            tf_loco_mark.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveMarks()));
-            tf_loco_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveStocks()));
-            tf_loco_num_carr.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveNumOfCarraiges()));
-            tf_loco_railroad.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillLocomotiveRailroads()));
-            tf_carriage.getSelectionModel().selectFirst();
-            tf_carriage.setValue(tf_carriage.getSelectionModel().getSelectedItem());
-            tf_loco.getSelectionModel().selectFirst();
-            tf_loco.setValue(tf_loco.getSelectionModel().getSelectedItem());
-            tf_choose_pack_order.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillOrders()));
-            tf_choose_pack_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.getAllStocks()));
+            refresh();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,
                     "No connection!", "Error!",
@@ -278,17 +276,19 @@ public class TrainFormationController implements Initializable {
         try {
             if (!tf_loco_added.getItems().isEmpty()) {
                 DatabaseQueryTF.addStock(tf_loco_added.getItems().get(0), tf_carraige_preview.getItems());
-                tf_new_stock_created.setText("New Rolling Stock Number " +DatabaseQueryTF.lastStock() + " "
+                tf_new_stock_created.setText("New Rolling Stock Number " + DatabaseQueryTF.lastStock() + " "
                         + "was added");
-                tf_carraige_preview.setItems(null);
-                tf_loco_added.setItems(null);
+                tf_carraige_preview.getItems().clear();
+                tf_loco_added.getItems().clear();
+                refresh();
             } else {
                 tf_new_stock_created.setText("Select locomotive!");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,
-                    "No connection", "Error!",
-                    JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null,
+             "No connection", "Error!",
+             JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
     }
 
@@ -344,5 +344,49 @@ public class TrainFormationController implements Initializable {
                     "No connection!", "Error!",
                     JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    @FXML
+    private void tfEsCarrDropButtonClick(ActionEvent event) {
+        try {
+            DatabaseQueryTF.dropCarriage(tf_es_carriage.getValue());
+        } catch (SQLException ex) {
+            Logger.getLogger(TrainFormationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void tfEsLocDropButtonClick(ActionEvent event) {
+        try {
+            DatabaseQueryTF.dropLoco(tf_es_loco.getValue());
+        } catch (SQLException ex) {
+            Logger.getLogger(TrainFormationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void tf_loc_select(ActionEvent event) {
+    }
+
+    private void refresh() throws SQLException {
+        tf_carriage.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriages()));
+        tf_es_carriage.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriages()));
+        tf_es_loco.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotives()));
+        tf_carriage_type.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageTypes()));
+        tf_carriage_subtype.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageSubtypes()));
+        tf_carriage_mark.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageMarks()));
+        tf_carriage_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageStocks()));
+        tf_loco.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotives()));
+        tf_loco_type.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveTypes()));
+        tf_loco_mark.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveMarks()));
+        tf_loco_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveStocks()));
+        tf_loco_num_carr.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotiveNumOfCarraiges()));
+        tf_loco_railroad.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillLocomotiveRailroads()));
+        tf_carriage.getSelectionModel().selectFirst();
+        tf_carriage.setValue(tf_carriage.getSelectionModel().getSelectedItem());
+        tf_loco.getSelectionModel().selectFirst();
+        tf_loco.setValue(tf_loco.getSelectionModel().getSelectedItem());
+        tf_choose_pack_order.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillOrders()));
+        tf_choose_pack_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.getAllStocks()));
     }
 }

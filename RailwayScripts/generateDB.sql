@@ -84,7 +84,8 @@ CREATE TABLE Characteristic
 
 
 ALTER TABLE Characteristic 
-    ADD CONSTRAINT Characteristic_PK PRIMARY KEY ( fk_carriage_type_id, characteristic_type ) ;
+    ADD CONSTRAINT Characteristic_PK PRIMARY KEY ( fk_carriage_type_id, characteristic_type ) ;
+
 
 
 CREATE TABLE Characteristic_type 
@@ -261,7 +262,8 @@ ALTER TABLE Rolling_stock
 
 
 ALTER TABLE Rolling_stock 
-    ADD CONSTRAINT Rolling_stock__UN UNIQUE ( fk_lokomotive_id ) ;
+    ADD CONSTRAINT Rolling_stock__UN UNIQUE ( fk_lokomotive_id ) ;
+
 
 
 
@@ -386,7 +388,7 @@ ALTER TABLE Carriage
     ( 
      rolling_stock_id
     ) 
-    ON DELETE CASCADE 
+    ON DELETE SET NULL 
 ;
 
 
@@ -412,7 +414,9 @@ ALTER TABLE Characteristic
      characteristic_type_id
     ) 
     ON DELETE CASCADE 
-;
+;
+
+
 
 
 

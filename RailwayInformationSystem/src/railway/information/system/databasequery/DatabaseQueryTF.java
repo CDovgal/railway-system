@@ -4,12 +4,20 @@
  */
 package railway.information.system.databasequery;
 
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.collections.FXCollections;
+;
+import railway.information.system.dao.Carriage;
+import railway.information.system.dao.Locomotive;
+import railway.information.system.dao.OrderInfo;
+import railway.information.system.dao.StockInfo;
+import railway.information.system.main.AuthFaceController;
 import railway.information.system.dao.Carriage;
 import railway.information.system.dao.Locomotive;
 import railway.information.system.dao.OrderInfo;
@@ -20,6 +28,8 @@ import railway.information.system.main.AuthFaceController;
  *
  * @author Oleksander
  */
+
+
 public class DatabaseQueryTF {
 
     public static String checkAuth(String name, String password) throws SQLException {
@@ -306,29 +316,41 @@ public class DatabaseQueryTF {
     }
 
     public static void addStock(String locom, List<String> carriages) throws SQLException {
-        Statement stmt1 = AuthFaceController.conn.createStatement();
-        ResultSet rs1 = stmt1.executeQuery("Insert into Rolling_stock values(1,'" + locom + "' )");
-        Statement stmt2 = AuthFaceController.conn.createStatement();
-        for (String car : carriages) {
-            String s = "UPDATE carriage SET fk_rolling_stock_id  = "
-                    + " (SELECT max(rolling_stock_id) FROM rolling_stock)"
-                    + " WHERE CARRIAGE_ID = '" + car + "'";
-
-            ResultSet rs2 = stmt2.executeQuery("UPDATE carriage SET fk_rolling_stock_id  = "
-                    + " (SELECT max(rolling_stock_id) FROM rolling_stock)"
-                    + " WHERE CARRIAGE_ID = '" + car + "'");
+        CallableStatement addCarriagesToStockProc = null;
+        AuthFaceController.conn.setAutoCommit(false);
+        try {
+            AuthFaceController.conn.prepareCall("{ call create_new_stock('" + locom + "') }").execute();
+            addCarriagesToStockProc = AuthFaceController.conn.prepareCall("{ call add_carriage_to_stock(?) }");
+            for (String car : carriages) {            
+                addCarriagesToStockProc.setInt(1, Integer.parseInt(car));
+                addCarriagesToStockProc.addBatch();
+            }
+            addCarriagesToStockProc.executeBatch();
+            AuthFaceController.conn.commit();
+        } catch (SQLException ex) {
+            AuthFaceController.conn.rollback();
         }
-        stmt1.close();
-        stmt2.close();
+
     }
 
     public static String lastStock() throws SQLException {
-        String s;
+        String s = null;
         Statement stmt = AuthFaceController.conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT max(rolling_stock_id) FROM rolling_stock");
-        while (rs.next()) {
-            s = rs.getString("max(rolling_stock_id)");
-        }
-        return null;
+        rs.next();
+        s = rs.getString(1);
+        stmt.close();
+        return s;
     }
+
+    public static void dropCarriage(String carriageId) throws SQLException {
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ResultSet rs = stmt.executeQuery("UPDATE carriage SET fk_rolling_stock_id = null WHERE carriage_id = '" + carriageId + "'");
+    }
+
+    public static void dropLoco(String locoId) throws SQLException {
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ResultSet rs = stmt.executeQuery("DELETE locomotive WHERE locomotive_id = '" + locoId + "'");
+    }
+    
 }
