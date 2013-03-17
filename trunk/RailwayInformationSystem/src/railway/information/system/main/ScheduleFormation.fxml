@@ -63,10 +63,11 @@
                         </TableView>
                         <Button layoutX="555.0" layoutY="41.0" mnemonicParsing="false" text="Change name" />
                         <Button layoutX="576.0" layoutY="356.0" mnemonicParsing="false" prefWidth="63.0" text="Up" />
-                        <Button layoutX="576.0" layoutY="229.0" mnemonicParsing="false" text="Commit" />
-                        <Button layoutX="576.0" layoutY="191.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
-                        <Button layoutX="576.0" layoutY="154.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
+                        <Button layoutX="576.0" layoutY="233.0" mnemonicParsing="false" text="Commit" />
+                        <Button layoutX="576.0" layoutY="200.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
+                        <Button layoutX="576.0" layoutY="136.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
                         <Button layoutX="576.0" layoutY="389.0" mnemonicParsing="false" prefWidth="63.0" text="Down" />
+                        <Button layoutX="576.0" layoutY="168.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
                       </children>
                     </AnchorPane>
                   </content>

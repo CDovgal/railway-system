@@ -55,10 +55,11 @@ public class AuthFaceController implements Initializable {
         if (conn == null) {
             labelAuthError.setText("DataBase Error Connection");
         } else {
-            status = DatabaseQueryTF.checkAuth(loginField.getText(), passwordField.getText());
-            if (status == null) {
-                labelAuthError.setText("Invalid user login or password");
-            } else {
+            //status = DatabaseQueryTF.checkAuth(loginField.getText(), passwordField.getText());
+           // if (status == null) {
+           //    labelAuthError.setText("Invalid user login or password");
+           // } else {
+            status = "TrainFormation";
                 RailwayInformationSystem.authStage.hide();
                 RailwayInformationSystem.formationStage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource(status + ".fxml"));
@@ -68,15 +69,15 @@ public class AuthFaceController implements Initializable {
                 RailwayInformationSystem.formationStage.setResizable(false);
                 RailwayInformationSystem.formationStage.setTitle("DDI " + status);
                 RailwayInformationSystem.formationStage.show();
-            }
+          //  }
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Locale.setDefault(new Locale("EN"));
-        loginField.setText("Drop");
-        passwordField.setText("Drop");
+        loginField.setText("");
+        passwordField.setText("");
     }
 
     @FXML

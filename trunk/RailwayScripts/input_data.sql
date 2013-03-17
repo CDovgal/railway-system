@@ -20,10 +20,16 @@ insert into goods values('Water','Liquid');
 insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type, locomotive_mark) values(1, 'D',10, 'All', 'USSR1');
 insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type, locomotive_mark) values(2, 'E',15, 'Electro', 'USSR1');
 insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type, locomotive_mark) values(3, 'T',20, 'All', 'USSR2');
+insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type, locomotive_mark) values(4, 'E',15, 'Electro', 'USSR1');
+insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type, locomotive_mark) values(5, 'D',10, 'All', 'USSR1');
+insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type, locomotive_mark) values(6, 'T',20, 'All', 'USSR2');
 /
 --roling_stock
-insert into Rolling_stock values(1, 2);
-insert into Rolling_stock values(2, 3);
+insert into Rolling_stock values(1, 1);
+insert into Rolling_stock values(2, 2);
+insert into Rolling_stock values(3, 3);
+insert into Rolling_stock values(4, 4);
+insert into Rolling_stock values(5, 5);
 /
 -- Country
 insert into COUNTRY(COUNTRY_NAME) values('Ukraine');
@@ -88,7 +94,7 @@ insert into freight_order_item values(1, 2, 'Water', 3000, 'Chernihiv', 'Dndz');
 insert into passenger_order_item values(1, 1, 1, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 13);
 insert into passenger_order_item values(2, 2, 2, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 4);
 insert into passenger_order_item values(3, 1, 3, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 10);
-insert into passenger_order_item values(4, 4, 2, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 11);
+insert into passenger_order_item values(4, 2, 2, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 11);
 insert into passenger_order_item values(5, 3, 4, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 12);
 ----------
 --characteristic_type
