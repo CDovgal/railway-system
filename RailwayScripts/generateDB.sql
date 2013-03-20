@@ -795,4 +795,20 @@ BEGIN
     SELECT seq_train_id.NEXTVAL INTO :NEW.train_id FROM DUAL; 
 END;
 /
+
+
+CREATE OR REPLACE PROCEDURE add_carriage_to_stock(carriage NUMBER) AS 
+BEGIN
+  UPDATE carriage SET fk_rolling_stock_id  = 
+                    (SELECT max(rolling_stock_id) FROM rolling_stock)
+                     WHERE CARRIAGE_ID = carriage;
+END add_carriage_to_stock;
+
+
+CREATE OR REPLACE PROCEDURE CREATE_NEW_STOCK(loco NUMBER) AS 
+BEGIN
+  insert into Rolling_stock values(1, loco);  
+END CREATE_NEW_STOCK;
+
+
 COMMIT;
