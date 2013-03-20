@@ -319,20 +319,34 @@ public class DatabaseQueryTF {
         CallableStatement addCarriagesToStockProc = null;
         AuthFaceController.conn.setAutoCommit(false);
         try {
+            if(isLocHasStock(locom)){
+            //dialog!!!
+                
+            }
             AuthFaceController.conn.prepareCall("{ call create_new_stock('" + locom + "') }").execute();
             addCarriagesToStockProc = AuthFaceController.conn.prepareCall("{ call add_carriage_to_stock(?) }");
-            for (String car : carriages) {            
+            for (String car : carriages) {
                 addCarriagesToStockProc.setInt(1, Integer.parseInt(car));
                 addCarriagesToStockProc.addBatch();
             }
             addCarriagesToStockProc.executeBatch();
             AuthFaceController.conn.commit();
+            AuthFaceController.conn.setAutoCommit(true);
         } catch (SQLException ex) {
             AuthFaceController.conn.rollback();
         }
-
     }
-
+    private static boolean isLocHasStock(String locId) throws SQLException{
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT fk_lokomotive_id FROM rolling_stock");
+        while(rs.next()){
+            if(rs.getString("fk_lokomotive_id").equals(locId)){
+                return true;
+            }
+        }
+        return false;
+    
+    }
     public static String lastStock() throws SQLException {
         String s = null;
         Statement stmt = AuthFaceController.conn.createStatement();
@@ -352,5 +366,4 @@ public class DatabaseQueryTF {
         Statement stmt = AuthFaceController.conn.createStatement();
         ResultSet rs = stmt.executeQuery("DELETE locomotive WHERE locomotive_id = '" + locoId + "'");
     }
-    
 }
