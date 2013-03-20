@@ -4,9 +4,16 @@
  */
 package railway.information.system.main;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FilenameFilter;
 import railway.information.system.databasequery.DatabaseQueryTF;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,6 +21,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.jar.JarEntry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -27,13 +35,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import railway.information.system.trainformation.TrainFormationController;
+import sun.misc.IOUtils;
 
 /**
  *
  * @author Oleksander
  */
 public class AuthFaceController implements Initializable {
+
     public static Connection conn;
     @FXML
     private TextField loginField;
@@ -47,7 +58,7 @@ public class AuthFaceController implements Initializable {
     private Label labelAuthError;
 
     @FXML
-    private void buttonAuthOk(ActionEvent event) throws ClassNotFoundException, SQLException, IOException {
+    private void buttonAuthOk(ActionEvent event) throws ClassNotFoundException, SQLException, IOException, URISyntaxException {
         String status = null;
         if (conn == null) {
             conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE", "TrainFormation", "TrainFormation");
@@ -55,21 +66,21 @@ public class AuthFaceController implements Initializable {
         if (conn == null) {
             labelAuthError.setText("DataBase Error Connection");
         } else {
-            //status = DatabaseQueryTF.checkAuth(loginField.getText(), passwordField.getText());
-           // if (status == null) {
-           //    labelAuthError.setText("Invalid user login or password");
-           // } else {
-            status = "TrainFormation";
+            status = DatabaseQueryTF.checkAuth(loginField.getText(), passwordField.getText());
+            if (status == null) {
+                labelAuthError.setText("Invalid user login or password");
+            } else {
+                //status = "TrainFormation";
                 RailwayInformationSystem.authStage.hide();
                 RailwayInformationSystem.formationStage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource(status + ".fxml"));
-                
+
                 Scene scene = new Scene(root);
                 RailwayInformationSystem.formationStage.setScene(scene);
                 RailwayInformationSystem.formationStage.setResizable(false);
                 RailwayInformationSystem.formationStage.setTitle("DDI " + status);
                 RailwayInformationSystem.formationStage.show();
-          //  }
+            }
         }
     }
 
