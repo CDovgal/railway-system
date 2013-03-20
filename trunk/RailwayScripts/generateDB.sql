@@ -106,7 +106,7 @@ CREATE TABLE City
     ( 
      city_id NUMBER  NOT NULL , 
      fk_country_id NUMBER  NOT NULL , 
-     city_name CLOB 
+     city_name VARCHAR(50) 
     ) 
 ;
 
@@ -139,7 +139,7 @@ ALTER TABLE Client
 CREATE TABLE Country 
     ( 
      country_id NUMBER  NOT NULL , 
-     country_name CLOB 
+     country_name VARCHAR(50) 
     ) 
 ;
 
@@ -288,7 +288,7 @@ CREATE TABLE Station
     ( 
      station_id NUMBER  NOT NULL , 
      fk_city_id NUMBER  NOT NULL , 
-     station_name CLOB 
+     station_name VARCHAR(50) 
     ) 
 ;
 
@@ -304,7 +304,7 @@ CREATE TABLE Train
      train_id NUMBER  NOT NULL , 
      fk_rolling_stock_id NUMBER  NOT NULL , 
      fk_arrive_station_id NUMBER  NOT NULL , 
-     train_name CLOB , 
+     train_name VARCHAR(50) , 
      arrive_time DATE 
     ) 
 ;
@@ -803,12 +803,12 @@ BEGIN
                     (SELECT max(rolling_stock_id) FROM rolling_stock)
                      WHERE CARRIAGE_ID = carriage;
 END add_carriage_to_stock;
-
+/
 
 CREATE OR REPLACE PROCEDURE CREATE_NEW_STOCK(loco NUMBER) AS 
 BEGIN
   insert into Rolling_stock values(1, loco);  
 END CREATE_NEW_STOCK;
-
+/
 
 COMMIT;
