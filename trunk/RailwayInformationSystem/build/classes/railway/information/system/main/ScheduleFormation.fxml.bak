@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -53,20 +54,17 @@
                           </font>
                         </Label>
                         <Label font="$x1" layoutX="14.0" layoutY="78.0" text="Route" />
-                        <TableView layoutX="14.0" layoutY="108.0" prefHeight="302.0" prefWidth="541.0">
-                          <columns>
-                            <TableColumn minWidth="150.0" prefWidth="150.0" text="Departures" />
-                            <TableColumn minWidth="90.0" prefWidth="90.0" text="From" />
-                            <TableColumn minWidth="150.0" prefWidth="150.0" text="Arrival" />
-                            <TableColumn minWidth="90.0" prefWidth="90.0" text="To" />
-                          </columns>
-                        </TableView>
+                        <TableView layoutX="14.0" layoutY="108.0" prefHeight="302.0" prefWidth="541.0" />
                         <Button layoutX="555.0" layoutY="41.0" mnemonicParsing="false" text="Change name" />
                         <Button layoutX="576.0" layoutY="356.0" mnemonicParsing="false" prefWidth="63.0" text="Up" />
-                        <Button layoutX="576.0" layoutY="229.0" mnemonicParsing="false" text="Commit" />
-                        <Button layoutX="576.0" layoutY="191.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
-                        <Button layoutX="576.0" layoutY="154.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
+                        <Button layoutX="576.0" layoutY="233.0" mnemonicParsing="false" text="Commit" />
+                        <Button layoutX="576.0" layoutY="200.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
+                        <Button layoutX="576.0" layoutY="136.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
+                        <Button layoutX="576.0" layoutY="227.0" mnemonicParsing="false" text="Commit" />
+                        <Button layoutX="576.0" layoutY="198.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
+                        <Button layoutX="576.0" layoutY="140.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
                         <Button layoutX="576.0" layoutY="389.0" mnemonicParsing="false" prefWidth="63.0" text="Down" />
+                        <Button layoutX="576.0" layoutY="168.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -93,39 +91,57 @@
                             <MenuItem mnemonicParsing="false" text="Action 2" />
                           </items>
                         </SplitMenuButton>
-                        <TableView cache="true" focusTraversable="false" layoutX="14.0" layoutY="93.0" prefHeight="314.0" prefWidth="556.0">
-                          <columns>
-                            <TableColumn minWidth="75.0" prefWidth="75.0" text="Train" />
-                            <TableColumn minWidth="150.0" prefWidth="150.0" text="From / To" />
-                            <TableColumn minWidth="100.0" prefWidth="100.0" text="Date" />
-                            <TableColumn minWidth="130.0" prefWidth="130.0" text="Departures / Arrival" />
-                            <TableColumn minWidth="100.0" prefWidth="100.0" text="Duration" />
-                          </columns>
-                        </TableView>
-                        <Button layoutX="586.0" layoutY="115.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
-                        <Button layoutX="586.0" layoutY="253.0" mnemonicParsing="false" text="Commit" />
-                        <Button layoutX="586.0" layoutY="161.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
-                        <Button layoutX="586.0" layoutY="210.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
+                        <TableView cache="true" focusTraversable="false" layoutX="14.0" layoutY="93.0" prefHeight="314.0" prefWidth="556.0" />
+                        <Button layoutX="586.0" layoutY="126.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
+                        <Button layoutX="586.0" layoutY="223.0" mnemonicParsing="false" text="Commit" />
+                        <Button layoutX="586.0" layoutY="158.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
+                        <Button layoutX="586.0" layoutY="190.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
                       </children>
                     </AnchorPane>
                   </content>
                 </Tab>
-                <Tab fx:id="sf_stations_tab" onSelectionChanged="#sf_stations_tab_selection" text="Stations">
+                <Tab fx:id="sf_stations_tab" onSelectionChanged="#sf_stations_tab_selection" text="Map">
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <TableView layoutX="25.0" layoutY="45.0" prefHeight="200.0" prefWidth="451.0">
-                          <columns>
-                            <TableColumn minWidth="150.0" prefWidth="150.0" text="Station" />
-                            <TableColumn minWidth="150.0" prefWidth="150.0" text="City" />
-                            <TableColumn minWidth="150.0" prefWidth="150.0" text="Country" />
-                          </columns>
-                        </TableView>
-                        <Button layoutX="512.0" layoutY="52.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
-                        <Button layoutX="512.0" layoutY="88.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
-                        <Button layoutX="512.0" layoutY="124.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
-                        <Button layoutX="512.0" layoutY="158.0" mnemonicParsing="false" text="Commit" />
-                        <Button layoutX="511.0" layoutY="224.0" mnemonicParsing="false" prefWidth="62.9998779296875" text="Inactive" />
+                        <Button layoutX="552.0" layoutY="71.0" mnemonicParsing="false" onAction="#add_element_to_map" prefWidth="63.0" text="Add" />
+                        <Button layoutX="552.0" layoutY="103.0" mnemonicParsing="false" onAction="#delete_element_from_map" prefWidth="63.0" text="Delete" />
+                        <Button layoutX="552.0" layoutY="135.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
+                        <Button id="btCommi" layoutX="552.0" layoutY="167.0" mnemonicParsing="false" text="Commit" />
+                        <RadioButton id="radiob_station" fx:id="rbStation" layoutX="32.0" layoutY="84.0" mnemonicParsing="false" text="Stations">
+                          <toggleGroup>
+                            <ToggleGroup fx:id="operations" />
+                          </toggleGroup>
+                        </RadioButton>
+                        <RadioButton id="rb_city" fx:id="rbCity" layoutX="202.0" layoutY="84.0" mnemonicParsing="false" text="Cities" toggleGroup="$operations" />
+                        <RadioButton id="rb_country" fx:id="rbCountry" layoutX="378.0" layoutY="84.0" mnemonicParsing="false" text="Countries" />
+                        <ComboBox fx:id="station_cbox" layoutX="32.0" layoutY="120.0" onAction="#station_cbox" prefHeight="21.0" prefWidth="135.0">
+                          <items>
+                            <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item 1" />
+                              <String fx:value="Item 2" />
+                              <String fx:value="Item 3" />
+                            </FXCollections>
+                          </items>
+                        </ComboBox>
+                        <ComboBox id="citieis" fx:id="cities_cbox" layoutX="202.0" layoutY="120.0" prefHeight="21.0" prefWidth="135.0">
+                          <items>
+                            <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item 1" />
+                              <String fx:value="Item 2" />
+                              <String fx:value="Item 3" />
+                            </FXCollections>
+                          </items>
+                        </ComboBox>
+                        <ComboBox id="counties_cbox" fx:id="countries_cbox" layoutX="378.0" layoutY="120.0" prefHeight="21.0" prefWidth="135.0">
+                          <items>
+                            <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item 1" />
+                              <String fx:value="Item 2" />
+                              <String fx:value="Item 3" />
+                            </FXCollections>
+                          </items>
+                        </ComboBox>
                       </children>
                     </AnchorPane>
                   </content>

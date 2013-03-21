@@ -87,8 +87,8 @@ public class AuthFaceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Locale.setDefault(new Locale("EN"));
-        loginField.setText("");
-        passwordField.setText("");
+        loginField.setText("KayF");
+        passwordField.setText("KayF");
     }
 
     @FXML

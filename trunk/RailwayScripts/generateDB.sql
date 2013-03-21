@@ -811,4 +811,53 @@ BEGIN
 END CREATE_NEW_STOCK;
 /
 
+CREATE OR REPLACE PROCEDURE add_station(add_station_name IN varchar2, find_city_name IN varchar2) 
+IS
+find_city_id NUMBER;
+BEGIN
+  SELECT city_id INTO find_city_id FROM city
+    where find_city_name = city_name;
+  
+  INSERT INTO station(station_name,fk_city_id) values(add_station_name,find_city_id);
+END;
+/
+
+CREATE OR REPLACE PROCEDURE add_city(add_city_name IN varchar2, find_country_name IN varchar2) 
+IS
+find_country_id NUMBER;
+BEGIN
+  SELECT country_id INTO find_country_id FROM country
+    where find_country_name = country_name;
+  
+  INSERT INTO city(city_name,fk_country_id) values(add_city_name,find_country_id);
+END;
+/
+
+CREATE OR REPLACE PROCEDURE add_country(add_country_name IN varchar2, no_need_argument IN varchar2) 
+IS
+BEGIN
+  INSERT INTO country(country_name) values(add_country_name);
+END;
+
+CREATE OR REPLACE PROCEDURE delete_station(del_station_name IN varchar2) 
+IS
+BEGIN
+  DELETE FROM station WHERE del_station_name = station_name;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE delete_city(del_city_name IN varchar2) 
+IS
+BEGIN
+  DELETE FROM city WHERE del_city_name = city_name;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE delete_country(del_country_name IN varchar2) 
+IS
+BEGIN
+  DELETE FROM country WHERE del_country_name = country_name;
+END;
+/
+
 COMMIT;
