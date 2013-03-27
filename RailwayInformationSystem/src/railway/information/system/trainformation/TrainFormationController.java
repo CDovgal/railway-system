@@ -132,7 +132,8 @@ public class TrainFormationController implements Initializable {
     }
 
     @FXML
-    private void tf_logout_click(ActionEvent event) {
+    private void tf_logout_click(ActionEvent event) throws SQLException {
+        AuthFaceController.conn.close();
         RailwayInformationSystem.formationStage.hide();
         RailwayInformationSystem.authStage.show();
     }

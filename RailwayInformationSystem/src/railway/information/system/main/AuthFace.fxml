@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" blendMode="SRC_OVER" prefHeight="211.99997792968497" prefWidth="276.0" xmlns:fx="http://javafx.com/fxml" fx:controller="railway.information.system.main.AuthFaceController">
+<AnchorPane id="AnchorPane" blendMode="SRC_OVER" prefHeight="260.999977929685" prefWidth="276.0" xmlns:fx="http://javafx.com/fxml" fx:controller="railway.information.system.main.AuthFaceController">
   <children>
-    <Pane cache="false" cacheHint="DEFAULT" depthTest="ENABLE" disable="false" focusTraversable="false" layoutX="1.0" layoutY="-1.0" mouseTransparent="false" opacity="1.0" prefHeight="212.00009999999747" prefWidth="276.0" visible="true">
+    <Pane cache="false" cacheHint="DEFAULT" depthTest="ENABLE" disable="false" focusTraversable="false" layoutX="1.0" layoutY="-1.0" mouseTransparent="false" opacity="1.0" prefHeight="262.0" prefWidth="276.0" visible="true">
       <children>
         <TextField fx:id="loginField" blendMode="SRC_OVER" focusTraversable="true" layoutX="120.0" layoutY="42.0" prefHeight="40.0" prefWidth="139.0" promptText="login" text="" />
         <Label layoutX="14.0" layoutY="50.0" text="Login">
@@ -31,6 +31,7 @@
           </font>
         </Button>
         <Button id="closeAuthButton" cancelButton="false" focusTraversable="true" font="$x2" layoutX="141.0" layoutY="153.0" mnemonicParsing="false" onAction="#buttonAuthCancel" prefHeight="38.0" prefWidth="106.0" text="Cancel" />
+        <TextField id="loginField" fx:id="connection_string" blendMode="SRC_OVER" focusTraversable="true" layoutX="47.0" layoutY="223.0" prefHeight="25.0" prefWidth="200.0" promptText="" text="" />
       </children>
     </Pane>
   </children>

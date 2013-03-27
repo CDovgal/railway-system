@@ -56,39 +56,48 @@ public class AuthFaceController implements Initializable {
     private Font x2;
     @FXML
     private Label labelAuthError;
+    @FXML
+    private TextField connection_string;
 
     @FXML
-    private void buttonAuthOk(ActionEvent event) throws ClassNotFoundException, SQLException, IOException, URISyntaxException {
-        String status = null;
-        if (conn == null) {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE", "TrainFormation", "TrainFormation");
-        }
-        if (conn == null) {
-            labelAuthError.setText("DataBase Error Connection");
-        } else {
-            status = DatabaseQueryTF.checkAuth(loginField.getText(), passwordField.getText());
-            if (status == null) {
-                labelAuthError.setText("Invalid user login or password");
-            } else {
-                //status = "TrainFormation";
-                RailwayInformationSystem.authStage.hide();
-                RailwayInformationSystem.formationStage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource(status + ".fxml"));
-
-                Scene scene = new Scene(root);
-                RailwayInformationSystem.formationStage.setScene(scene);
-                RailwayInformationSystem.formationStage.setResizable(false);
-                RailwayInformationSystem.formationStage.setTitle("DDI " + status);
-                RailwayInformationSystem.formationStage.show();
+    private void buttonAuthOk(ActionEvent event) throws ClassNotFoundException, IOException, URISyntaxException, SQLException {
+      //  try {
+            String status = null;
+            if ((conn == null) || (conn.isClosed())) {
+                //"jdbc:oracle:thin:@127.0.0.1:1521:XE"
+                //jdbc:oracle:thin:@192.168.0.101:1521:XE
+                conn = DriverManager.getConnection(connection_string.getText(), "TrainFormation", "TrainFormation");
             }
-        }
+            if (conn == null) {
+                labelAuthError.setText("DataBase Error Connection");
+            } else if (!conn.isClosed()) {
+                status = DatabaseQueryTF.checkAuth(loginField.getText(), passwordField.getText());
+                if (status == null) {
+                    labelAuthError.setText("Invalid user login or password");
+                } else {
+                    //status = "TrainFormation";
+                    RailwayInformationSystem.authStage.hide();
+                    RailwayInformationSystem.formationStage = new Stage();
+                    Parent root = FXMLLoader.load(getClass().getResource(status + ".fxml"));
+
+                    Scene scene = new Scene(root);
+                    RailwayInformationSystem.formationStage.setScene(scene);
+                    RailwayInformationSystem.formationStage.setResizable(false);
+                    RailwayInformationSystem.formationStage.setTitle("DDI " + status);
+                    RailwayInformationSystem.formationStage.show();
+                }
+            }
+      /* } catch (SQLException ex) {
+            labelAuthError.setText("DataBase Error Connection");
+        }*/
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        connection_string.setText("jdbc:oracle:thin:@192.168.0.101:1521:XE");
         Locale.setDefault(new Locale("EN"));
-        loginField.setText("KayF");
-        passwordField.setText("KayF");
+        loginField.setText("Drop");
+        passwordField.setText("Drop");
     }
 
     @FXML
