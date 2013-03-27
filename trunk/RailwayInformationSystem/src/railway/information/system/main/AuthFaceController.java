@@ -57,16 +57,24 @@ public class AuthFaceController implements Initializable {
     @FXML
     private Label labelAuthError;
     @FXML
-    private TextField connection_string;
+    private TextField connection_ip;
+    @FXML
+    private TextField connection_port;
+    @FXML
+    private TextField connection_sid;
 
     @FXML
     private void buttonAuthOk(ActionEvent event) throws ClassNotFoundException, IOException, URISyntaxException, SQLException {
-      //  try {
+        try {
             String status = null;
             if ((conn == null) || (conn.isClosed())) {
-                //"jdbc:oracle:thin:@127.0.0.1:1521:XE"
+                //lsnrctl status
                 //jdbc:oracle:thin:@192.168.0.101:1521:XE
-                conn = DriverManager.getConnection(connection_string.getText(), "TrainFormation", "TrainFormation");
+                conn = DriverManager.getConnection("jdbc:oracle:thin:@" 
+                                                    + connection_ip.getText() + ":" 
+                                                    + connection_port.getText() + ":" 
+                                                    + connection_sid.getText(),
+                                                    "TrainFormation", "TrainFormation");
             }
             if (conn == null) {
                 labelAuthError.setText("DataBase Error Connection");
@@ -87,14 +95,16 @@ public class AuthFaceController implements Initializable {
                     RailwayInformationSystem.formationStage.show();
                 }
             }
-      /* } catch (SQLException ex) {
+       } catch (Exception ex) {
             labelAuthError.setText("DataBase Error Connection");
-        }*/
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        connection_string.setText("jdbc:oracle:thin:@192.168.0.101:1521:XE");
+        connection_ip.setText("192.168.0.102");
+        connection_port.setText("1521");
+        connection_sid.setText("XE");
         Locale.setDefault(new Locale("EN"));
         loginField.setText("Drop");
         passwordField.setText("Drop");

@@ -31,7 +31,13 @@
           </font>
         </Button>
         <Button id="closeAuthButton" cancelButton="false" focusTraversable="true" font="$x2" layoutX="141.0" layoutY="153.0" mnemonicParsing="false" onAction="#buttonAuthCancel" prefHeight="38.0" prefWidth="106.0" text="Cancel" />
-        <TextField id="loginField" fx:id="connection_string" blendMode="SRC_OVER" focusTraversable="true" layoutX="47.0" layoutY="223.0" prefHeight="25.0" prefWidth="200.0" promptText="" text="" />
+        <TextField id="loginField" fx:id="connection_sid" blendMode="SRC_OVER" focusTraversable="true" layoutX="213.0" layoutY="230.0" prefHeight="25.0" prefWidth="55.0" promptText="" text="" />
+        <TextField id="loginField" fx:id="connection_ip" blendMode="SRC_OVER" focusTraversable="true" layoutX="16.0" layoutY="230.0" prefHeight="25.0" prefWidth="88.0" promptText="" text="" />
+        <TextField id="loginField" fx:id="connection_port" blendMode="SRC_OVER" focusTraversable="true" layoutX="123.0" layoutY="230.0" prefHeight="25.0001220703125" prefWidth="65.0" promptText="" text="" />
+        <Separator layoutX="0.0" layoutY="207.0" minHeight="1.0390625" prefHeight="1.0390625" prefWidth="275.0" />
+        <Label layoutX="18.0" layoutY="215.0" text="IP" />
+        <Label layoutX="122.0" layoutY="215.0" text="Port" />
+        <Label layoutX="213.0" layoutY="214.0" text="SID" />
       </children>
     </Pane>
   </children>

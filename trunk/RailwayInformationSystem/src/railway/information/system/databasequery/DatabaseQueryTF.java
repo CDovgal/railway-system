@@ -49,8 +49,9 @@ public class DatabaseQueryTF {
     }
 
     public static List fillAllCarriages() throws SQLException {
-        Statement stmt = AuthFaceController.conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT carriage_id FROM carriage");
+        String sql = "SELECT carriage_id FROM carriage";
+        PreparedStatement stmt = AuthFaceController.conn.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
         List<String> list = new ArrayList();
         while (rs.next()) {
             String carriage_id = rs.getString("carriage_id");
@@ -74,12 +75,14 @@ public class DatabaseQueryTF {
     }
 
     public static Carriage getCarriageByID(String carriageId) throws SQLException {
-        Statement stmt = AuthFaceController.conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT carriage_id, carriage_mark, fk_rolling_stock_id, "
+        String sql = "SELECT carriage_id, carriage_mark, fk_rolling_stock_id, "
                 + "carriage_type_name, c_t1.carriage_type_name parent_type "
                 + " FROM carriage INNER JOIN carriage_type c_t1 ON carriage.fk_carriage_type_id = c_t1.carriage_type_id"
                 + " JOIN carriage_type c_t2 ON c_t1.fk_parrent_type_id = c_t2.carriage_type_id "
-                + " WHERE carriage_id = " + carriageId + "");
+                + " WHERE carriage_id = ?";
+        PreparedStatement stmt = AuthFaceController.conn.prepareStatement(sql);
+        stmt.setString(1,carriageId);
+        ResultSet rs = stmt.executeQuery();
         Carriage carriage = new Carriage();
         while (rs.next()) {
             carriage.setCarriageId(rs.getString("carriage_id"));
@@ -232,8 +235,9 @@ public class DatabaseQueryTF {
     }
 
     public static List fillAllLocomotiveStocks() throws SQLException {
-        Statement stmt = AuthFaceController.conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT rolling_stock_id FROM rolling_stock");
+        String sql = "SELECT rolling_stock_id FROM rolling_stock";
+        PreparedStatement stmt = AuthFaceController.conn.prepareCall(sql);
+        ResultSet rs = stmt.executeQuery();
         List<String> list = new ArrayList();
         while (rs.next()) {
             String rolling_stock_id = rs.getString("rolling_stock_id");
