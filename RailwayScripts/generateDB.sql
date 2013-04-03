@@ -36,7 +36,7 @@ DROP SEQUENCE "TRAINFORMATION"."LOCOMOTIVE_SEQUENCE";
 CREATE TABLE Carriage 
     ( 
      carriage_id NUMBER  NOT NULL , 
-     carriage_mark VARCHAR2 (50 CHAR)  NOT NULL , 
+     carriage_mark VARCHAR2 (50)  NOT NULL , 
      fk_rolling_stock_id NUMBER, 
      fk_carriage_type_id NUMBER  
     ) 
@@ -62,7 +62,7 @@ CREATE TABLE Carriage_freight_order_item
 CREATE TABLE Carriage_type 
     ( 
      carriage_type_id NUMBER  NOT NULL , 
-     carriage_type_name VARCHAR2 (50 CHAR)  NOT NULL , 
+     carriage_type_name VARCHAR2 (50)  NOT NULL , 
      fk_parrent_type_id NUMBER 
     ) 
 ;
@@ -78,7 +78,7 @@ CREATE TABLE Characteristic
     ( 
      fk_carriage_type_id NUMBER  NOT NULL , 
      characteristic_type NUMBER , 
-     value VARCHAR2 (50 CHAR) 
+     value VARCHAR2 (50) 
     ) 
 ;
 
@@ -91,7 +91,7 @@ ALTER TABLE Characteristic
 CREATE TABLE Characteristic_type 
     ( 
      characteristic_type_id NUMBER  NOT NULL , 
-     characteristic_name VARCHAR2 (50 CHAR)  NOT NULL 
+     characteristic_name VARCHAR2 (50)  NOT NULL 
     ) 
 ;
 
@@ -298,16 +298,17 @@ ALTER TABLE Station
     ADD CONSTRAINT Station_PK PRIMARY KEY ( station_id ) ;
 
 
-
 CREATE TABLE Train 
     ( 
      train_id NUMBER  NOT NULL , 
      fk_rolling_stock_id NUMBER  NOT NULL , 
      fk_arrive_station_id NUMBER  NOT NULL , 
-     train_name VARCHAR(50) , 
+     fk_destination_station_id NUMBER  NOT NULL , 
+     train_name VARCHAR2(50) , 
      arrive_time DATE 
     ) 
 ;
+
 
 
 
@@ -611,6 +612,19 @@ ALTER TABLE Train
     REFERENCES Rolling_stock 
     ( 
      rolling_stock_id
+    ) 
+    ON DELETE CASCADE 
+;
+
+
+ALTER TABLE Train 
+    ADD CONSTRAINT Train_Station_FK FOREIGN KEY 
+    ( 
+     fk_destination_station_id
+    ) 
+    REFERENCES Station 
+    ( 
+     station_id
     ) 
     ON DELETE CASCADE 
 ;
