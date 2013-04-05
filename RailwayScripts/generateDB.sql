@@ -272,8 +272,8 @@ CREATE TABLE Route
      fk_train_id NUMBER  NOT NULL , 
      fk_arrive_station_id NUMBER  NOT NULL , 
      fk_destination_station_id NUMBER  NOT NULL , 
-     arrive_time DATE , 
-     travel_time DATE 
+     arrive_time TIMESTAMP , 
+     travel_time TIMESTAMP 
     ) 
 ;
 
@@ -852,6 +852,8 @@ IS
 BEGIN
   INSERT INTO country(country_name) values(add_country_name);
 END;
+
+/
 
 CREATE OR REPLACE PROCEDURE delete_station(del_station_name IN varchar2) 
 IS

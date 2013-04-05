@@ -58,17 +58,18 @@ insert into STATION(FK_CITY_ID, STATION_NAME) values(4,'Dndz');
 insert into STATION(FK_CITY_ID, STATION_NAME) values(5,'Lviv Holovna');
 /
 --train
-insert into train(fk_rolling_stock_id,fk_arrive_station_id) values(1,1);
-insert into train(fk_rolling_stock_id,fk_arrive_station_id) values(2,1);
-insert into train(fk_rolling_stock_id,fk_arrive_station_id) values(3,1);
-insert into train(fk_rolling_stock_id,fk_arrive_station_id) values(4,2);
-insert into train(fk_rolling_stock_id,fk_arrive_station_id) values(5,2);
+insert into train(fk_rolling_stock_id,fk_arrive_station_id,fk_destination_station_id) values(1,1,6);
+insert into train(fk_rolling_stock_id,fk_arrive_station_id,fk_destination_station_id) values(2,1,4);
+insert into train(fk_rolling_stock_id,fk_arrive_station_id,fk_destination_station_id) values(3,1,4);
+insert into train(fk_rolling_stock_id,fk_arrive_station_id,fk_destination_station_id) values(4,2,3);
+insert into train(fk_rolling_stock_id,fk_arrive_station_id,fk_destination_station_id) values(5,2,1);
 /
 --Route
-insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id) values(1,1,2);
-insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id) values(2,2,3);
-insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id) values(3,2,1);
-insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id) values(1,2,3);
+insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id,arrive_time,travel_time) values(1,1,2,to_timestamp('12:00','HH24:MI'),to_timestamp('05:00','HH24:MI'));
+insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id,arrive_time,travel_time) values(1,2,6,to_timestamp('18:00','HH24:MI'),to_timestamp('06:00','HH24:MI'));
+--insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id) values(2,2,3);
+--insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id) values(3,2,1);
+--insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id) values(1,2,3);
 /
 --train_schedule
 insert into train_schedule(fk_train_id) values(1);
