@@ -272,7 +272,7 @@ CREATE TABLE Route
      fk_train_id NUMBER  NOT NULL , 
      fk_departure_station_id NUMBER  NOT NULL , 
      fk_arrival_station_id NUMBER  NOT NULL , 
-     arrival_time TIMESTAMP , 
+     departure_time TIMESTAMP , 
      travel_time INTERVAL DAY TO SECOND
     ) 
 ;
@@ -305,7 +305,7 @@ CREATE TABLE Train
      fk_departure_station_id NUMBER  NOT NULL , 
      fk_arrival_station_id NUMBER  NOT NULL , 
      train_name VARCHAR2(50) , 
-     arrival_time DATE 
+     departure_time DATE 
     ) 
 ;
 
