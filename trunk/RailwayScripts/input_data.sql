@@ -58,6 +58,7 @@ insert into STATION(FK_CITY_ID, STATION_NAME) values(4,'Dndz');
 insert into STATION(FK_CITY_ID, STATION_NAME) values(5,'Lviv Holovna');
 /
 --train
+
 insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(1,1,6);
 insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(2,1,4);
 insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(3,1,4);
@@ -127,17 +128,17 @@ INSERT INTO characteristic(fk_carriage_type_id, characteristic_type, value) VALU
 --carriages
 INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(1, 'AVRORA', 3, null);
 INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(2, 'HYUNDAI', 4, null);
-INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(3, 'HYUNDAI', 4, 1);
-INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(4, 'HYUNDAI', 4, 1);
+INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(3, 'HYUNDAI', 4, null);
+INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(4, 'HYUNDAI', 4, null);
 INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(5, 'EVROTRAIN', 5, 2);
 INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(6, 'EVROTRAIN', 6, 2);
 INSERT INTO carriage(carriage_id, carriage_mark, fk_carriage_type_id, fk_rolling_stock_id) VALUES(7, 'EVROTRAIN', 7, 1);
 -----------------------------------------
 --CARRIAGE_FREIGHT_ORDER_ITEM
-INSERT INTO carriage_freight_order_item VALUES (5,0);
-INSERT INTO carriage_freight_order_item VALUES (5,1);
-INSERT INTO carriage_freight_order_item VALUES (7,2);
-INSERT INTO carriage_freight_order_item VALUES (7,3);
-INSERT INTO carriage_freight_order_item VALUES (5,4);
+--INSERT INTO carriage_freight_order_item VALUES (5,0);
+--INSERT INTO carriage_freight_order_item VALUES (5,1);
+--INSERT INTO carriage_freight_order_item VALUES (7,2);
+--INSERT INTO carriage_freight_order_item VALUES (7,3);
+--INSERT INTO carriage_freight_order_item VALUES (5,4);
 -----------------------------------------------
 COMMIT;
