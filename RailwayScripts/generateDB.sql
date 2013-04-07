@@ -270,17 +270,17 @@ ALTER TABLE Rolling_stock
 CREATE TABLE Route 
     ( 
      fk_train_id NUMBER  NOT NULL , 
-     fk_arrive_station_id NUMBER  NOT NULL , 
-     fk_destination_station_id NUMBER  NOT NULL , 
-     arrive_time TIMESTAMP , 
-     travel_time TIMESTAMP 
+     fk_dispatch_station_id NUMBER  NOT NULL , 
+     fk_arrival_station_id NUMBER  NOT NULL , 
+     arrival_time TIMESTAMP , 
+     travel_time INTERVAL DAY TO SECOND
     ) 
 ;
 
 
 
 ALTER TABLE Route 
-    ADD CONSTRAINT Route_PK PRIMARY KEY ( fk_arrive_station_id, fk_train_id, fk_destination_station_id ) ;
+    ADD CONSTRAINT Route_PK PRIMARY KEY ( fk_dispatch_station_id, fk_train_id, fk_arrival_station_id ) ;
 
 
 
@@ -302,10 +302,10 @@ CREATE TABLE Train
     ( 
      train_id NUMBER  NOT NULL , 
      fk_rolling_stock_id NUMBER  NOT NULL , 
-     fk_arrive_station_id NUMBER  NOT NULL , 
-     fk_destination_station_id NUMBER  NOT NULL , 
+     fk_dispatch_station_id NUMBER  NOT NULL , 
+     fk_arrival_station_id NUMBER  NOT NULL , 
      train_name VARCHAR2(50) , 
-     arrive_time DATE 
+     arrival_time DATE 
     ) 
 ;
 
@@ -516,7 +516,7 @@ ALTER TABLE Rolling_stock
 ALTER TABLE Route 
     ADD CONSTRAINT Route_Station_FK FOREIGN KEY 
     ( 
-     fk_arrive_station_id
+     fk_dispatch_station_id
     ) 
     REFERENCES Station 
     ( 
@@ -529,7 +529,7 @@ ALTER TABLE Route
 ALTER TABLE Route 
     ADD CONSTRAINT Route_Station_FKv2 FOREIGN KEY 
     ( 
-     fk_destination_station_id
+     fk_arrival_station_id
     ) 
     REFERENCES Station 
     ( 
@@ -592,9 +592,9 @@ ALTER TABLE Passenger_order_item
 
 
 ALTER TABLE Train 
-    ADD CONSTRAINT "Train-ARRIVE_STATION_FK" FOREIGN KEY 
+    ADD CONSTRAINT "Train-DISPATCH_STATION_FK" FOREIGN KEY 
     ( 
-     fk_arrive_station_id
+     fk_dispatch_station_id
     ) 
     REFERENCES Station 
     ( 
@@ -620,7 +620,7 @@ ALTER TABLE Train
 ALTER TABLE Train 
     ADD CONSTRAINT Train_Station_FK FOREIGN KEY 
     ( 
-     fk_destination_station_id
+     fk_arrival_station_id
     ) 
     REFERENCES Station 
     ( 

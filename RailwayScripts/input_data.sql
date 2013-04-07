@@ -65,8 +65,8 @@ insert into train(fk_rolling_stock_id,fk_arrive_station_id,fk_destination_statio
 insert into train(fk_rolling_stock_id,fk_arrive_station_id,fk_destination_station_id) values(5,2,1);
 /
 --Route
-insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id,arrive_time,travel_time) values(1,1,2,to_timestamp('12:00','HH24:MI'),to_timestamp('05:00','HH24:MI'));
-insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id,arrive_time,travel_time) values(1,2,6,to_timestamp('18:00','HH24:MI'),to_timestamp('06:00','HH24:MI'));
+insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id,arrive_time,travel_time) values(1,1,2,to_timestamp('12:00','HH24:MI'),interval '5:50' hour to minute);
+insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id,arrive_time,travel_time) values(1,2,6,to_timestamp('18:00','HH24:MI'),interval '3:32' hour to minute);
 --insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id) values(2,2,3);
 --insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id) values(3,2,1);
 --insert into route(fk_train_id,fk_arrive_station_id,fk_destination_station_id) values(1,2,3);
