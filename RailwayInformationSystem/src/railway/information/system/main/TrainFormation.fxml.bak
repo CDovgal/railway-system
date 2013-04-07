@@ -34,16 +34,13 @@
                 <Label layoutX="378.0" layoutY="20.0" text="Locomotive :" />
                 <Label layoutX="596.0" layoutY="45.0" prefHeight="24.0" prefWidth="61.0" text="Type :" />
                 <Label layoutX="378.0" layoutY="51.0" text="Locomotive info :" />
-                <CheckBox fx:id="tf_only_free" layoutX="266.0" layoutY="21.0" minHeight="11.0" mnemonicParsing="false" onMouseClicked="#tf_only_free_click" prefHeight="16.0" text="Only free" />
                 <ComboBox fx:id="tf_carriage" layoutX="71.0" layoutY="13.0" onAction="#tf_carriage_select" prefHeight="21.0" prefWidth="131.0" />
-                <ComboBox fx:id="tf_carriage_type" layoutX="266.0" layoutY="48.0" onAction="#tfCarriageTypeClick" prefHeight="21.0" prefWidth="99.0" />
+                <ComboBox fx:id="tf_carriage_type" layoutX="267.0" layoutY="48.0" onAction="#tfCarriageTypeClick" prefHeight="21.0" prefWidth="99.0" />
                 <Line endX="2.0" endY="-135.0" layoutX="361.0" layoutY="136.0" startX="2.0" startY="-104.0" />
                 <ComboBox id="tf_carriage" fx:id="tf_loco" layoutX="459.0" layoutY="18.0" onAction="#tfLocoSelect" prefHeight="21.0" prefWidth="131.0" />
                 <ListView id="tf_carriage_info" fx:id="tf_loco_info" focusTraversable="true" layoutX="378.0" layoutY="72.0" prefHeight="151.0" prefWidth="198.0" />
-                <CheckBox id="tf_only_free" fx:id="tf_loco_free" layoutX="650.0" layoutY="21.0" minHeight="11.0" mnemonicParsing="false" onAction="#tfLocoFree" onMouseClicked="#tf_only_free_click" prefHeight="16.0" text="Only free" />
                 <ComboBox fx:id="tf_loco_type" layoutX="641.0" layoutY="48.0" onAction="#tfLocoType" prefHeight="21.0" prefWidth="99.0" />
-                <Label layoutX="596.0" layoutY="21.0" text="Filter by:" />
-                <Label layoutX="217.0" layoutY="18.0" text="Filter by:" />
+                <Label layoutX="217.0" layoutY="20.0" text="Status:" />
                 <Label layoutX="216.0" layoutY="122.0" text="Mark :" />
                 <Label layoutX="596.0" layoutY="84.0" text="Mark :" />
                 <Label layoutX="215.0" layoutY="150.0" text="Stock :" />
@@ -57,8 +54,8 @@
                 <ComboBox id="tf_loco_num_car" fx:id="tf_loco_num_carr" layoutX="641.0" layoutY="145.0" onAction="#tfLocoNumberOfCarriages" prefHeight="21.0" prefWidth="99.0" />
                 <Label layoutX="212.0" layoutY="87.0" text="Subtype :" />
                 <ComboBox id="tf_carriage_type" fx:id="tf_carriage_subtype" layoutX="266.0" layoutY="85.0" onAction="#tfCarriageSubtypeClick" prefHeight="21.0" prefWidth="99.0" />
-                <Button layoutX="266.0" layoutY="174.0" mnemonicParsing="false" text="Apply filter" />
-                <Button layoutX="659.0" layoutY="208.0" mnemonicParsing="false" text="Apply filter" />
+                <Button layoutX="266.0" layoutY="208.0" mnemonicParsing="false" onAction="#tfFilterCarClick" text="Apply filter" />
+                <Button layoutX="659.0" layoutY="208.0" mnemonicParsing="false" onAction="#tfFilterLocClick" text="Apply filter" />
                 <Button fx:id="tf_add_button" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" onAction="#tfAddButtonClick" prefWidth="92.0" text="Add" />
                 <Label layoutX="247.0" layoutY="255.0" prefHeight="21.0" prefWidth="131.0" text="Stock carriges preview :" />
                 <Button fx:id="tf_add_loco" layoutX="378.0" layoutY="229.0" mnemonicParsing="false" onAction="#tfAddLocoClick" prefWidth="92.0" text="Add" />
@@ -70,6 +67,9 @@
                 <Label layoutX="584.0" layoutY="181.0" text="Railroad :" />
                 <Label fx:id="tf_carr_al_add" layoutX="110.0" layoutY="205.0" prefWidth="111.0" text="" />
                 <Label fx:id="tf_new_stock_created" layoutX="11.0" layoutY="323.0" prefWidth="251.0" text="" />
+                <ComboBox id="tf_carriage_type" layoutX="267.0" layoutY="17.0" onAction="#tfCarriageFreeClick" prefHeight="21.0" prefWidth="99.0" />
+                <Label layoutX="593.0" layoutY="23.0" text="Status:" />
+                <ComboBox id="tf_carriage_type" layoutX="641.0" layoutY="20.0" onAction="#tfCarriageFreeClick" prefHeight="21.0" prefWidth="99.0" />
               </children>
             </AnchorPane>
           </content>
@@ -101,7 +101,7 @@
                 <Button id="tfEsLocDropButtonClick" fx:id="tf_es_loc_drop" layoutX="574.0" layoutY="286.0" mnemonicParsing="false" onAction="#tfEsLocDropButtonClick" prefWidth="68.0" text="Drop" />
                 <Button layoutX="16.0" layoutY="286.0" mnemonicParsing="false" prefWidth="115.0" text="Save" />
                 <ComboBox id="tf_carriage" fx:id="tf_es_carriage" layoutX="291.0" layoutY="12.0" onAction="#tf_carriage_select" prefHeight="21.0" prefWidth="131.0" />
-                <ComboBox id="tf_carriage" layoutX="527.0" layoutY="12.0" onAction="#tf_loc_select" prefHeight="21.0" prefWidth="131.0" />
+                <ComboBox id="tf_carriage" fx:id="tf_es_loco" layoutX="527.0" layoutY="12.0" onAction="#tf_loc_select" prefHeight="21.0" prefWidth="131.0" />
               </children>
             </AnchorPane>
           </content>
@@ -118,13 +118,13 @@
             <Label layoutX="285.0" layoutY="17.0" text="Choose stock :" />
             <ListView id="tf_stock_info" fx:id="tf_pack_stock_info" layoutX="370.0" layoutY="44.0" prefHeight="141.0" prefWidth="147.0" />
             <Label layoutX="285.0" layoutY="42.0" text="Stock info :" />
-            <Button layoutX="13.0" layoutY="193.0" mnemonicParsing="false" prefWidth="90.0" text="Pack" />
+            <Button fx:id="pack_order" layoutX="15.0" layoutY="193.0" mnemonicParsing="false" onAction="#packOrderToCarriage" prefWidth="90.0" text="Pack" />
             <ComboBox id="tf_carriage" fx:id="tf_choose_pack_order" layoutX="115.0" layoutY="15.0" onAction="#tfChoosePackOrderClick" prefHeight="21.0" prefWidth="147.0" />
             <ComboBox id="tf_carriage" fx:id="tf_choose_pack_stock" layoutX="370.0" layoutY="17.0" onAction="#tfChoosePackStockClick" prefHeight="21.0" prefWidth="147.0" />
-            <Label layoutX="547.0" layoutY="20.0" text="Cariage :" />
-            <ListView id="tf_stock_info" fx:id="tf_pack_carriage_info" layoutX="602.0" layoutY="44.0" prefHeight="141.0" prefWidth="147.0" />
-            <Label layoutX="566.0" layoutY="45.0" text="Info :" />
-            <ComboBox id="tf_carriage" fx:id="tf_choose_pack_carriage" layoutX="602.0" layoutY="17.0" onAction="#tfChoosePackStockClick" prefHeight="21.0" prefWidth="147.0" />
+            <Label layoutX="534.0" layoutY="20.0" text="Cariage :" />
+            <ListView id="tf_stock_info" fx:id="tf_pack_carriage_info" layoutX="589.0" layoutY="44.0" prefHeight="141.0" prefWidth="153.0" />
+            <Label layoutX="553.0" layoutY="45.0" text="Info :" />
+            <ComboBox id="tf_carriage" fx:id="tf_choose_pack_carriage" layoutX="589.0" layoutY="17.0" onAction="#tfChoosePackCarriageClick" prefHeight="21.0" prefWidth="153.0" />
           </children>
         </AnchorPane>
       </content>

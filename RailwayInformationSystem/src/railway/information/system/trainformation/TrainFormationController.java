@@ -53,8 +53,6 @@ public class TrainFormationController implements Initializable {
     @FXML
     private ComboBox<String> tf_carriage;
     @FXML
-    private CheckBox tf_only_free;
-    @FXML
     private ListView<String> tf_carriage_info;
     @FXML
     private ComboBox<String> tf_carriage_type;
@@ -68,8 +66,6 @@ public class TrainFormationController implements Initializable {
     private ComboBox<String> tf_loco;
     @FXML
     private ListView<String> tf_loco_info;
-    @FXML
-    private CheckBox tf_loco_free;
     @FXML
     private ComboBox<String> tf_loco_type;
     @FXML
@@ -116,6 +112,12 @@ public class TrainFormationController implements Initializable {
     private ComboBox<String> tf_choose_pack_carriage;
     @FXML
     private ComboBox<String> tf_es_loco;
+    @FXML
+    private Button pack_order;
+    @FXML
+    private ComboBox<String> tf_carriage_free;
+    @FXML
+    private ComboBox<String> tf_loco_free;
 
     /**
      * Initializes the controller class.
@@ -136,23 +138,6 @@ public class TrainFormationController implements Initializable {
         AuthFaceController.conn.close();
         RailwayInformationSystem.formationStage.hide();
         RailwayInformationSystem.authStage.show();
-    }
-
-    @FXML
-    private void tf_only_free_click(MouseEvent event) {
-        try {
-            if (tf_only_free.isSelected()) {
-                tf_carriage.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllFreeCarriages()));
-            } else {
-                tf_carriage.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriages()));
-            }
-            tf_carriage.getSelectionModel().selectFirst();
-            tf_carriage.setValue(tf_carriage.getSelectionModel().getSelectedItem());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,
-                    "No connection!", "Error!",
-                    JOptionPane.ERROR_MESSAGE);
-        }
     }
 
     @FXML
@@ -179,6 +164,7 @@ public class TrainFormationController implements Initializable {
 
     @FXML
     private void tfCarriageTypeClick(ActionEvent event) {
+        //tf_carriage_type.get;
     }
 
     @FXML
@@ -191,23 +177,6 @@ public class TrainFormationController implements Initializable {
 
     @FXML
     private void tfCarriageSubtypeClick(ActionEvent event) {
-    }
-
-    @FXML
-    private void tfLocoFree(ActionEvent event) {
-        try {
-            if (tf_loco_free.isSelected()) {
-                tf_loco.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllFreeLocomotives()));
-            } else {
-                tf_loco.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotives()));
-            }
-            tf_loco.getSelectionModel().selectFirst();
-            tf_loco.setValue(tf_loco.getSelectionModel().getSelectedItem());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,
-                    "No connection!", "Error!",
-                    JOptionPane.ERROR_MESSAGE);
-        }
     }
 
     @FXML
@@ -227,12 +196,19 @@ public class TrainFormationController implements Initializable {
     }
 
     @FXML
-    private void tfAddButtonClick(ActionEvent event) {
-        if (tf_carraige_preview.getItems().contains(tf_carriage.getSelectionModel().getSelectedItem())) {
-            tf_carr_al_add.setText("Already added!");
+    private void tfAddButtonClick(ActionEvent event) throws SQLException {
+        String carriage = tf_carriage.getSelectionModel().getSelectedItem();
+        if (checkCarriagesType(carriage) && DatabaseQueryTF.fillAllFreeCarriages().contains(carriage)) {
+            if (tf_carraige_preview.getItems().contains(tf_carriage.getSelectionModel().getSelectedItem())) {
+                tf_carr_al_add.setText("Already added!");
+            } else {
+                tf_carraige_preview.getItems().add(tf_carriage.getSelectionModel().getSelectedItem());
+                tf_carr_al_add.setText("");
+            }
         } else {
-            tf_carraige_preview.getItems().add(tf_carriage.getSelectionModel().getSelectedItem());
-            tf_carr_al_add.setText("");
+            JOptionPane.showMessageDialog(null,
+                    "Stock carriages should have the same type and be free", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -286,20 +262,33 @@ public class TrainFormationController implements Initializable {
                 tf_new_stock_created.setText("Select locomotive!");
             }
         } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null,
-             "No connection", "Error!",
-             JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,
+                    "No connection", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
 
     @FXML
     private void tfAddLocoClick(ActionEvent event) {
-        if (tf_loco_added.getItems().contains(tf_loco.getSelectionModel().getSelectedItem())) {
-            tf_carr_al_add.setText("Already added!");
-        } else {
-            tf_loco_added.setItems(FXCollections.observableArrayList(tf_loco.getSelectionModel().getSelectedItem()));
-            tf_carr_al_add.setText("");
+        try {
+            if (!DatabaseQueryTF.isLocInTrain(tf_loco.getSelectionModel().getSelectedItem())) {
+                if (tf_loco_added.getItems().contains(tf_loco.getSelectionModel().getSelectedItem())) {
+                    tf_carr_al_add.setText("Already added!");
+                } else {
+                    tf_loco_added.setItems(FXCollections.observableArrayList(tf_loco.getSelectionModel().getSelectedItem()));
+                    tf_carr_al_add.setText("");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "The locomotive is already in schedule!", "Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
     }
 
@@ -312,8 +301,8 @@ public class TrainFormationController implements Initializable {
                         "[Number]:  " + oi.getOrderId(),
                         "[Type]:  " + oi.getGoodType(),
                         "[Origin]:  " + oi.getOrigin(),
-                        "[Delivery]:  " + oi.getDelivery(),
-                        "[Mass]:  " + oi.getMass());
+                        "[Delivery]:  " + oi.getDelivery());
+                        //"[Mass]:  " + oi.getMass());
                 tf_pack_order_info.setItems(FXCollections.observableArrayList(list));
             } else {
                 tf_pack_order_info.setItems(FXCollections.observableArrayList(""));
@@ -340,6 +329,13 @@ public class TrainFormationController implements Initializable {
             } else {
                 tf_pack_stock_info.setItems(FXCollections.observableArrayList(""));
             }
+            if (tf_choose_pack_stock.getSelectionModel().getSelectedItem() != null) {
+                tf_choose_pack_carriage.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllStockCarriages(tf_choose_pack_stock.getValue())));
+            } else {
+                tf_choose_pack_carriage.setItems(FXCollections.observableArrayList(""));
+            }
+            tf_choose_pack_carriage.getSelectionModel().selectFirst();
+            tf_choose_pack_carriage.setValue(tf_choose_pack_carriage.getSelectionModel().getSelectedItem());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,
                     "No connection!", "Error!",
@@ -388,6 +384,131 @@ public class TrainFormationController implements Initializable {
         tf_loco.getSelectionModel().selectFirst();
         tf_loco.setValue(tf_loco.getSelectionModel().getSelectedItem());
         tf_choose_pack_order.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillOrders()));
-        tf_choose_pack_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.getAllStocks()));
+        tf_choose_pack_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.getAllOutScheduleFreightStocks()));
+        tf_carriage_free.setItems(FXCollections.observableArrayList("Free", " "));
+        tf_loco_free.setItems(FXCollections.observableArrayList("Free", " "));
+    }
+
+    @FXML
+    private void tfChoosePackCarriageClick(ActionEvent event) {
+        try {
+            if (tf_choose_pack_carriage.getSelectionModel().getSelectedItem() != null) {
+                Carriage carriage = DatabaseQueryTF.getCarriageByID(tf_choose_pack_carriage.getValue());
+                ObservableList<String> list = FXCollections.observableArrayList(
+                        "[Number]:  " + carriage.getCarriageId(),
+                        "[Mark]:  " + carriage.getCarriageMark(),
+                        "[Stock Number]:  " + carriage.getRollingStock(),
+                        "[General Type]:  " + carriage.getCarriageParentType(),
+                        "[Carriage Type]:  " + carriage.getCarriageType());
+                tf_pack_carriage_info.setItems(FXCollections.observableArrayList(list));
+            } else {
+                tf_pack_carriage_info.setItems(FXCollections.observableArrayList(""));
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    @FXML
+    private void packOrderToCarriage(ActionEvent event) {
+        try {
+            if ((tf_choose_pack_order.getSelectionModel().getSelectedItem() != null) && (tf_choose_pack_carriage.getSelectionModel().getSelectedItem() != null)) {
+                DatabaseQueryTF.addOrderForCarriage(tf_choose_pack_carriage.getSelectionModel().getSelectedItem(),
+                        tf_choose_pack_order.getSelectionModel().getSelectedItem());
+                tf_choose_pack_order.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillOrders()));
+                tf_choose_pack_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.getAllStocks()));
+            } else {
+                System.out.println("empty");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private boolean checkCarriagesType(String carriage) {
+        try {
+            if (tf_carraige_preview.getItems().size() != 0) {
+                if (!DatabaseQueryTF.getCarraigeTypeById(tf_carraige_preview.getItems().get(0)).
+                        equals(DatabaseQueryTF.getCarraigeTypeById(carriage))) {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    private void updatePacking() {
+    }
+
+    @FXML
+    private void tfFilterCarClick(ActionEvent event) {
+        try {
+            boolean isFree = "Free".equals(tf_carriage_free.getSelectionModel().getSelectedItem()) ? true : false;
+            String mark = tf_carriage_mark.getSelectionModel().getSelectedItem();
+            String stock = tf_carriage_stock.getSelectionModel().getSelectedItem();
+            String type = tf_carriage_type.getSelectionModel().getSelectedItem();
+            String subtype = tf_carriage_subtype.getSelectionModel().getSelectedItem();
+            List<String> list = DatabaseQueryTF.getfilterCarriges((" ").equals(mark) ? null : mark,
+                    (" ").equals(stock) ? null : stock,
+                    (" ").equals(type) ? null : type,
+                    (" ").equals(subtype) ? null : subtype,
+                    isFree);
+            if (!list.isEmpty()) {
+                tf_carriage.setItems(FXCollections.observableArrayList(list));
+                tf_carriage.getSelectionModel().selectFirst();
+                tf_carriage.setValue(tf_carriage.getSelectionModel().getSelectedItem());
+            } else {
+                tf_carriage.setItems(FXCollections.observableArrayList(""));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    @FXML
+    private void tfFilterLocClick(ActionEvent event) {
+        try {
+            boolean isFree = "Free".equals(tf_loco_free.getSelectionModel().getSelectedItem()) ? true : false;
+            String n_carriages = tf_loco_num_carr.getSelectionModel().getSelectedItem();
+            String mark = tf_loco_mark.getSelectionModel().getSelectedItem();
+            String stock = tf_loco_stock.getSelectionModel().getSelectedItem();
+            String type = tf_loco_type.getSelectionModel().getSelectedItem();
+            String railtype = tf_loco_railroad.getSelectionModel().getSelectedItem();
+            List<String> list = DatabaseQueryTF.getfilterLoc((" ").equals(n_carriages) ? null : n_carriages,
+                    (" ").equals(mark) ? null : mark,
+                    (" ").equals(type) ? null : type,
+                    (" ").equals(stock) ? null : stock,
+                    (" ").equals(railtype) ? null : railtype,
+                    isFree);
+            if (!list.isEmpty()) {
+                tf_loco.setItems(FXCollections.observableArrayList(list));
+                tf_loco.getSelectionModel().selectFirst();
+                tf_loco.setValue(tf_loco.getSelectionModel().getSelectedItem());
+            } else {
+                tf_loco.setItems(FXCollections.observableArrayList(""));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    @FXML
+    private void tfCarriageFreeClick(ActionEvent event) {
     }
 }
