@@ -25,11 +25,11 @@ insert into locomotive (locomotive_id, locomotive_type, number_carriages, railro
 insert into locomotive (locomotive_id, locomotive_type, number_carriages, railroad_type, locomotive_mark) values(6, 'T',20, 'All', 'USSR2');
 /
 --roling_stock
-insert into Rolling_stock values(1, 1);
-insert into Rolling_stock values(2, 2);
-insert into Rolling_stock values(3, 3);
-insert into Rolling_stock values(4, 4);
-insert into Rolling_stock values(5, 5);
+insert into Rolling_stock values(1, 1, 1);
+insert into Rolling_stock values(2, 2, 0);
+--insert into Rolling_stock values(3, 3);
+--insert into Rolling_stock values(4, 4);
+--insert into Rolling_stock values(5, 5);
 /
 -- Country
 insert into COUNTRY(COUNTRY_NAME) values('Ukraine');
