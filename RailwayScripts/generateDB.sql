@@ -251,7 +251,8 @@ ALTER TABLE Railroad
 CREATE TABLE Rolling_stock 
     ( 
      rolling_stock_id NUMBER  NOT NULL , 
-     fk_lokomotive_id NUMBER  NOT NULL
+     fk_lokomotive_id NUMBER  NOT NULL ,
+    ready VARCHAR2 (50 CHAR)  NOT NULL 
     ) 
 ;
 
