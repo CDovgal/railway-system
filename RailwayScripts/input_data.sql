@@ -60,10 +60,10 @@ insert into STATION(FK_CITY_ID, STATION_NAME) values(5,'Lviv Holovna');
 --train
 
 insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(1,1,6);
-insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(2,1,4);
-insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(3,1,4);
-insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(4,2,3);
-insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(5,2,1);
+--insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(2,1,4);
+--insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(3,1,4);
+--insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(4,2,3);
+--insert into train(fk_rolling_stock_id,fk_departure_station_id,fk_arrival_station_id) values(5,2,1);
 /
 --Route
 insert into route(fk_train_id,fk_departure_station_id,fk_arrival_station_id,departure_time,travel_time) values(1,1,2,to_timestamp('12:00','HH24:MI'),interval '5:50' hour to minute);
@@ -74,9 +74,9 @@ insert into route(fk_train_id,fk_departure_station_id,fk_arrival_station_id,depa
 /
 --train_schedule
 insert into train_schedule(fk_train_id) values(1);
-insert into train_schedule(fk_train_id) values(2);
-insert into train_schedule(fk_train_id) values(3);
-insert into train_schedule(fk_train_id) values(4);
+--insert into train_schedule(fk_train_id) values(2);
+--insert into train_schedule(fk_train_id) values(3);
+--insert into train_schedule(fk_train_id) values(4);
 /
 --railroad
 insert into railroad(railroad_id, fk_railroad_source_id, fk_railroad_destination_id, railroad_type) values(1, 1, 2, 'Electro');
@@ -94,10 +94,10 @@ insert into freight_order_item values(1, 2, 'Water', 3000, 'Chernihiv', 'Dndz');
 
 --passanger_order_item
 insert into passenger_order_item values(1, 1, 1, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 13);
-insert into passenger_order_item values(2, 2, 2, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 4);
-insert into passenger_order_item values(3, 1, 3, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 10);
-insert into passenger_order_item values(4, 2, 2, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 11);
-insert into passenger_order_item values(5, 3, 4, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 12);
+--insert into passenger_order_item values(2, 2, 2, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 4);
+--insert into passenger_order_item values(3, 1, 3, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 10);
+--insert into passenger_order_item values(4, 2, 2, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 11);
+--insert into passenger_order_item values(5, 3, 4, to_date('12-11-2012', 'dd-mm-yyyy'), 5, 12);
 ----------
 --characteristic_type
 INSERT INTO characteristic_type(characteristic_type_id, characteristic_name) VALUES(1, 'Carrying capacity');
