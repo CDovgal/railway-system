@@ -38,38 +38,42 @@
           <children>
             <TabPane prefHeight="493.0" prefWidth="662.0001220703125" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab fx:id="sf_trains_tab" onSelectionChanged="#sf_trains_tab_selection" text="Trains">
+                <Tab fx:id="sf_trains_tab" text="Trains">
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <SplitMenuButton layoutX="14.0" layoutY="41.0" mnemonicParsing="false" prefWidth="481.0" text="..." textAlignment="CENTER">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                        </SplitMenuButton>
                         <Label layoutX="14.0" layoutY="19.0" text="Train">
                           <font>
                             <Font size="14.0" fx:id="x1" />
                           </font>
                         </Label>
                         <Label font="$x1" layoutX="14.0" layoutY="78.0" text="Route" />
-                        <TableView layoutX="14.0" layoutY="108.0" prefHeight="302.0" prefWidth="541.0" />
-                        <Button layoutX="555.0" layoutY="41.0" mnemonicParsing="false" text="Change name" />
-                        <Button layoutX="576.0" layoutY="356.0" mnemonicParsing="false" prefWidth="63.0" text="Up" />
+                        <TableView fx:id="tbl_route" layoutX="14.0" layoutY="108.0" prefHeight="302.0" prefWidth="451.0">
+                          <columns>
+                            <TableColumn minWidth="150.0" prefWidth="75.0" text="Station" fx:id="tbl_route_station" />
+                            <TableColumn minWidth="150.0" prefWidth="75.0" text="Departure" fx:id="tbl_route_dep_time" />
+                            <TableColumn minWidth="150.0" prefWidth="75.0" text="Arrival" fx:id="tbl_route_arr_time" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="545.0" layoutY="41.0" mnemonicParsing="false" text="Change name" />
                         <Button layoutX="576.0" layoutY="233.0" mnemonicParsing="false" text="Commit" />
-                        <Button layoutX="576.0" layoutY="200.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
+                        <Button layoutX="576.0" layoutY="200.0" mnemonicParsing="false" onAction="#update_trains_tab" prefWidth="63.0" text="Update" />
                         <Button layoutX="576.0" layoutY="136.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
-                        <Button layoutX="576.0" layoutY="227.0" mnemonicParsing="false" text="Commit" />
-                        <Button layoutX="576.0" layoutY="198.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
-                        <Button layoutX="576.0" layoutY="140.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
-                        <Button layoutX="576.0" layoutY="389.0" mnemonicParsing="false" prefWidth="63.0" text="Down" />
                         <Button layoutX="576.0" layoutY="168.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
+                        <ComboBox fx:id="train_cbox" layoutX="16.0" layoutY="42.0" onAction="#select_trains_route" prefHeight="21.0" prefWidth="449.0">
+                          <items>
+                            <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item 1" />
+                              <String fx:value="Item 2" />
+                              <String fx:value="Item 3" />
+                            </FXCollections>
+                          </items>
+                        </ComboBox>
                       </children>
                     </AnchorPane>
                   </content>
                 </Tab>
-                <Tab fx:id="sf_schedule_tab" onSelectionChanged="#sf_schedule_tab_selection" text="Schedule">
+                <Tab fx:id="sf_schedule_tab" text="Schedule">
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="648.0001220703125">
                       <children>
@@ -91,30 +95,36 @@
                             <MenuItem mnemonicParsing="false" text="Action 2" />
                           </items>
                         </SplitMenuButton>
-                        <TableView cache="true" focusTraversable="false" layoutX="14.0" layoutY="93.0" prefHeight="314.0" prefWidth="556.0" />
-                        <Button layoutX="586.0" layoutY="126.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
-                        <Button layoutX="586.0" layoutY="223.0" mnemonicParsing="false" text="Commit" />
-                        <Button layoutX="586.0" layoutY="158.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
-                        <Button layoutX="586.0" layoutY="190.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
+                        <TableView cache="true" focusTraversable="false" layoutX="14.0" layoutY="93.0" prefHeight="314.0" prefWidth="401.0">
+                          <columns>
+                            <TableColumn minWidth="100.0" prefWidth="75.0" text="Train number" />
+                            <TableColumn minWidth="200.0" prefWidth="75.0" text="Route" />
+                            <TableColumn minWidth="100.0" prefWidth="75.0" text="Travel time" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="480.0" layoutY="120.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
+                        <Button layoutX="480.0" layoutY="217.0" mnemonicParsing="false" text="Commit" />
+                        <Button layoutX="480.0" layoutY="152.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
+                        <Button layoutX="480.0" layoutY="184.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
                       </children>
                     </AnchorPane>
                   </content>
                 </Tab>
-                <Tab fx:id="sf_stations_tab" onSelectionChanged="#sf_stations_tab_selection" text="Map">
+                <Tab fx:id="sf_stations_tab" text="Map">
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
                         <Button layoutX="552.0" layoutY="71.0" mnemonicParsing="false" onAction="#add_element_to_map" prefWidth="63.0" text="Add" />
                         <Button layoutX="552.0" layoutY="103.0" mnemonicParsing="false" onAction="#delete_element_from_map" prefWidth="63.0" text="Delete" />
-                        <Button layoutX="552.0" layoutY="135.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
-                        <Button id="btCommi" layoutX="552.0" layoutY="167.0" mnemonicParsing="false" text="Commit" />
+                        <Button id="di" layoutX="552.0" layoutY="135.0" mnemonicParsing="false" onAction="#discard_map_changes" prefWidth="63.0" text="Discard" />
+                        <Button id="btCommi" layoutX="552.0" layoutY="167.0" mnemonicParsing="false" onAction="#commit_map" text="Commit" />
                         <RadioButton id="radiob_station" fx:id="rbStation" layoutX="32.0" layoutY="84.0" mnemonicParsing="false" text="Stations">
                           <toggleGroup>
                             <ToggleGroup fx:id="operations" />
                           </toggleGroup>
                         </RadioButton>
                         <RadioButton id="rb_city" fx:id="rbCity" layoutX="202.0" layoutY="84.0" mnemonicParsing="false" text="Cities" toggleGroup="$operations" />
-                        <RadioButton id="rb_country" fx:id="rbCountry" layoutX="378.0" layoutY="84.0" mnemonicParsing="false" text="Countries" />
+                        <RadioButton id="rb_country" fx:id="rbCountry" layoutX="378.0" layoutY="84.0" mnemonicParsing="false" text="Countries" toggleGroup="$operations" />
                         <ComboBox fx:id="station_cbox" layoutX="32.0" layoutY="120.0" onAction="#station_cbox" prefHeight="21.0" prefWidth="135.0">
                           <items>
                             <FXCollections fx:factory="observableArrayList">
