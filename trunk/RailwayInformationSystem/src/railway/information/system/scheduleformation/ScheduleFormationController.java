@@ -4,45 +4,34 @@
  */
 package railway.information.system.scheduleformation;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.event.Event;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.TouchEvent;
 import javafx.scene.text.Font;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import railway.information.system.dao.Route;
+import railway.information.system.dao.Train;
 import railway.information.system.databasequery.DatabaseQuerySF;
-import railway.information.system.databasequery.DatabaseQueryTF;
 import railway.information.system.main.AuthFaceController;
 import railway.information.system.main.RailwayInformationSystem;
-import railway.information.system.trainformation.TrainFormationController;
 
 /**
  * FXML Controller class
@@ -77,11 +66,30 @@ public class ScheduleFormationController implements Initializable {
     private RadioButton rbCity;
     @FXML
     private RadioButton rbCountry;
-    ArrayList<String> hash;
+    
+    @FXML
+    private TableView<Route> tbl_route;
+    @FXML
+    private TableColumn<Route,String> tbl_route_station;
+    @FXML
+    private TableColumn<Route,String> tbl_route_arr_time;
+    @FXML
+    private TableColumn<Route,String> tbl_route_dep_time;
+    @FXML
+    private ComboBox<String> train_cbox;
 
+    ArrayList<String> map_commit;
+    ObservableList<Train> trainsList;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        hash = new ArrayList<String>();
+        map_commit = new ArrayList<>();
+
+         tbl_route_station.setCellValueFactory(new PropertyValueFactory<Route,String>("Station"));
+        tbl_route_dep_time.setCellValueFactory(new PropertyValueFactory<Route,String>("Departure_time"));
+        tbl_route_arr_time.setCellValueFactory(new PropertyValueFactory<Route,String>("Arrival_time"));
+        
+
         try {
             init();
         } catch (Exception ex) {
@@ -96,18 +104,6 @@ public class ScheduleFormationController implements Initializable {
     }
 
     @FXML
-    private void sf_trains_tab_selection(Event event) {
-    }
-
-    @FXML
-    private void sf_schedule_tab_selection(Event event) {
-    }
-
-    @FXML
-    private void sf_stations_tab_selection(Event event) {
-    }
-
-    @FXML
     private void sf_logout_click(ActionEvent event) {
         RailwayInformationSystem.formationStage.hide();
         RailwayInformationSystem.authStage.show();
@@ -116,14 +112,7 @@ public class ScheduleFormationController implements Initializable {
     @FXML
     private void station_cbox(ActionEvent event) {
     }
-
-    private void init() throws SQLException {
-        //station_cbox.setItems(FXCollections.observableArrayList(""));
-        station_cbox.setItems(FXCollections.observableArrayList(DatabaseQuerySF.fillMap(new String("station"))));
-        cities_cbox.setItems(FXCollections.observableArrayList(DatabaseQuerySF.fillMap(new String("city"))));
-        countries_cbox.setItems(FXCollections.observableArrayList(DatabaseQuerySF.fillMap(new String("country"))));
-    }
-
+    
     @FXML
     private void add_element_to_map(ActionEvent event) throws SQLException {
         String tableToAdd = null;
@@ -151,24 +140,35 @@ public class ScheduleFormationController implements Initializable {
             String n = JOptionPane.showInputDialog("Input " + tableToAdd + " name to " + nameToFind);
             String query = new String("{ call add_" + tableToAdd + "('" + n + "','" + nameToFind + "') }");
             AuthFaceController.conn.prepareCall(query).execute();
-            init();
+            init_map();
         }
     }
-
+    
     @FXML
     private void delete_element_from_map(ActionEvent event) throws SQLException {
         String deleteFromTable = null;
         String deleteName = null;
 
         boolean flag = true;
-
+        int selected_table = -1;
+        int selected_item = -1;
         if (rbStation.isSelected()) {
+            selected_table = 1;
+            selected_item = station_cbox.getSelectionModel().getSelectedIndex();
+            
             deleteFromTable = new String("station");
             deleteName = new String(station_cbox.getValue().toString());
+
         } else if (rbCity.isSelected()) {
+            selected_table = 2;
+            selected_item = cities_cbox.getSelectionModel().getSelectedIndex();
+            
             deleteFromTable = new String("city");
             deleteName = new String(cities_cbox.getValue().toString());
         } else if (rbCountry.isSelected()) {
+            selected_table = 3;
+            selected_item = countries_cbox.getSelectionModel().getSelectedIndex();
+            
             deleteFromTable = new String("country");
             deleteName = new String(countries_cbox.getValue().toString());
         } else {
@@ -179,29 +179,111 @@ public class ScheduleFormationController implements Initializable {
         }
 
         if (flag) {
-            String n = JOptionPane.showInputDialog("Delete " + deleteName + " from " + deleteFromTable);
-            if (n.equals(new String(""))) {
-                n = deleteName;
+            int n = JOptionPane.showConfirmDialog(
+                        null,
+                        "Delete "+deleteName+"?",
+                        "Delete from "+deleteFromTable,            
+                        JOptionPane.YES_NO_OPTION);
+            
+            if ( n == 0 )
+            {
+                String query = "{ call delete_" + deleteFromTable + "('" + deleteName + "') }";
+                map_commit.add(query);
+                
+                switch(selected_table){
+                    case 1: delete_element_from_cbox(station_cbox, selected_item); break;
+                    case 2: delete_element_from_cbox(cities_cbox, selected_item); break;
+                    case 3: delete_element_from_cbox(countries_cbox, selected_item); break;
+                }
+                //AuthFaceController.conn.prepareCall(query).execute();
+                //init_map();
             }
-            String query = new String("{ call delete_" + deleteFromTable + "('" + n + "') }");
-            hash.add(query);
-            //AuthFaceController.conn.prepareCall(query).execute();
-            init();
         }
     }
 
     @FXML
-    private void commit(ActionEvent event) throws SQLException {
-        AuthFaceController.conn.setAutoCommit(false);
-        try {
-            for (String query : hash) {
-                AuthFaceController.conn.prepareCall(query).execute();
-            }
-            AuthFaceController.conn.commit();
-            AuthFaceController.conn.setAutoCommit(true);
-        } catch (SQLException ex) {
-            AuthFaceController.conn.rollback();
-        }
+    private void discard_map_changes(ActionEvent event) throws SQLException {
+        init_map();
+    }
+        
+    @FXML
+    private void commit_map(ActionEvent event) throws SQLException {
+        DatabaseQuerySF.commit_map(map_commit);
         init();
+    }
+    
+// end of map
+// ---------------------------------------------------------
+// start train
+    
+    @FXML
+    private void select_trains_route(ActionEvent event) throws SQLException {
+            int selected_index = train_cbox.getSelectionModel().getSelectedIndex();
+
+            tbl_route.setItems(FXCollections.observableArrayList(DatabaseQuerySF.fillRoute(
+                trainsList.get(selected_index).getTrain_id(),
+                trainsList.get(selected_index).getDeparture_station_id(),
+                trainsList.get(selected_index).getArrival_station_id()))
+                );
+    }
+
+    @FXML
+    private void update_trains_tab(ActionEvent event) throws SQLException {
+        //train_cbox.getSelectionModel().selectFirst();
+        update_train_cbox();
+    }
+
+    private void init() throws SQLException {
+        init_map();
+        update_train_cbox();        
+    }
+    
+    private void clear_train_window() {
+        if (tbl_route != null)
+            tbl_route.getItems().clear();
+        
+        if (train_cbox != null){
+            //train_cbox.getSelectionModel().clearSelection();
+            train_cbox.getItems().clear();            
+        }
+        
+        if (trainsList != null)
+            trainsList.clear();
+    }
+    
+    private void update_train_cbox() throws SQLException {
+        //clear_train_window();
+        
+        trainsList = FXCollections.observableArrayList(DatabaseQuerySF.fillTrains());
+        List<String> trainsName = new ArrayList();
+        for(Train t: trainsList)
+        {
+           if (t.getTrain_name() != null)
+            trainsName.add(t.getTrain_name());
+           else
+            trainsName.add("id: "+t.getTrain_id());
+        }
+        
+        train_cbox.setItems(FXCollections.observableArrayList(trainsName));
+    }    
+    
+    private void delete_element_from_cbox(ComboBox box, int index) {
+        box.getItems().remove(index);
+    }
+    
+    private void init_map() throws SQLException {
+        station_cbox.setItems(FXCollections.observableArrayList(DatabaseQuerySF.fillMap("station")));
+        cities_cbox.setItems(FXCollections.observableArrayList(DatabaseQuerySF.fillMap("city")));
+        countries_cbox.setItems(FXCollections.observableArrayList(DatabaseQuerySF.fillMap("country")));
+    }
+
+    @FXML
+    private void change_train_name(ActionEvent event) throws SQLException {
+        int selected_index = train_cbox.getSelectionModel().getSelectedIndex();
+        String new_name = JOptionPane.showInputDialog(
+                "Change name from "+trainsList.get(selected_index).getTrain_name()+" to ");
+        String train_id = trainsList.get(selected_index).getTrain_id();
+        DatabaseQuerySF.ChangeTrainName(train_id,new_name);
+        update_trains_tab(null);
     }
 }
