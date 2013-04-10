@@ -32,6 +32,21 @@ public class DatabaseQuerySF {
         return list;
     }
     
+    public static void commit_map(ArrayList<String> hash) throws SQLException {
+        AuthFaceController.conn.setAutoCommit(false);
+        try {
+            for (String query : hash) {
+                AuthFaceController.conn.prepareCall(query).execute();
+            }
+            AuthFaceController.conn.commit();
+            AuthFaceController.conn.setAutoCommit(true);
+        } catch (SQLException ex) {
+            AuthFaceController.conn.rollback();
+        }
+    }
+    // end map
+    //-------------------
+    // start train
     public static List fillTrains() throws SQLException {
         Statement stmt = AuthFaceController.conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT train_id, train_name, fk_departure_station_id, fk_arrival_station_id FROM train");
@@ -84,18 +99,22 @@ public class DatabaseQuerySF {
         rs.close();
         return list;
     }
-        
-    public static void commit_map(ArrayList<String> hash) throws SQLException {
+    
+    public static void deleteStationFromRoute(String train_id, String station_name_delete) throws SQLException { 
         AuthFaceController.conn.setAutoCommit(false);
         try {
-            for (String query : hash) {
-                AuthFaceController.conn.prepareCall(query).execute();
-            }
+            String query = "{ call delete_route("+train_id+",'"+station_name_delete+"') }";        
+            AuthFaceController.conn.prepareCall(query).execute();
             AuthFaceController.conn.commit();
             AuthFaceController.conn.setAutoCommit(true);
         } catch (SQLException ex) {
             AuthFaceController.conn.rollback();
         }
+    }
+    
+    public static void deleteTrain(String train_id) throws SQLException {
+        String query = "delete from train where train_id = "+train_id;
+        AuthFaceController.conn.prepareCall(query).execute();
     }
 }
 
