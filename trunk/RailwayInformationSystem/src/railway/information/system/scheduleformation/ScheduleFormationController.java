@@ -65,8 +65,7 @@ public class ScheduleFormationController implements Initializable {
     @FXML
     private RadioButton rbCity;
     @FXML
-    private RadioButton rbCountry;
-    
+    private RadioButton rbCountry;    
     @FXML
     private TableView<Route> tbl_route;
     @FXML
@@ -229,8 +228,52 @@ public class ScheduleFormationController implements Initializable {
 
     @FXML
     private void update_trains_tab(ActionEvent event) throws SQLException {
-        //train_cbox.getSelectionModel().selectFirst();
+        train_cbox.getSelectionModel().selectFirst();
         update_train_cbox();
+    }
+    
+    @FXML
+    private void add_station_to_route(ActionEvent event) {
+        int selected_index = tbl_route.getSelectionModel().getSelectedIndex();
+        String departure_station_name = tbl_route.getItems().get(selected_index).getStation();
+        String new_station_name = JOptionPane.showInputDialog("Enter new station after "+departure_station_name);
+        String new_travel_time  = JOptionPane.showInputDialog("Enter travel_time to    "+new_station_name);
+    }
+
+    @FXML
+    private void delete_station_from_route(ActionEvent event) throws SQLException {
+        // here must be a bug
+        // or not
+        int size = tbl_route.getItems().size();
+        int selected_index = train_cbox.getSelectionModel().getSelectedIndex();
+        int selected_index_route = tbl_route.getSelectionModel().getSelectedIndex();
+        
+        String train_id = trainsList.get(selected_index).getTrain_id();
+        String deleted_time = tbl_route.getSelectionModel().getSelectedItem().getDeparture_time();
+        String departure_time1 = tbl_route.getItems().get(0).getDeparture_time();
+        String departure_time2 = tbl_route.getItems().get(size-1).getDeparture_time();
+        String delete_station_name = tbl_route.getItems().get(selected_index_route).getStation();
+        
+        if ( deleted_time.equals(departure_time1) || deleted_time.equals(departure_time2)   )
+        {
+            DatabaseQuerySF.deleteTrain(train_id); 
+        }
+        else
+        {
+            DatabaseQuerySF.deleteStationFromRoute(train_id, delete_station_name);
+        }
+
+        update_trains_tab(null);
+    }
+    
+    @FXML
+    private void change_train_name(ActionEvent event) throws SQLException {
+        int selected_index = train_cbox.getSelectionModel().getSelectedIndex();
+        String new_name = JOptionPane.showInputDialog(
+                "Change name from "+trainsList.get(selected_index).getTrain_name()+" to ");
+        String train_id = trainsList.get(selected_index).getTrain_id();
+        DatabaseQuerySF.ChangeTrainName(train_id,new_name);
+        update_trains_tab(null);
     }
 
     private void init() throws SQLException {
@@ -277,13 +320,4 @@ public class ScheduleFormationController implements Initializable {
         countries_cbox.setItems(FXCollections.observableArrayList(DatabaseQuerySF.fillMap("country")));
     }
 
-    @FXML
-    private void change_train_name(ActionEvent event) throws SQLException {
-        int selected_index = train_cbox.getSelectionModel().getSelectedIndex();
-        String new_name = JOptionPane.showInputDialog(
-                "Change name from "+trainsList.get(selected_index).getTrain_name()+" to ");
-        String train_id = trainsList.get(selected_index).getTrain_id();
-        DatabaseQuerySF.ChangeTrainName(train_id,new_name);
-        update_trains_tab(null);
-    }
 }

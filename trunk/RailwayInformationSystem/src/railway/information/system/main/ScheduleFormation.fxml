@@ -58,8 +58,8 @@
                         <Button layoutX="545.0" layoutY="41.0" mnemonicParsing="false" onAction="#change_train_name" text="Change name" />
                         <Button layoutX="576.0" layoutY="233.0" mnemonicParsing="false" text="Commit" />
                         <Button layoutX="576.0" layoutY="200.0" mnemonicParsing="false" onAction="#update_trains_tab" prefWidth="63.0" text="Update" />
-                        <Button layoutX="576.0" layoutY="136.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
-                        <Button layoutX="576.0" layoutY="168.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
+                        <Button layoutX="576.0" layoutY="136.0" mnemonicParsing="false" onAction="#add_station_to_route" prefWidth="63.0" text="Add" />
+                        <Button layoutX="576.0" layoutY="168.0" mnemonicParsing="false" onAction="#delete_station_from_route" prefWidth="63.0" text="Delete" />
                         <ComboBox fx:id="train_cbox" layoutX="16.0" layoutY="42.0" onAction="#select_trains_route" prefHeight="21.0" prefWidth="449.0">
                           <items>
                             <FXCollections fx:factory="observableArrayList">
