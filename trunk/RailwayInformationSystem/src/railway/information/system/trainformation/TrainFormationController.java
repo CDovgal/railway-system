@@ -114,6 +114,16 @@ public class TrainFormationController implements Initializable {
     private ComboBox<String> es_stock_name;
     @FXML
     private ComboBox<String> es_loco;
+    @FXML
+    private ListView<String> es_stock_carriages;
+    @FXML
+    private ListView<String> es_stock_loco;
+    @FXML
+    private ListView<String> es_carr_info;
+    @FXML
+    private ListView<String> es_loco_info;
+    @FXML
+    private ListView<String> es_list_carr;
 
     /**
      * Initializes the controller class.
@@ -303,7 +313,7 @@ public class TrainFormationController implements Initializable {
     }
 
     private void refresh() throws SQLException {
-        tf_carriage.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriages()));      
+        tf_carriage.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriages()));
         tf_carriage_type.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageTypes()));
         tf_carriage_subtype.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageSubtypes()));
         tf_carriage_mark.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllCarriageMarks()));
@@ -326,7 +336,8 @@ public class TrainFormationController implements Initializable {
         tf_loco_free.setItems(FXCollections.observableArrayList("Free", " "));
         //----Edit Sock
         es_stock_name.setItems(FXCollections.observableArrayList(DatabaseQueryTF.getAllNotReadyStocks()));//!!!!!!!!!
-        es_loco.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllLocomotives()));
+        es_loco.setItems(FXCollections.observableArrayList(DatabaseQueryTF.getAllNotReadyLocomotives()));
+        es_list_carr.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillAllNotReadyCarriages()));
         //------------
     }
 
@@ -359,10 +370,7 @@ public class TrainFormationController implements Initializable {
             if ((tf_choose_pack_order.getSelectionModel().getSelectedItem() != null) && (tf_choose_pack_carriage.getSelectionModel().getSelectedItem() != null)) {
                 DatabaseQueryTF.addOrderForCarriage(tf_choose_pack_carriage.getSelectionModel().getSelectedItem(),
                         tf_choose_pack_order.getSelectionModel().getSelectedItem());
-                tf_choose_pack_order.setItems(FXCollections.observableArrayList(DatabaseQueryTF.fillOrders()));
-                tf_choose_pack_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.getAllStocks()));
-            } else {
-                System.out.println("empty");
+                refresh();
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,
@@ -458,12 +466,12 @@ public class TrainFormationController implements Initializable {
                 tf_choose_pack_stock.setItems(FXCollections.observableArrayList(DatabaseQueryTF.getAllOutScheduleFreightStocks()));
                 tf_choose_pack_carriage.setItems(FXCollections.observableArrayList(""));
                 JOptionPane.showMessageDialog(null,
-                    "Train added!", "Good news!",
-                    JOptionPane.INFORMATION_MESSAGE);
-            }else{
+                        "Train added!", "Good news!",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
                 JOptionPane.showMessageDialog(null,
-                    "Choose stock!", "Error!",
-                    JOptionPane.ERROR_MESSAGE);
+                        "Choose stock!", "Error!",
+                        JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,
@@ -476,15 +484,139 @@ public class TrainFormationController implements Initializable {
 
     @FXML
     private void esStockSelect(ActionEvent event) {
-        
-        
+        try {
+            if (es_stock_name.getSelectionModel().getSelectedItem() != null) {
+                List<String> listCarr = DatabaseQueryTF.getAllCarriagesForStock(es_stock_name.getSelectionModel().getSelectedItem());
+                es_stock_carriages.setItems(FXCollections.observableArrayList(listCarr));
+                List<String> listLoco = DatabaseQueryTF.getLocoForStock(es_stock_name.getSelectionModel().getSelectedItem());
+                es_stock_loco.setItems(FXCollections.observableArrayList(listLoco));
+            } else {
+                es_stock_carriages.setItems(FXCollections.observableArrayList(""));
+                es_stock_loco.setItems(FXCollections.observableArrayList(""));
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML
     private void tfLocSelect(ActionEvent event) {
+        try {
+            if (es_loco.getSelectionModel().getSelectedItem() != null) {
+                Locomotive loco = DatabaseQueryTF.getLocomotiveByID(es_loco.getValue());
+                ObservableList<String> list = FXCollections.observableArrayList(
+                        "[Number]:  " + loco.getLocoId(),
+                        "[Type]:  " + loco.getLocoType(),
+                        "[Mark]:  " + loco.getLocoMark(),
+                        "[Stock]:  " + loco.getRollingStock(),
+                        "[Carriages]:  " + loco.getNumberOfCarriages(),
+                        "[Railroad]:  " + loco.getRailRoadType());
+                es_loco_info.setItems(FXCollections.observableArrayList(list));
+            } else {
+                es_loco_info.setItems(FXCollections.observableArrayList(""));
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
+    @FXML
+    private void esStockCarriage(MouseEvent event) throws SQLException {
+        String carr = es_stock_carriages.getSelectionModel().getSelectedItem();
+        if (carr != null) {
+            Carriage carriage = DatabaseQueryTF.getCarriageByID(carr);
 
+            ObservableList<String> list = FXCollections.observableArrayList(
+                    "[Number]:  " + carriage.getCarriageId(),
+                    "[Mark]:  " + carriage.getCarriageMark(),
+                    "[Stock Number]:  " + carriage.getRollingStock(),
+                    "[General Type]:  " + carriage.getCarriageParentType(),
+                    "[Carriage Type]:  " + carriage.getCarriageType());
+            es_carr_info.setItems(FXCollections.observableArrayList(list));
+        } else {
+            es_carr_info.setItems(FXCollections.observableArrayList(""));
+        }
+    }
 
-    
+    @FXML
+    private void esExistCarr(MouseEvent event) throws SQLException {
+        String carr = es_list_carr.getSelectionModel().getSelectedItem();
+        if (carr != null) {
+            Carriage carriage = DatabaseQueryTF.getCarriageByID(carr);
+
+            ObservableList<String> list = FXCollections.observableArrayList(
+                    "[Number]:  " + carriage.getCarriageId(),
+                    "[Mark]:  " + carriage.getCarriageMark(),
+                    "[Stock Number]:  " + carriage.getRollingStock(),
+                    "[General Type]:  " + carriage.getCarriageParentType(),
+                    "[Carriage Type]:  " + carriage.getCarriageType());
+            es_carr_info.setItems(FXCollections.observableArrayList(list));
+        } else {
+            es_carr_info.setItems(FXCollections.observableArrayList(""));
+        }
+    }
+
+    @FXML
+    private void esChangeLoco(ActionEvent event) {
+        try {
+            if ((es_loco.getSelectionModel().getSelectedItem() != null) || (es_stock_name.getSelectionModel().getSelectedItem() != null)) {
+                DatabaseQueryTF.changeStockLoc(es_stock_name.getSelectionModel().getSelectedItem(),
+                        es_stock_loco.getItems().get(0),
+                        es_loco.getSelectionModel().getSelectedItem());
+                refresh();
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Choose stock and lokomotive", "Info",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                    "No connection!", "Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    @FXML
+    private void esDropStock(ActionEvent event) throws SQLException {
+        String stock = es_stock_name.getSelectionModel().getSelectedItem();
+        if ((stock != null)) {
+            DatabaseQueryTF.dropStock(stock);
+            refresh();
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Choose stock!", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }
+
+    @FXML
+    private void esDropCarriage(ActionEvent event) throws SQLException {
+        String carr = es_stock_carriages.getSelectionModel().getSelectedItem();
+        if (carr != null) {
+            DatabaseQueryTF.dropCarriage(carr);
+            refresh();
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Choose carriage", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    @FXML
+    private void esAddCarriage(ActionEvent event) throws SQLException {
+        String carr = es_list_carr.getSelectionModel().getSelectedItem();
+        if ((carr != null) && (es_stock_name.getSelectionModel().getSelectedItem() != null)) {
+            DatabaseQueryTF.addCarriageToStock(carr, es_stock_name.getSelectionModel().getSelectedItem());
+            refresh();
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Choose carriage and stock!", "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 }
