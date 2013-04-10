@@ -77,7 +77,7 @@ public class DatabaseQuerySF {
 "   where fk_train_id = "+train_id+" and fk_departure_station_id = "+departure_station_id+"\n" +
 "     union all\n" +
 "   select r.fk_departure_station_id, r.fk_arrival_station_id, s.departure_time+s.travel_time, r.departure_time, r.travel_time\n" +
-"   from route r JOIN rec_route s on(r.fk_departure_station_id = s.station_id_to )\n" +
+"   from route r JOIN rec_route s on(r.fk_departure_station_id = s.station_id_to ) where fk_train_id = "+train_id+"\n" +
 "  )\n" +
 "select station_name, TO_CHAR( arrival_time, 'HH24:MI') arrival_time,  TO_CHAR( departure_time, 'HH24:MI') departure_time \n" +
 "from rec_route join station on(rec_route.station_id_from=station.station_id)\n" +
@@ -101,8 +101,8 @@ public class DatabaseQuerySF {
     }
     
     public static void deleteStationFromRoute(String train_id, String station_name_delete) throws SQLException { 
-        AuthFaceController.conn.setAutoCommit(false);
         try {
+            AuthFaceController.conn.setAutoCommit(false);
             String query = "{ call delete_route("+train_id+",'"+station_name_delete+"') }";        
             AuthFaceController.conn.prepareCall(query).execute();
             AuthFaceController.conn.commit();
@@ -115,6 +115,32 @@ public class DatabaseQuerySF {
     public static void deleteTrain(String train_id) throws SQLException {
         String query = "delete from train where train_id = "+train_id;
         AuthFaceController.conn.prepareCall(query).execute();
+    }
+    
+    public static void addStationToRoute(
+              String train_id
+            , String departure_station_name
+            , String arrival_station_name
+            , String new_station_name
+            , String new_travel_time
+            , String new_stop_time) throws SQLException {
+        try {
+            AuthFaceController.conn.setAutoCommit(false);
+            String query = "{ call add_route("
+                    + train_id + ","
+                    + "'" + departure_station_name + "',"
+                    + "'" + arrival_station_name + "',"
+                    + "'" + new_station_name + "',"
+                    + "interval '0 " + new_travel_time + ":00'" + " day to second,"
+                    + "interval '0 " + new_stop_time   + ":00'" + " day to second"
+                    + ") }";
+            AuthFaceController.conn.prepareCall(query).execute();
+           AuthFaceController.conn.commit();
+            AuthFaceController.conn.setAutoCommit(true);
+        } catch (SQLException ex) {
+            AuthFaceController.conn.rollback();
+        }
+        
     }
 }
 

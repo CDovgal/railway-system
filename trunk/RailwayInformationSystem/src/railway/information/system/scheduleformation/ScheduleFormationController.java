@@ -218,7 +218,7 @@ public class ScheduleFormationController implements Initializable {
     @FXML
     private void select_trains_route(ActionEvent event) throws SQLException {
             int selected_index = train_cbox.getSelectionModel().getSelectedIndex();
-
+            
             tbl_route.setItems(FXCollections.observableArrayList(DatabaseQuerySF.fillRoute(
                 trainsList.get(selected_index).getTrain_id(),
                 trainsList.get(selected_index).getDeparture_station_id(),
@@ -228,16 +228,29 @@ public class ScheduleFormationController implements Initializable {
 
     @FXML
     private void update_trains_tab(ActionEvent event) throws SQLException {
-        train_cbox.getSelectionModel().selectFirst();
+        //train_cbox.getSelectionModel().selectFirst();
         update_train_cbox();
     }
     
     @FXML
-    private void add_station_to_route(ActionEvent event) {
-        int selected_index = tbl_route.getSelectionModel().getSelectedIndex();
-        String departure_station_name = tbl_route.getItems().get(selected_index).getStation();
-        String new_station_name = JOptionPane.showInputDialog("Enter new station after "+departure_station_name);
-        String new_travel_time  = JOptionPane.showInputDialog("Enter travel_time to    "+new_station_name);
+    private void add_station_to_route(ActionEvent event) throws SQLException {
+        int selected_train_index = train_cbox.getSelectionModel().getSelectedIndex();
+        String train_id = trainsList.get(selected_train_index).getTrain_id();
+        
+        int selected_route_index = tbl_route.getSelectionModel().getSelectedIndex();
+        if (selected_route_index == tbl_route.getItems().size()-1)
+            return;
+        String departure_station_name = tbl_route.getItems().get(selected_route_index).getStation();
+        String arrival_station_name = tbl_route.getItems().get(selected_route_index+1).getStation();
+        String new_station_name = JOptionPane.showInputDialog("Enter new station between "+departure_station_name+" and " + arrival_station_name);
+        String new_travel_time  = JOptionPane.showInputDialog("Enter travel time to "+new_station_name+". Example: HH:MM.");
+        String new_stop_time    = JOptionPane.showInputDialog("Enter stop time at "  +new_station_name+". Example: HH:MM.");
+        
+        if ( new_station_name != null 
+          && new_travel_time  != null
+          && new_stop_time    != null )
+            DatabaseQuerySF.addStationToRoute(train_id,departure_station_name,arrival_station_name,new_station_name,new_travel_time,new_stop_time);
+        update_trains_tab(null);
     }
 
     @FXML
