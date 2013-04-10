@@ -30,7 +30,7 @@
                 <Label layoutX="217.0" layoutY="51.0" text="Type :" />
                 <ListView fx:id="tf_carriage_info" focusTraversable="true" layoutX="14.0" layoutY="69.0" prefHeight="123.0" prefWidth="188.0" />
                 <Label layoutX="13.0" layoutY="46.0" text="Carriage info :" />
-                <Button fx:id="tf_create_new_stock" layoutX="11.0" layoutY="349.0" mnemonicParsing="false" onAction="#tfCreateNewStock" prefWidth="111.0" text="Create new stock" />
+                <Button fx:id="tf_create_new_stock" layoutX="11.0" layoutY="330.0" mnemonicParsing="false" onAction="#tfCreateNewStock" prefHeight="40.0" prefWidth="120.0" text="Create new stock" />
                 <Label layoutX="378.0" layoutY="20.0" text="Locomotive :" />
                 <Label layoutX="596.0" layoutY="45.0" prefHeight="24.0" prefWidth="61.0" text="Type :" />
                 <Label layoutX="378.0" layoutY="51.0" text="Locomotive info :" />
@@ -79,23 +79,24 @@
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
                 <Label layoutX="14.0" layoutY="14.0" text="Stock name :" />
-                <Label layoutX="14.0" layoutY="52.0" text="Stock info:" />
-                <ListView layoutX="14.0" layoutY="79.0" prefHeight="200.0" prefWidth="200.0" />
-                <ListView layoutX="225.0" layoutY="79.0" prefHeight="200.0" prefWidth="96.0" />
-                <Label layoutX="234.0" layoutY="46.0" prefWidth="78.0" text="List of existing" />
-                <Button layoutX="220.0" layoutY="286.0" mnemonicParsing="false" prefWidth="123.0" text="Add carriage" />
+                <Label layoutX="14.0" layoutY="79.0" text="Stock carriages:" />
+                <ListView fx:id="es_stock_carriages" layoutX="14.0" layoutY="103.0" onMouseClicked="#esStockCarriage" prefHeight="176.0" prefWidth="200.0" />
+                <ListView fx:id="es_list_carr" layoutX="225.0" layoutY="78.0" onMouseClicked="#esExistCarr" prefHeight="200.0" prefWidth="96.0" />
+                <Label layoutX="234.0" layoutY="49.0" minHeight="13.0" prefHeight="13.0" prefWidth="87.0" text="List of available" />
+                <Button layoutX="225.0" layoutY="286.0" mnemonicParsing="false" onAction="#esAddCarriage" prefWidth="96.0" text="Add carriage" />
                 <Label layoutX="442.0" layoutY="14.0" prefWidth="76.9998779296875" text="Locomotive :" />
                 <Label layoutX="329.0" layoutY="52.0" prefWidth="123.0" text="Selected carriage info :" />
-                <ListView layoutX="329.0" layoutY="79.0" prefHeight="200.0" prefWidth="123.0001220703125" />
+                <ListView fx:id="es_carr_info" layoutX="329.0" layoutY="78.0" prefHeight="200.0" prefWidth="168.0" />
                 <Label layoutX="519.0" layoutY="57.0" prefWidth="96.0" text="Lokomotive info :" />
-                <ListView layoutX="518.0" layoutY="79.0" prefHeight="200.0" prefWidth="123.0001220703125" />
-                <Button layoutX="519.0" layoutY="296.0" mnemonicParsing="false" prefWidth="124.0" text="Change lokomotive" />
-                <Button layoutX="16.0" layoutY="286.0" mnemonicParsing="false" prefWidth="115.0" text="Save stock" />
-                <ComboBox id="tf_carriage" fx:id="es_loco" layoutX="527.0" layoutY="12.0" onAction="#tf_loc_select" prefHeight="21.0" prefWidth="131.0" />
+                <ListView fx:id="es_loco_info" layoutX="518.0" layoutY="79.0" prefHeight="200.0" prefWidth="123.0001220703125" />
+                <Button layoutX="518.0" layoutY="286.0" mnemonicParsing="false" onAction="#esChangeLoco" prefWidth="124.0" text="Change lokomotive" />
+                <ComboBox id="tf_carriage" fx:id="es_loco" layoutX="527.0" layoutY="12.0" onAction="#tfLocSelect" prefHeight="21.0" prefWidth="131.0" />
                 <ComboBox id="tf_carriage" fx:id="es_stock_name" layoutX="90.0" layoutY="12.0" onAction="#esStockSelect" prefHeight="21.0" prefWidth="124.0" />
-                <Button layoutX="16.0" layoutY="317.0" mnemonicParsing="false" prefWidth="115.0" text="Drop stock" />
+                <Button layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onAction="#esDropStock" prefHeight="32.0" prefWidth="123.0" text="Drop stock" />
                 <Label layoutX="245.0" layoutY="62.0" prefWidth="56.0" text="carriages:" />
-                <Button layoutX="220.0" layoutY="317.0" mnemonicParsing="false" prefWidth="123.0" text="Drop carriage" />
+                <Button layoutX="13.0" layoutY="286.0" mnemonicParsing="false" onAction="#esDropCarriage" prefWidth="200.0" text="Drop carriage" />
+                <ListView id="tf_carriage_info" fx:id="es_stock_loco" layoutX="91.0" layoutY="41.0" prefHeight="32.0" prefWidth="124.0" />
+                <Label layoutX="14.0" layoutY="49.0" prefHeight="21.0" prefWidth="67.9998779296875" text="Locomotive:" />
               </children>
             </AnchorPane>
           </content>

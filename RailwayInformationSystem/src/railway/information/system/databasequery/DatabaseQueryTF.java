@@ -182,8 +182,8 @@ public class DatabaseQueryTF {
 
     public static List fillAllFreeLocomotives() throws SQLException {
         Statement stmt = AuthFaceController.conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT locomotive_id FROM locomotive LEFT JOIN rolling_stock ON rolling_stock.fk_lokomotive_id = locomotive.locomotive_id " +
-                " WHERE (ready = 0) or (rolling_stock_id is null)");
+        ResultSet rs = stmt.executeQuery("SELECT locomotive_id FROM locomotive LEFT JOIN rolling_stock ON rolling_stock.fk_lokomotive_id = locomotive.locomotive_id "
+                + " WHERE (ready = 0) or (rolling_stock_id is null)");
         List<String> list = new ArrayList();
         while (rs.next()) {
             String locomotive_id = rs.getString("locomotive_id");
@@ -285,8 +285,10 @@ public class DatabaseQueryTF {
 
     public static List fillOrders() throws SQLException {
         Statement stmt = AuthFaceController.conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT foi_id FROM freight_order_item "
-                + " WHERE foi_id NOT IN (SELECT fk_foi_id FROM carriage_freight_order_item)");
+        ResultSet rs = stmt.executeQuery("SELECT foi_id FROM freight_order_item LEFT JOIN carriage_freight_order_item "
+                + " ON carriage_freight_order_item.fk_foi_id = freight_order_item.foi_id "
+                + "LEFT JOIN carriage ON carriage.carriage_id = carriage_freight_order_item.fk_carriage_id "
+                + "WHERE fk_rolling_stock_id NOT IN ((SELECT rolling_stock_id FROM rolling_stock WHERE ready =1)) or fk_rolling_stock_id is NULL");
         List<String> list = new ArrayList();
         while (rs.next()) {
             String foi_id = rs.getString("foi_id");
@@ -310,10 +312,10 @@ public class DatabaseQueryTF {
 
     public static List getAllOutScheduleFreightStocks() throws SQLException {
         Statement stmt = AuthFaceController.conn.createStatement();
-        ResultSet rs = stmt.executeQuery(" SELECT distinct fk_rolling_stock_id FROM carriage " +
-                                         " JOIN rolling_stock ON carriage.fk_rolling_stock_id = rolling_stock.rolling_stock_id " +
-                                         " JOIN carriage_type ON carriage_type.carriage_type_id = carriage.fk_carriage_type_id " +
-                                         " WHERE fk_parrent_type_id = 2 and ready = 0");
+        ResultSet rs = stmt.executeQuery(" SELECT distinct fk_rolling_stock_id FROM carriage "
+                + " JOIN rolling_stock ON carriage.fk_rolling_stock_id = rolling_stock.rolling_stock_id "
+                + " JOIN carriage_type ON carriage_type.carriage_type_id = carriage.fk_carriage_type_id "
+                + " WHERE fk_parrent_type_id = 2 and ready = 0");
         List<String> list = new ArrayList();
         while (rs.next()) {
             String rolling_stock_id = rs.getString("fk_rolling_stock_id");
@@ -400,8 +402,8 @@ public class DatabaseQueryTF {
      */
     public static boolean isLocInTrain(String locId) throws SQLException {
         Statement stmt = AuthFaceController.conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT fk_lokomotive_id FROM rolling_stock " + 
-               " WHERE ready = 1");
+        ResultSet rs = stmt.executeQuery("SELECT fk_lokomotive_id FROM rolling_stock "
+                + " WHERE ready = 1");
         while (rs.next()) {
             if (locId.equals(rs.getString("fk_lokomotive_id"))) {
                 return true;
@@ -432,8 +434,29 @@ public class DatabaseQueryTF {
     }
 
     public static void addOrderForCarriage(String carriageId, String orderId) throws SQLException {
+        List<String> list1 = new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
+        PreparedStatement stmt1 = AuthFaceController.conn.prepareStatement("SELECT fk_carriage_id FROM carriage_freight_order_item WHERE fk_carriage_id = ?");
+        stmt1.setString(1, carriageId);
+        ResultSet rs1 = stmt1.executeQuery();
+        while (rs1.next()) {
+            list1.add(rs1.getString("fk_carriage_id"));
+        }
+        PreparedStatement stmt2 = AuthFaceController.conn.prepareStatement("SELECT fk_foi_id FROM carriage_freight_order_item WHERE fk_foi_id = ?");
+        stmt2.setString(1, orderId);
+        ResultSet rs2 = stmt2.executeQuery();
+        while (rs2.next()) {
+            list2.add(rs2.getString("fk_foi_id"));
+        }
+        if (list1.contains(carriageId)) {
+            Statement stmt = AuthFaceController.conn.createStatement();
+            stmt.executeQuery("DELETE carriage_freight_order_item WHERE fk_carriage_id = '" + carriageId + "'");
+        } else if (list2.contains(orderId)) {
+            Statement stmt = AuthFaceController.conn.createStatement();
+            stmt.executeQuery("DELETE carriage_freight_order_item WHERE fk_foi_id = '" + orderId + "'");
+        }
         Statement stmt = AuthFaceController.conn.createStatement();
-        ResultSet rs = stmt.executeQuery("INSERT INTO carriage_freight_order_item(fk_carriage_id, fk_foi_id ) VALUES('" + carriageId + "','" + orderId + "')");
+        stmt.executeQuery("INSERT INTO carriage_freight_order_item(fk_carriage_id, fk_foi_id ) VALUES('" + carriageId + "','" + orderId + "')");
     }
 
     public static String getCarraigeTypeById(String carriage) throws SQLException {
@@ -547,13 +570,14 @@ public class DatabaseQueryTF {
         stmt.close();
         return list;
     }
-    
+
     public static void addStockToSchedule(String rol_id) throws SQLException {
         Statement stmt = AuthFaceController.conn.createStatement();
         ResultSet rs = stmt.executeQuery(" UPDATE rolling_stock SET ready = 1 WHERE rolling_stock_id = '" + rol_id + "'");
     }
     //------------------Edit Stock
-     public static List<String> getAllNotReadyStocks() throws SQLException {
+
+    public static List<String> getAllNotReadyStocks() throws SQLException {
         List<String> list = new ArrayList<>();
         Statement stmt = AuthFaceController.conn.createStatement();
         ResultSet rs = stmt.executeQuery(" SELECT rolling_stock_id FROM rolling_stock WHERE ready = 0 ");
@@ -561,6 +585,73 @@ public class DatabaseQueryTF {
             list.add(rs.getString("rolling_stock_id"));
         }
         return list;
+    }
+
+    public static List<String> getAllNotReadyLocomotives() throws SQLException {
+        List<String> list = new ArrayList<>();
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ResultSet rs = stmt.executeQuery(" SELECT locomotive_id FROM locomotive "
+                + " WHERE locomotive_id NOT IN ( "
+                + " SELECT fk_lokomotive_id FROM rolling_stock "
+                + " WHERE ready = 1) ");
+        while (rs.next()) {
+            list.add(rs.getString("locomotive_id"));
+        }
+        return list;
+    }
+
+    public static List<String> getAllCarriagesForStock(String stock_id) throws SQLException {
+        List<String> list = new ArrayList<>();
+        String sql = " SELECT carriage_id FROM carriage "
+                + " WHERE fk_rolling_stock_id = ? ";
+        PreparedStatement stmt = AuthFaceController.conn.prepareStatement(sql);
+        stmt.setString(1, stock_id);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            list.add(rs.getString("carriage_id"));
+        }
+        return list;
+    }
+
+    public static List<String> getLocoForStock(String stock_id) throws SQLException {
+        List<String> list = new ArrayList<>();
+        String sql = " SELECT fk_lokomotive_id from rolling_stock "
+                + " WHERE rolling_stock_id = ? ";
+        PreparedStatement stmt = AuthFaceController.conn.prepareStatement(sql);
+        stmt.setString(1, stock_id);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            list.add(rs.getString("fk_lokomotive_id"));
+        }
+        return list;
+    }
+
+    public static List<String> fillAllNotReadyCarriages() throws SQLException {
+        List<String> list = new ArrayList<>();
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ResultSet rs = stmt.executeQuery(" SELECT carriage_id FROM carriage "
+                + " WHERE fk_rolling_stock_id NOT IN "
+                + " ((SELECT rolling_stock_id FROM rolling_stock WHERE ready = 1)) or fk_rolling_stock_id is NULL");
+        while (rs.next()) {
+            list.add(rs.getString("carriage_id"));
+        }
+        return list;
+    }
+
+    public static void changeStockLoc(String stock, String prevLoc, String newLoc) throws SQLException {
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ifLocHasStock(prevLoc);
+        stmt.executeQuery(" UPDATE rolling_stock SET fk_lokomotive_id = '" + newLoc + "' WHERE rolling_stock_id = '" + stock + "'");
+    }
+
+    public static void addCarriageToStock(String carr, String stock) throws SQLException {
+        Statement stmt = AuthFaceController.conn.createStatement();
+        stmt.executeQuery(" UPDATE carriage SET fk_rolling_stock_id = '" + stock + "' WHERE carriage_id = '" + carr + "'");
+    }
+    
+    public static void dropStock(String stock) throws SQLException {
+        Statement stmt = AuthFaceController.conn.createStatement();
+        stmt.executeQuery(" DELETE rolling_stock WHERE rolling_stock_id = '" + stock + "'");
     }
     //----------------------------
 }
