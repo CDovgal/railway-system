@@ -20,18 +20,6 @@
                 <MenuItem mnemonicParsing="false" text="Exit" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Report">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Create" />
-                <MenuItem mnemonicParsing="false" text="Properties" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Help" />
-                <MenuItem mnemonicParsing="false" text="About program" />
-              </items>
-            </Menu>
           </menus>
         </MenuBar>
         <AnchorPane id="AnchorPane" layoutY="24.0">
@@ -56,11 +44,9 @@
                           </columns>
                         </TableView>
                         <Button layoutX="545.0" layoutY="41.0" mnemonicParsing="false" onAction="#change_train_name" text="Change name" />
-                        <Button layoutX="576.0" layoutY="233.0" mnemonicParsing="false" text="Commit" />
-                        <Button layoutX="576.0" layoutY="200.0" mnemonicParsing="false" onAction="#update_trains_tab" prefWidth="63.0" text="Update" />
                         <Button layoutX="576.0" layoutY="136.0" mnemonicParsing="false" onAction="#add_station_to_route" prefWidth="63.0" text="Add" />
                         <Button layoutX="576.0" layoutY="168.0" mnemonicParsing="false" onAction="#delete_station_from_route" prefWidth="63.0" text="Delete" />
-                        <ComboBox fx:id="train_cbox" layoutX="16.0" layoutY="42.0" onAction="#select_trains_route" prefHeight="21.0" prefWidth="449.0">
+                        <ComboBox fx:id="train_cbox" layoutX="15.0" layoutY="41.0" onHiding="#HiddingBox" onMousePressed="#ClickOnTrain" prefHeight="21.0" prefWidth="449.0">
                           <items>
                             <FXCollections fx:factory="observableArrayList">
                               <String fx:value="Item 1" />
@@ -69,43 +55,8 @@
                             </FXCollections>
                           </items>
                         </ComboBox>
-                      </children>
-                    </AnchorPane>
-                  </content>
-                </Tab>
-                <Tab fx:id="sf_schedule_tab" text="Schedule">
-                  <content>
-                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="648.0001220703125">
-                      <children>
-                        <SplitMenuButton layoutX="14.0" layoutY="25.0" mnemonicParsing="false" prefWidth="70.00009999999747" text="Day">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                        </SplitMenuButton>
-                        <SplitMenuButton layoutX="216.0" layoutY="25.0" mnemonicParsing="false" text="Year">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                        </SplitMenuButton>
-                        <SplitMenuButton layoutX="104.0" layoutY="25.0" mnemonicParsing="false" prefWidth="91.0" text="Month">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                        </SplitMenuButton>
-                        <TableView cache="true" focusTraversable="false" layoutX="14.0" layoutY="93.0" prefHeight="314.0" prefWidth="401.0">
-                          <columns>
-                            <TableColumn minWidth="100.0" prefWidth="75.0" text="Train number" />
-                            <TableColumn minWidth="200.0" prefWidth="75.0" text="Route" />
-                            <TableColumn minWidth="100.0" prefWidth="75.0" text="Travel time" />
-                          </columns>
-                        </TableView>
-                        <Button layoutX="480.0" layoutY="120.0" mnemonicParsing="false" prefWidth="63.0" text="Add" />
-                        <Button layoutX="480.0" layoutY="217.0" mnemonicParsing="false" text="Commit" />
-                        <Button layoutX="480.0" layoutY="152.0" mnemonicParsing="false" prefWidth="63.0" text="Delete" />
-                        <Button layoutX="480.0" layoutY="184.0" mnemonicParsing="false" prefWidth="63.0" text="Update" />
+                        <Button layoutX="545.0" layoutY="357.0" mnemonicParsing="false" onAction="#change_arrival_time" prefWidth="94.0" text="change arr. t." />
+                        <Button layoutX="545.0" layoutY="389.0" mnemonicParsing="false" onAction="#change_travel_time" prefWidth="94.0" text="change travel" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -114,10 +65,8 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <Button layoutX="552.0" layoutY="71.0" mnemonicParsing="false" onAction="#add_element_to_map" prefWidth="63.0" text="Add" />
-                        <Button layoutX="552.0" layoutY="103.0" mnemonicParsing="false" onAction="#delete_element_from_map" prefWidth="63.0" text="Delete" />
-                        <Button id="di" layoutX="552.0" layoutY="135.0" mnemonicParsing="false" onAction="#discard_map_changes" prefWidth="63.0" text="Discard" />
-                        <Button id="btCommi" layoutX="552.0" layoutY="167.0" mnemonicParsing="false" onAction="#commit_map" text="Commit" />
+                        <Button layoutX="552.0" layoutY="88.0" mnemonicParsing="false" onAction="#add_element_to_map" prefWidth="63.0" text="Add" />
+                        <Button layoutX="552.0" layoutY="120.0" mnemonicParsing="false" onAction="#delete_element_from_map" prefWidth="63.0" text="Delete" />
                         <RadioButton id="radiob_station" fx:id="rbStation" layoutX="32.0" layoutY="84.0" mnemonicParsing="false" text="Stations">
                           <toggleGroup>
                             <ToggleGroup fx:id="operations" />
@@ -125,7 +74,7 @@
                         </RadioButton>
                         <RadioButton id="rb_city" fx:id="rbCity" layoutX="202.0" layoutY="84.0" mnemonicParsing="false" text="Cities" toggleGroup="$operations" />
                         <RadioButton id="rb_country" fx:id="rbCountry" layoutX="378.0" layoutY="84.0" mnemonicParsing="false" text="Countries" toggleGroup="$operations" />
-                        <ComboBox fx:id="station_cbox" layoutX="32.0" layoutY="120.0" onAction="#station_cbox" prefHeight="21.0" prefWidth="135.0">
+                        <ComboBox id="citieis" fx:id="cities_cbox" layoutX="202.0" layoutY="120.0" onMousePressed="#ClickOnCity" prefHeight="21.0" prefWidth="135.0">
                           <items>
                             <FXCollections fx:factory="observableArrayList">
                               <String fx:value="Item 1" />
@@ -134,7 +83,7 @@
                             </FXCollections>
                           </items>
                         </ComboBox>
-                        <ComboBox id="citieis" fx:id="cities_cbox" layoutX="202.0" layoutY="120.0" prefHeight="21.0" prefWidth="135.0">
+                        <ComboBox id="counties_cbox" fx:id="countries_cbox" layoutX="378.0" layoutY="120.0" onMousePressed="#ClickOnCountry" prefHeight="21.0" prefWidth="135.0">
                           <items>
                             <FXCollections fx:factory="observableArrayList">
                               <String fx:value="Item 1" />
@@ -143,7 +92,7 @@
                             </FXCollections>
                           </items>
                         </ComboBox>
-                        <ComboBox id="counties_cbox" fx:id="countries_cbox" layoutX="378.0" layoutY="120.0" prefHeight="21.0" prefWidth="135.0">
+                        <ComboBox id="citieis" fx:id="stations_cbox" layoutX="32.0" layoutY="120.0" onMousePressed="#ClickOnStation" prefHeight="21.0" prefWidth="135.0">
                           <items>
                             <FXCollections fx:factory="observableArrayList">
                               <String fx:value="Item 1" />
