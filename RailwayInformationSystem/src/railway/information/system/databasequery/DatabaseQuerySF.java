@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import railway.information.system.dao.Carriage;
+import railway.information.system.dao.MapElement;
 import railway.information.system.dao.Route;
 import railway.information.system.dao.Train;
 import railway.information.system.main.AuthFaceController;
@@ -19,7 +20,45 @@ import railway.information.system.main.AuthFaceController;
  * @author cdovgal
  */
 public class DatabaseQuerySF {
-
+    // new code
+    
+    public static ArrayList get_all_stations() throws SQLException {
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT country_id, country_name FROM country");
+        ArrayList<MapElement> list = new ArrayList();
+        while (rs.next()) {
+            list.add(new MapElement(rs.getString("country_id"), rs.getString("country_name")));
+        }
+        rs.close();
+        return list;
+    }
+    
+    public static ArrayList get_cities(String country_id) throws SQLException {
+        Statement stmt = AuthFaceController.conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT city_id, city_name FROM city WHERE fk_country_id = " + country_id);
+        ArrayList<MapElement> list = new ArrayList();
+        while (rs.next()) {
+            list.add(new MapElement(rs.getString("city_id"), rs.getString("city_name")));
+        }
+        rs.close();
+        return list;
+    }
+    
+    public static ArrayList get_stations(String city_id) throws SQLException {
+        Statement stmt = AuthFaceController.conn.createStatement();
+        String q = "SELECT station_id, station_name FROM station WHERE fk_city_id = " + city_id;
+        ResultSet rs = stmt.executeQuery(q);
+        ArrayList<MapElement> list = new ArrayList();
+        while (rs.next()) {
+            list.add(new MapElement(rs.getString("station_id"), rs.getString("station_name")));
+        }
+        rs.close();
+        return list;
+    }
+    
+    // end new code
+    // ----
+    // old code
     public static List fillMap(String element) throws SQLException {
         Statement stmt = AuthFaceController.conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT "+element+"_name FROM "+element);
@@ -63,7 +102,6 @@ public class DatabaseQuerySF {
     }
     
     public static void ChangeTrainName(String train_id, String new_name) throws SQLException {
-        //Statement stmt = AuthFaceController.conn.createStatement();
         String query = "update train set train_name = '"+new_name+"' where train_id = "+train_id;
         AuthFaceController.conn.prepareCall(query).execute();
     }
@@ -141,6 +179,20 @@ public class DatabaseQuerySF {
             AuthFaceController.conn.rollback();
         }
         
+    }
+    
+    public static void change_departure_time(String train_id, String station_name, String new_time) throws SQLException {
+        String query = "{ call change_departure_time("+train_id+",'"+station_name+"',to_timestamp('"+new_time+"','HH24:MI')) }";
+        AuthFaceController.conn.prepareCall(query).execute();
+    }
+    
+    public static void change_travel_time(String train_id, String station_name, String new_travel_time) throws SQLException {
+        String query = "{ call change_travel_time("
+                + train_id + ","
+                + "'" + station_name + "',"
+                + "interval '0 " + new_travel_time + ":00'" + " day to second) }";
+
+        AuthFaceController.conn.prepareCall(query).execute();
     }
 }
 
