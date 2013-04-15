@@ -12,9 +12,8 @@
   <children>
     <MenuBar layoutX="1.0" layoutY="0.0" prefWidth="756.0">
       <menus>
-        <Menu mnemonicParsing="false" text="Help">
+        <Menu mnemonicParsing="false" text="Menu">
           <items>
-            <MenuItem mnemonicParsing="false" text="Manual" />
             <MenuItem mnemonicParsing="false" onAction="#tf_logout_click" text="Logout" fx:id="tf_logout" />
           </items>
         </Menu>

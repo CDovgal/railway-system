@@ -822,7 +822,7 @@ END add_carriage_to_stock;
 
 CREATE OR REPLACE PROCEDURE CREATE_NEW_STOCK(loco NUMBER) AS 
 BEGIN
-  insert into Rolling_stock values(1, loco);  
+  insert into Rolling_stock values(1, loco, 0);  
 END CREATE_NEW_STOCK;
 /
 
