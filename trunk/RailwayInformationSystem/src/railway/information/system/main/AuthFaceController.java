@@ -102,7 +102,7 @@ public class AuthFaceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        connection_ip.setText("192.168.0.102");
+        connection_ip.setText("127.0.0.1");
         connection_port.setText("1521");
         connection_sid.setText("XE");
         Locale.setDefault(new Locale("EN"));
