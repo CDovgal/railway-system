@@ -876,6 +876,122 @@ BEGIN
   DELETE FROM country WHERE del_country_name = country_name;
 END;
 /
+
+create or replace 
+PROCEDURE add_route(train_id               IN NUMBER
+                  , departure_station_name IN VARCHAR
+                  , arrival_station_name   IN VARCHAR
+                  , new_station_name       IN VARCHAR
+                  , new_travel_time        IN INTERVAL day to second
+                  , new_stop_time          IN INTERVAL day to second) 
+IS
+old_departure_station_id NUMBER;
+old_arrival_station_id   NUMBER;
+new_station_id           NUMBER;
+old_departure_time       TIMESTAMP;
+old_travel_time          INTERVAL day to second;
+BEGIN
+  
+  select station_id into old_departure_station_id from station
+    where station_name = departure_station_name;
+    
+  select station_id into old_arrival_station_id from station
+    where station_name = arrival_station_name;
+
+  select station_id into new_station_id from station
+    where station_name = new_station_name;
+    
+  select departure_time into old_departure_time from route 
+    where fk_train_id = train_id and fk_departure_station_id = old_departure_station_id;
+    
+  select travel_time into old_travel_time from route
+    where fk_train_id = train_id and fk_departure_station_id = old_departure_station_id;
+  
+  insert into route(fk_train_id, fk_departure_station_id, fk_arrival_station_id, departure_time, travel_time)
+    values(train_id, new_station_id, old_arrival_station_id, old_departure_time + new_travel_time, old_travel_time - new_travel_time - new_stop_time);
+    
+  update route set fk_arrival_station_id = new_station_id
+    where fk_train_id = train_id and fk_departure_station_id = old_departure_station_id;    
+    
+  update route set travel_time = new_travel_time
+    where fk_train_id = train_id and fk_departure_station_id = old_departure_station_id;
+  
+END;
+/
+
+create or replace 
+PROCEDURE CHANGE_DEPARTURE_TIME 
+(
+  TRAIN_ID     IN NUMBER  
+, DEPARTURE_STATION_NAME IN VARCHAR2  
+, NEW_TIME     IN TIMESTAMP
+) AS 
+departure_station_id NUMBER;
+BEGIN
+  select station_id into departure_station_id from station
+    where station_name = DEPARTURE_STATION_NAME;
+    
+  update route set route.departure_time = NEW_TIME
+    where fk_train_id = train_id and fk_departure_station_id = departure_station_id;
+  
+END CHANGE_DEPARTURE_TIME;
+/
+
+create or replace 
+PROCEDURE CHANGE_TRAVEL_TIME 
+(
+  TRAIN_ID               IN NUMBER  
+, DEPARTURE_STATION_NAME IN VARCHAR2  
+, NEW_TRAVEL_TIME        IN INTERVAL DAY TO SECOND
+) AS 
+departure_station_id NUMBER;
+BEGIN
+  select station_id into departure_station_id from station
+    where station_name = DEPARTURE_STATION_NAME;
+    
+  update route set travel_time = NEW_TRAVEL_TIME
+    where fk_train_id = train_id and fk_departure_station_id = departure_station_id;
+  
+END CHANGE_TRAVEL_TIME;
+/
+
+create or replace 
+PROCEDURE delete_route( train_id          IN NUMBER
+                                        , delete_station_name IN VARCHAR
+                                        ) 
+IS
+departure_station_id   NUMBER;
+new_arrival_station_id NUMBER;
+delete_station_id      NUMBER;
+new_travel_time        INTERVAL day(2) to second(6);
+BEGIN
+  select station_id into delete_station_id from station
+    where station_name = delete_station_name;
+
+  select fk_departure_station_id into departure_station_id from route 
+    where fk_train_id = train_id and fk_arrival_station_id = delete_station_id;
+
+  select fk_arrival_station_id into new_arrival_station_id from route 
+    where fk_train_id = train_id and fk_departure_station_id = delete_station_id;
+    
+  select travel_time into new_travel_time from route
+    where fk_train_id = train_id and fk_arrival_station_id = delete_station_id;
+    
+  select new_travel_time+travel_time into new_travel_time from route 
+    where fk_train_id = train_id and fk_departure_station_id = delete_station_id;
+    
+  update route set fk_arrival_station_id = new_arrival_station_id
+    where fk_train_id = train_id and fk_departure_station_id = departure_station_id;
+    
+  update route set travel_time = new_travel_time 
+    where fk_train_id = train_id and fk_departure_station_id = departure_station_id;
+  
+  delete from route 
+    where fk_train_id = train_id and fk_departure_station_id = delete_station_id;  
+END;
+/
+
+
 CREATE INDEX "FK_CHARACTERISTIC_TYPE" ON "CHARACTERISTIC" ("CHARACTERISTIC_TYPE");
 /
 CREATE INDEX "FK_ROLLING_STOCK_ID" ON "TRAINFORMATION"."CARRIAGE" ("FK_ROLLING_STOCK_ID"); 
