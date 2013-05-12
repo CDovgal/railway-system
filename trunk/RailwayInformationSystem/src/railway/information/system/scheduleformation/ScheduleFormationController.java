@@ -281,6 +281,8 @@ public class ScheduleFormationController implements Initializable {
         int selected_route_index = tbl_route.getSelectionModel().getSelectedIndex();
         if (selected_route_index == tbl_route.getItems().size()-1)
             return;
+        if (selected_route_index == -1)
+            return;
         String departure_station_name = tbl_route.getItems().get(selected_route_index).getStation();
         String arrival_station_name = tbl_route.getItems().get(selected_route_index+1).getStation();
         
