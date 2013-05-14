@@ -876,7 +876,7 @@ BEGIN
   DELETE FROM country WHERE del_country_name = country_name;
 END;
 /
-<<<<<<< .mine
+
 create or replace 
 PROCEDURE add_client(add_client_name IN varchar2, add_client_surname IN varchar2, add_client_phone IN varchar2, add_client_email IN varchar2)
 IS
@@ -924,8 +924,6 @@ BEGIN
   UPDATE client set name = client_name, surname = client_surname, phone_number = client_phone, email = client_email where client_id = client_old_id;
 END UPDATE_CLIENT;
 /
-=======
-
 create or replace 
 PROCEDURE add_route(train_id               IN NUMBER
                   , departure_station_name IN VARCHAR
