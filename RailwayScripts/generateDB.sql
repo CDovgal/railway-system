@@ -876,6 +876,55 @@ BEGIN
   DELETE FROM country WHERE del_country_name = country_name;
 END;
 /
+<<<<<<< .mine
+create or replace 
+PROCEDURE add_client(add_client_name IN varchar2, add_client_surname IN varchar2, add_client_phone IN varchar2, add_client_email IN varchar2)
+IS
+BEGIN
+  INSERT INTO client(name, surname, phone_number, email) values(add_client_name, add_client_surname, add_client_phone, add_client_email);
+END add_client;
+/
+
+create or replace 
+PROCEDURE ADD_FREIGHT_ORDER_ITEM(client_name IN varchar2, goods_name IN varchar2, mass IN number, origin_station IN varchar2, delivery_station IN varchar2)
+IS
+find_client_id NUMBER;
+find_order_id NUMBER;
+BEGIN
+  SELECT client_id INTO find_client_id FROM client
+    where name = client_name;
+    
+  SELECT order_id INTO find_order_id FROM order_item
+    where fk_client_id = find_client_id;
+
+  insert into freight_order_item values(1, find_order_id, goods_name, mass, origin_station, delivery_station);
+END ADD_FREIGHT_ORDER_ITEM;
+/
+create or replace 
+PROCEDURE ADD_ORDER_ITEM(client_name IN varchar2)
+IS
+find_client_id NUMBER;
+BEGIN
+  SELECT client_id INTO find_client_id FROM client
+    where name = client_name;
+    
+  insert into order_item ( fk_client_id, order_date) values(find_client_id, to_date('13-05-2013', 'dd-mm-yyyy'));
+END ADD_ORDER_ITEM;
+/
+create or replace 
+PROCEDURE DELETE_CLIENT (del_client_id IN varchar2) AS
+BEGIN
+  delete from client where client_id = del_client_id;
+END DELETE_CLIENT;
+/
+create or replace 
+PROCEDURE UPDATE_CLIENT(client_old_id IN number, client_name IN varchar2, client_surname IN varchar2, client_phone IN varchar2, client_email IN varchar2)
+AS 
+BEGIN
+  UPDATE client set name = client_name, surname = client_surname, phone_number = client_phone, email = client_email where client_id = client_old_id;
+END UPDATE_CLIENT;
+/
+=======
 
 create or replace 
 PROCEDURE add_route(train_id               IN NUMBER
@@ -990,7 +1039,6 @@ BEGIN
     where fk_train_id = train_id and fk_departure_station_id = delete_station_id;  
 END;
 /
-
 
 CREATE INDEX "FK_CHARACTERISTIC_TYPE" ON "CHARACTERISTIC" ("CHARACTERISTIC_TYPE");
 /
